@@ -300,6 +300,8 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
 
       const createdPayment =await createPayment({variables:{ object:{user_id: user?.id, status: "pending",total_amount: totalPrice}}})
       console.log("createdPayment", createdPayment)
+
+      return
       // console.log("CreatedPayment", createdPayment?.data?.id);
       // console.log("createdOrderDetails", createdOrder?.data?.id);
 
@@ -307,10 +309,7 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
 
       // Call your backend to create the Checkout Session
       const response = await fetch(
-        // "http://localhost:4000/api/session",
         "/api/session",
-        // "http://localhost:3000/api/session",
-
         // "https://ftql6xrbueq5gpygsqnsa6trw40rckpa.lambda-url.us-east-1.on.aws/",
         {
           method: "POST",

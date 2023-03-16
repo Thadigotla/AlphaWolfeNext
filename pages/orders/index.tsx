@@ -3,6 +3,7 @@ import { Button, Col, Form, Input, Modal, Row, Table } from 'antd';
 import { useState } from 'react';
 import {useEffect} from 'react';
 import toast from 'react-hot-toast';
+import CustomLayout from '../../styles/components/produc';
  
 const query = gql` query GetOrders {
   orders {
@@ -231,10 +232,14 @@ function MyComponent() {
 
 function App() {
   return (
+    <CustomLayout>
+
     <div style={{textAlign:"right"}}>
         <MyComponent />
 
     </div>
+    </CustomLayout>
+
   );
 }
 

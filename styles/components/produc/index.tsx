@@ -8,16 +8,23 @@ import React, { useState } from 'react';
 // } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import Link from "next/link"
+import { useRouter } from 'next/router';
 
 const { Header, Sider, Content } = Layout;
 
+interface CustomLayoutProps {
+  children: React.ReactNode;
+}
+
  
 
-  const CustomLayout: React.FC = ({children}:any) => {
+  const CustomLayout: React.FC<CustomLayoutProps> = ({children}:any) => {
     const [collapsed, setCollapsed] = useState(false);
     const {
       token: { colorBgContainer },
     } = theme.useToken();
+
+    const router = useRouter()
 
     
     return (
@@ -27,24 +34,30 @@ const { Header, Sider, Content } = Layout;
           <div className="logo" />
           <Menu
             theme="dark"
-            mode="inline"
-            defaultSelectedKeys={['1']}
+            mode="inline"  
+            selectedKeys={[router.pathname]}
+            // defaultSelectedKeys={['1']}
             items={[
               {
-                key: '1',
+                key: '/customers',
                 // icon: <UserOutlined />,
-                label: 'nav 1',
+                label: 'Customers',
+                onClick: () => router.push("/customers")
               },
               {
-                key: '2',
+                key: '/orders',
                 // icon: <VideoCameraOutlined />,
-                label: 'nav 2',
+                label: 'Orders',
+                onClick: () => router.push("/orders")
+
 
               },
               {
-                key: '3',
+                key: '/orderItems',
                 // icon: <UploadOutlined />,
-                label: 'nav 3',
+                label: 'Order Items',
+                onClick: () => router.push("/orderItems")
+
               },
             ]}
           />

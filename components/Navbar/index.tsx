@@ -10,6 +10,8 @@ import type { MenuProps } from "antd";
 import   CartLogo  from "../../public/images/cart.svg";
 import { Dropdown, Space } from "antd";
 import { nhost } from "../../pages/_app";
+import { useAuthenticationStatus } from '@nhost/nextjs'
+
  
 // import { Product } from "../Products/Product";
 // import { nhost } from 'pages/_app';
@@ -25,6 +27,9 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
   //   // const { data, mutateAsync, isLoading } = useLogin();
   //   const { mutate: login, isLoading } = useLogin<ILoginForm>();
   //   const [form] = Form.useForm();
+
+  const { isLoading, isAuthenticated } = useAuthenticationStatus()
+
   // const { push } = useNavigation();
    let  push  ;
   const pathname = useRouter().pathname;
@@ -176,16 +181,16 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
               <Space>What We Do ?</Space>
             </a>
           </Dropdown> */}
-{/* 
-          <Button onClick={() => push("/LoginPage/manage")} type="link">
-            Manage
-          </Button> */}
 
-          {userDetails ? (
+          <Button onClick={() => router.push("/customers")} type="link">
+            Manage
+          </Button>
+
+          {isAuthenticated ? (
             <Button
               onClick={() => {
                 nhost.auth.signOut();
-               router.push("./LoginPage/login");
+               router.push("/");
               }}
               type="link"
             >
@@ -194,7 +199,7 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
           ) : (
             <Button
               onClick={() => {
-                push("./LoginPage/login");
+                router.push("./sign-in");
               }}
               type="link"
             >
