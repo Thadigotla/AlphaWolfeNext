@@ -7,7 +7,7 @@ const SignInPage = () => {
   return (
     <>
       <Head>
-        <title>Sign in - Nhost</title>
+        <title>Sign in - alpha Wolfe</title>
       </Head>
 
       <div className={styles.container}>
