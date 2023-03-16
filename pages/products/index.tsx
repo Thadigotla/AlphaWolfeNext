@@ -300,7 +300,6 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
       const createdPayment =await createPayment({variables:{ object:{user_id: user?.id, status: "pending",total_amount: totalPrice}}})
       console.log("createdPayment", createdPayment)
 
-      return
       // console.log("CreatedPayment", createdPayment?.data?.id);
       // console.log("createdOrderDetails", createdOrder?.data?.id);
 
