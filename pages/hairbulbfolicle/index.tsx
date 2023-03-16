@@ -9,18 +9,22 @@ import { Footer } from "../../components/Footer";
     
     <div className="wrapper">
       <section className="Header">
-        <h1 className="Header_one">Epigenetics</h1>
-        <h3 className="Header_two">The key to healthy living</h3>
+        <h1 className="Header_one">Hair Bulb Follicle</h1>
+        <h3 className="Header_two">Epigenetics</h3>
       </section>
-      <iframe
+      {/* <iframe
         width="100%"
         height="600"
         src="https://youtu.be/muEyvtCV34w"
         title="Hey Pet Owner, Check out the Alpha Wolfe Nutritional Test that would make your dog healthy and happy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      ></iframe>
+      ></iframe> */}
+
+<iframe width="100%" height="621" src="https://www.youtube.com/embed/muEyvtCV34w" title="Hey Pet Owner, Check out the Alpha Wolfe Nutritional Test that would make your dog healthy and happy"
+ allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
 
       <section className="Alpha_details_block_2">
+        <h3 style={{fontWeight:600}}>Crafted with the aid of scientific methods and knowledge with the key to providing a robust life for your pet.</h3>
         <div className="Alpha_details_block_2_para">
           {" "}
           Epigenetics is the science that shows that we do not need to be
@@ -70,6 +74,8 @@ import { Footer } from "../../components/Footer";
       </section>
 
       <section className="Alpha_details_block_2">
+      <h3 style={{fontWeight:600}}>Hair Bulb: The epigenetic marker  </h3>
+
         <div className="Alpha_details_block_2_para">
           {" "}
           Hair belongs to the integumentary system that develops from the
@@ -116,6 +122,8 @@ import { Footer } from "../../components/Footer";
       </section>
 
       <section className="Alpha_details_block_2">
+      <h3 style={{fontWeight:600}}>S-Drive: A portable device to check the sensory activities of your pet.  </h3>
+
         <div className="Alpha_details_block_2_para">
           {" "}
           The S- Drive is a wellness device, it is not designed to diagnose,
@@ -155,6 +163,8 @@ import { Footer } from "../../components/Footer";
       </section>
 
       <section className="Alpha_details_block_2">
+      <h3 style={{fontWeight:600}}>Hair Follicle processing through s drive    </h3>
+
         <div className="Alpha_details_block_2_para">
           {" "}
           The gathered hair follicle information (excluding the clients name and

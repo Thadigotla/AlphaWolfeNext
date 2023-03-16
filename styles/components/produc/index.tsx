@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import { Layout, Menu, theme } from 'antd';
 import Link from "next/link"
 import { useRouter } from 'next/router';
+import { nhost } from '../../../pages/_app';
 
 const { Header, Sider, Content } = Layout;
 
@@ -30,14 +31,52 @@ interface CustomLayoutProps {
     return (
 
       <Layout>
-        <Sider trigger={null} collapsible collapsed={collapsed}>
+        <Sider trigger={null} collapsible collapsed={collapsed}     
+      >
           <div className="logo" />
           <Menu 
-            theme="dark"
-            mode="inline"  
+            theme="light"
+            // mode="inline"  
+          
             selectedKeys={[router.pathname]}
-            // defaultSelectedKeys={['1']}
+        
             items={[
+
+
+              {
+                key: '/pets',
+                // icon: <VideoCameraOutlined />,
+                label: 'Pets',
+                onClick: () => router.push("/pets")
+              },
+
+              {
+                key: '/products',
+                // icon: <VideoCameraOutlined />,
+                label: 'Products',
+                onClick: () => router.push("/products")
+              },
+
+              {
+                key: '/orders',
+                // icon: <VideoCameraOutlined />,
+                label: 'Orders',
+                onClick: () => router.push("/orders")
+              },
+
+              {
+                key: '/orderItems',
+                // icon: <UploadOutlined />,
+                label: 'Order Items',
+                onClick: () => router.push("/orderItems")
+              },       
+              
+              {
+                key: '/payments',
+                // icon: <VideoCameraOutlined />,
+                label: 'Payments',
+                onClick: () => router.push("/payments")
+              },
               {
                 key: '/customers',
                 // icon: <UserOutlined />,
@@ -45,30 +84,21 @@ interface CustomLayoutProps {
                 onClick: () => router.push("/customers")
               },
               {
-                key: '/orders',
-                // icon: <VideoCameraOutlined />,
-                label: 'Orders',
-                onClick: () => router.push("/orders")
-
-
+                key: '/home',
+                // icon: <UploadOutlined />,
+                label: 'Home',
+                onClick: () => ( router.push("/"))
               },
               {
-                key: '/orderItems',
+                key: '/logout',
                 // icon: <UploadOutlined />,
-                label: 'Order Items',
-                onClick: () => router.push("/orderItems")
+                label: 'Logout',
+                onClick: () => (nhost.auth.signOut(), router.push("/"))
+              }
+              ,
 
-              },
             ]}
           />
-              {/* <Menu.Item key="1" >
-              <Link href="/items" ><a>Home</a></Link>
-            </Menu.Item>
-            <Menu.Item key="2" >
-              <Link href="/products">Videos</Link>
-            </Menu.Item> */}
-
-          {/* </Menu> */}
         </Sider>
         <Layout className="site-layout">
           <Header style={{ padding: 0, background: colorBgContainer }}>

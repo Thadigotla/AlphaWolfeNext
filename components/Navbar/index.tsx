@@ -13,6 +13,7 @@ import { nhost } from "../../pages/_app";
 import { useAuthenticationStatus } from '@nhost/nextjs'
 import Image from 'next/image'
 
+import Link from "next/link"
  
 // import { Product } from "../Products/Product";
 // import { nhost } from 'pages/_app';
@@ -72,49 +73,76 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
   };
 
   console.log(userDetails, "userDetails : ");
-  const items: MenuProps["items"] = [
+  // const items = [
+  //   {
+  //     key: "1",
+  //     label: (
+  //       <Button onClick={() => router.push("/s_DriveTechnology")} type="link">
+  //         s-drivetechnology
+  //       </Button>
+  //     ),
+  //   },
+  //   {
+  //     key: "2",
+  //     label: (
+  //       <Button
+  //         className="alpha_button"
+  //         onClick={() => router.push("/epigenetics")}
+  //         type="link"
+  //       >
+  //         Epigenetics
+  //       </Button>
+  //     ),
+  //   },
+  //   {
+  //     key: "3",
+  //     label: (
+  //       <Button
+  //         className="alpha_button"
+  //         onClick={() => router.push("/hairBulbFolicle")}
+  //         type="link"
+  //       >
+  //         Hair Bulb Follicle
+  //       </Button>
+  //     ),
+  //   },
+  //   {
+  //     key: "1",
+  //     label: (
+  //       <Button
+  //         className="alpha_button"
+  //         onClick={() => router.push("/LoginPage/products-list")}
+  //         type="link"
+  //       >
+  //         Products
+  //       </Button>
+  //     ),
+  //   },
+  // ];
+
+  const items = [
     {
-      key: "1",
+      key: '1',
       label: (
-        <Button onClick={() => router.push("/LoginPage/s_DriveTechnology")} type="link">
-          s-drivetechnology
-        </Button>
-      ),
-    },
-    {
-      key: "1",
-      label: (
-        <Button
-          className="alpha_button"
-          onClick={() => router.push("/LoginPage/epigenetics")}
-          type="link"
-        >
+        <Link  href="/epigenetics" >
           Epigenetics
-        </Button>
+        </Link>
       ),
     },
     {
-      key: "1",
+      key: '2',
       label: (
-        <Button
-          className="alpha_button"
-          onClick={() => router.push("/LoginPage/hairBulbFolicle")}
-          type="link"
-        >
-          Hair Bulb Follicle
-        </Button>
+        <Link  href="/hairbulbfolicle" >
+          Hair Bulb Follice
+        </Link>
       ),
     },
     {
-      key: "1",
+      key: '3',
       label: (
-        <Button
-          className="alpha_button"
-          onClick={() => router.push("/LoginPage/products-list")}
-          type="link"
-        >
-          Products
-        </Button>
+        <Link  href="/s_drive_technology">
+         S Drive Technology
+        </Link>
       ),
     },
   ];
@@ -122,19 +150,21 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
   return (
     <>
       <section className="navbar" style={{ zIndex: "1000" }}>
+        
         <div className="logo">
+          <span style={{position:"relative"}}>
           <Image
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f733050ef63f2e151dc369_AW-logo.jpeg"
             alt="logo"
+            layout="fill"
             style={{ height: "50px", cursor: "pointer" }}
             onClick={() => (router.push("/"), handleClickScrollHome())}
           />
+          </span>
         </div>
 
-        {/* <Dropdown menu={{ items }} placement="bottomLeft">
-          What We Do?
-        </Dropdown>
-          <Button  onClick={() => push("/s_drive_technology")} type="link">
+ 
+         {/*  <Button  onClick={() => push("/s_drive_technology")} type="link">
             s-drivetechnology
           </Button>
 
@@ -149,43 +179,49 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
             Products
           </Button> */}
 
+
+
         <div
           className="nav-links"
           style={{ display: "flex", justifyContent: "space-evenly" }}
         >
-          <Button onClick={() => router.push("/product")} type="link">
-            Product
+
+           <Button
+            onClick={() => (router.push("/products"), handleClickScroll())}
+            type="link"
+             >
+            Products
           </Button>
 
+          
           <Button onClick={() => router.push("/about")} type="link">
             About
           </Button>
 
           <Button
-            onClick={() => (router.push("/"), handleClickScroll())}
+            onClick={() => (router.push("/"), handleClickScroll(),handleClickScroll())}
             type="link"
           >
             Help
           </Button>
-          <Button
-            onClick={() => (router.push("/products"), handleClickScroll())}
-            type="link"
-          >
-            Products
+ 
+          <Button>
+
+            
           </Button>
+          <Dropdown menu={{ items }} placement="bottomLeft">
+             <Button>What we Do ?</Button>
+          </Dropdown>
+
+
 
           <Button onClick={() => router.push("/contact")} type="link">
             Contact
           </Button>
-          {/* <Dropdown menu={{ items }}>
-            <a onClick={(e) => e.preventDefault()}>
-              <Space>What We Do ?</Space>
-            </a>
-          </Dropdown> */}
-
-          <Button onClick={() => router.push("/customers")} type="link">
+ 
+          {isAuthenticated ?<Button onClick={() => router.push("/pets")} type="link">
             Manage
-          </Button>
+          </Button> : null}
 
           {isAuthenticated ? (
             <Button

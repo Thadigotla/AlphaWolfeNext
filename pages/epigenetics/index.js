@@ -14,13 +14,14 @@ import Image  from 'next/image'
         <h1 className="Header_one">Epigenetics</h1>
         <h3 className="Header_two">The key to healthy living</h3>
       </section>
-      <iframe
+      {/* <iframe
         width="100%"
         height="600"
-        src="https://youtu.be/muEyvtCV34w"
+        src="https://www.youtube.com/watch?v=muEyvtCV34w&ab_channel=AlphaWolfe"
         title="Hey Pet Owner, Check out the Alpha Wolfe Nutritional Test that would make your dog healthy and happy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      ></iframe>
+      ></iframe> */}
+      <iframe width="100%" height="621" src="https://www.youtube.com/embed/muEyvtCV34w" title="Hey Pet Owner, Check out the Alpha Wolfe Nutritional Test that would make your dog healthy and happy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
  
 
@@ -59,14 +60,16 @@ import Image  from 'next/image'
         </div>
       </section>
 
-      <section className="Alpha_details_block_1">
+      <section className="Alpha_details_block_1" >
+        <div className="Alpha_details_block_1_left"> 
         <Image
           alt="image"
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef350d228a5d8eda0ce_e1.webp"
-          className="Alpha_details_block_1_left"
-          loading="lazy"
+           loading="lazy"
+          layout="fill"
           srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef350d228a5d8eda0ce_e1-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef350d228a5d8eda0ce_e1.webp 741w"
         />
+        </div>
         <div className="Alpha_details_block_1_right">
           <div className="Alpha_details_block_1_right_para_1">
             Epigenetics is the science that shows that we do not need to be
@@ -136,9 +139,10 @@ import Image  from 'next/image'
             and the 50,000+ thoughts we have per day.
           </div>
         </div>
-        <div className="Alpha_details_block_3_right">
+        <div className="Alpha_details_block_3_right" style={{position:"relative"}}>
           <Image
             alt="image"
+            layout="fill"
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2.webp"
             srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2.webp 846w"
           />
@@ -167,14 +171,19 @@ import Image  from 'next/image'
         </div>
       </section>
 
-      <section className="Alpha_details_block_1">
+      <section className="Alpha_details_block_1" style={{position:"relative"}}>
+        <div className="Alpha_details_block_1_left">
         <Image
           alt="image"
-          className="Alpha_details_block_1_left"
+          layout="fill"
+          objectFit="contain"
+          style={{borderRadius:"5%"}}
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef490337bdf46734365_e3.webp"
           loading="lazy"
         />
+        </div>
         <div className="Alpha_details_block_1_right">
+          <h3>WHY THE HAIR BULB IS AN Epigenetic Marker</h3>
           <div className="Alpha_details_block_1_right_para_1">
             Hair belongs to the integumentary system that develops from the
             ectoderm and thus it has the same embryological origin as the
@@ -279,22 +288,31 @@ import Image  from 'next/image'
             associated with a poor nutritional diet or a toxic environment.
           </div>
         </div>
-        <div className="Alpha_details_block_3_right">
+        <div className="Alpha_details_block_3_right" >
+         <div className="Alpha_details_block_3_right_img">
           <Image
             alt="image"
+            layout="fill"
+            objectFit="contain"
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef33e9f3b0de3b18161_e4.webp"
             srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2.webp 846w"
           />
         </div>
+        </div>
       </section>
 
-      <section className="Alpha_details_block_1">
+      <section className="Alpha_details_block_1"  >
+        <div className="Alpha_details_block_1_left">
+
         <Image
           alt="image"
-          className="Alpha_details_block_1_left"
+          layout="fill"
+          objectFit="contain"
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5.webp"
           srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5.webp 2507w"
         />
+        </div>
+
         <div className="Alpha_details_block_1_right">
           <div className="Alpha_details_block_1_right_para_1">
             The Epigenetic Indicators highlight accumulated information, which
@@ -365,9 +383,11 @@ import Image  from 'next/image'
             • Food intolerances and food additives to avoid
           </div>
         </div>
-        <div className="Alpha_details_block_3_right">
+        <div className="Alpha_details_block_3_right" style={{position:"relative"}}>
           <Image
             alt="image"
+            layout="fill"
+            objectFit="contain"
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6.webp"
             srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-2600.webp 2600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6.webp 2940w"
           />
@@ -401,9 +421,11 @@ import Image  from 'next/image'
             epigenetic assessment is conducted.
           </div>
         </div>
-        <div className="Alpha_details_block_3_right">
+        <div className="Alpha_details_block_3_right" style={{position:"relative"}}>
           <Image
+            layout="fill"
             alt="image"
+            objectFit="contain"
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3d036d8798f1d8786_e7.webp"
             srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3d036d8798f1d8786_e7-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3d036d8798f1d8786_e7.webp 692w"
           />

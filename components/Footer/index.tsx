@@ -5,20 +5,28 @@ import Image from 'next/image'
 export const Footer = () => {
   return (
     <div className="footer wf-section">
+      <span style={{position:'relative'}}>
       <Image
         src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759cef2212fb1d_Mask%20Group.svg"
         loading="lazy"
         data-w-id="8eb6eabc-6568-003f-7abd-a08004a402ba"
         alt=""
+        layout="fill"
         className="image-38"
       />
+      </span>
+      <span style={{position:'relative'}}>
+
       <Image
         src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c2a1712fb1e_2.svg"
         loading="lazy"
         data-w-id="8eb6eabc-6568-003f-7abd-a08004a402bb"
         alt=""
+        layout="fill"
         className="image-39"
       />
+      </span>
+
       <div className="container">
         <div className="footer-body">
           <div className="footer-content-wrapper">

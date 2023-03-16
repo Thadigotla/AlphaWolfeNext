@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar } from "../../components/Navbar/index";
 import { Footer } from "../../components/Footer";
-import Image from 'next/image'
+import Image from "next/image"
 
 
  const SDriveTechnology = () => {
@@ -74,13 +74,16 @@ import Image from 'next/image'
       </section>
 
       <section className="Alpha_details_block_1">
+        <div     className="Alpha_details_block_1_left">
         <Image
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716acf80a805b0f6cb5a1_s1.webp"
-          className="Alpha_details_block_1_left md-24"
           loading="lazy"
           alt="image"
-          // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716acf80a805b0f6cb5a1_s1-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716acf80a805b0f6cb5a1_s1.webp 500w"
+          layout="fill"
+          objectFit="cover"
         />
+        </div>
+
         <div className="Alpha_details_block_1_right ">
           <div className="Alpha_details_block_1_right_para_1">
             Our Technology uses In-Vivo bio-information to distinguish which
@@ -155,12 +158,16 @@ import Image from 'next/image'
           </div>{" "}
         </div>
         <div className="Alpha_details_block_3_right">
+          <div  className="Alpha_details_block_3_right_img">
           <Image
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6407142ec344653327fa70f9_s2.webp"
             loading="lazy"
             alt="image"
-            // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6407142ec344653327fa70f9_s2-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6407142ec344653327fa70f9_s2.webp 600w"
-          />{" "}
+            layout="fill"
+            objectFit="contain"
+          />
+          </div>
+
         </div>
       </section>
 
@@ -186,26 +193,29 @@ import Image from 'next/image'
         </div>
       </section>
 
-      <section className="Alpha_details_block_1">
+      <section className="Alpha_details_block_5">
+        <div className="Alpha_details_block_5_left">
         <Image
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6.webp"
-          className="Alpha_details_block_1_left"
           loading="lazy"
           alt="image"
-          // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-2600.webp 2600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6.webp 2940w"
+          layout="fill"
+          objectFit="contain"
+         
         />
-        <div className="Alpha_details_block_1_right">
-          <div className="Alpha_details_block_1_right_para_1">
+        </div>
+        <div className="Alpha_details_block_5_right">
+          <div className="Alpha_details_block_5_right_para_1">
             When the mapping process is completed, the specific epigenetic data
             is then returned as an encrypted data file to the geo located
             S-Drive using the same unique encrypted sending codes.
           </div>
-          <div className="Alpha_details_block_1_right_para_2">
+          <div className="Alpha_details_block_5_right_para_2">
             Upon receipt by the S-Drive, its automated software decrypts the
             data file, generates a readable file and then adds the client’s full
             name and details to the epigenetic report.
           </div>
-          <div className="Alpha_details_block_1_right_para_3">
+          <div className="Alpha_details_block_5_right_para_3">
             *Note: At all times the clients’ personal data remains on the local
             S-Drive licensed computer and is not stored on the Cell Wellbeing
             German facility’s database
@@ -213,8 +223,8 @@ import Image from 'next/image'
         </div>
       </section>
 
-      <section className="Alpha_details_block_2">
-        <div className="Alpha_details_block_2_para">
+      <section className="Alpha_details_block_6">
+        <div className="Alpha_details_block_6_para">
           The S-Drive has an intended use that relates to supporting,
           maintaining or encouraging a general state of health. The S-Drive
           detects epigenetic signals that influence gene expression, so that
@@ -231,14 +241,19 @@ import Image from 'next/image'
       </section>
 
       <section className="footer_image">
+        <div className="footer_image_Image">
         <Image
-          className="footer_image_Image"
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4.webp"
           loading="lazy"
+          layout="fill"
+          objectFit="cover"
           sizes="(max-width: 991px) 90vw, 95vw"
+          // width="50%"
+          // height="100%"
           // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4.webp 1920w"
           alt="image"
         />
+        </div>
       </section>
     </div>
     <Footer></Footer>

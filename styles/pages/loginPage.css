@@ -301,17 +301,17 @@ section {
   position: relative;
 }
 .alpha_wolfie_promo_img_left_one {
-  width: 60%;
+  width: 60% !important;
 }
 
 .alpha_wolfie_promo_img_left_two {
-  position: absolute;
+  position: absolute !important;
   left: auto;
   top: auto;
   right: 0%;
-  bottom: -15%;
+  bottom: -15% !important;
   z-index: 40;
-  width: 80%;
+  width: 100%;
 }
 .alpha_wolfie_promo_img_right_details_parag {
   max-width: 19ch;
@@ -449,7 +449,7 @@ section {
   margin-top: 10%;
   position: relative;
   width: 100%;
-  background-color: #e1ceba;
+  /* background-color: #e1ceba; */
   padding-top: 10%;
   padding-bottom: 10%;
   clip-path: polygon(0 4%, 100% 0%, 100% 96%, 0% 100%);
@@ -1361,3 +1361,13 @@ th {
   margin: 16px;
   background: rgba(255, 255, 255, 0.3);
 }
+
+/*  
+.images_laz{
+  position: relative !important;
+  background-color: green;
+}
+
+.bg-icon-test{
+  background-color: rgb(4, 255, 4);
+} */

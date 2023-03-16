@@ -59,9 +59,12 @@
   width: 40%;
   height: 80%;
   border-radius: 2%;
+  position: relative !important;
+  
+  /* background-color: aqua; */
 }
 .Alpha_details_block_1_right {
-  /* width: 50%; */
+  width: 50%;
   margin: auto 2%;
 }
 .Alpha_details_para_1,
@@ -128,6 +131,23 @@
 
 .Alpha_details_block_3_right {
   width: 50%;
+  text-align: center;
+  vertical-align: middle;
+  /* background-color: aqua; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+.Alpha_details_block_3_right_img{
+  position: relative !important;
+  height: 60% !important;
+  text-align: center;
+  border-radius: 5%;
+  /* background-color: gold; */
+  
+
 }
 
 .Alpha_details_block_4 {
@@ -156,3 +176,7 @@
   -o-object-fit: contain;
   object-fit: contain;
 }
+
+
+
+ 

@@ -4,9 +4,10 @@ import { useState } from 'react';
 import {useEffect} from 'react';
 import toast from 'react-hot-toast';
 import CustomLayout from '../../styles/components/produc';
+import { useUserData } from '@nhost/nextjs';
  
-const query = gql` query GetOrders {
-  orders {
+const query = gql` query GetOrders($where: orders_bool_exp,$limit:Int,$offset:Int) {
+  orders (where: $where, offset:$offset, limit:$limit) {
     user_id
 		status
 		created_at
@@ -14,6 +15,11 @@ const query = gql` query GetOrders {
 		total_amount
 		id
 		uid
+  }
+  orders_aggregate {
+    aggregate{
+      count
+    }
   }
 }
      `;
@@ -139,9 +145,19 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
 
 function MyComponent() {
 
+  const user = useUserData()
+
   const [Data, setData] = useState([])
 
   const [MData, setMData] = useState({})
+
+  const [searchText, setSearchText] = useState(null)
+
+  const [searchTextCondition, setsearchTextCondition] = useState(null)
+
+  const [limit, setLimit] = useState(10)
+
+  const [pageNo, setPageNo] = useState(1)
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -153,8 +169,50 @@ function MyComponent() {
   
   const [deleteFunction, { data:dData, loading:dLoading, error:dError}] = useMutation(delete_mutation);
 
-  const { data, loading, error } = useQuery(query);
+  const { data, loading, error } = useQuery(
+    query,
+    { variables:{
+     "where":  searchTextCondition,
+     limit:limit,
+     offset:(pageNo-1)*limit
+    } });
 
+    const count = data?.orders_aggregate?.aggregate?.count
+
+    const maxPage = Math.ceil(count/limit)
+
+
+    const onChangeText = (e) =>{
+
+      let where = {}
+      if (e){
+           where= {
+          "_or":  [
+            {"status": {"_ilike":"%"+e+"%" }},
+            // {"type": {"_ilike":"%"+e+"%" }}
+          ]
+        }
+      }
+      setSearchText(e)
+      setsearchTextCondition(where)
+  
+    }
+
+    console.log("Page details ",pageNo)
+
+    const NextPage = () =>{
+  
+        setPageNo((page) =>page+1)
+    }
+  
+    const PreviousPage = () => {
+  
+      if(pageNo>0){
+        setPageNo((page) =>page-1)
+       }
+    }
+  
+  
   const formatData = (data:[]) =>{ return [...data] }
 
   useEffect(()=>{
@@ -171,9 +229,9 @@ function MyComponent() {
  }
 
  const handleCreate = (record) => {
-   setSelectedRecord(record);
-   setIsModalOpen(true);
-   setMData(record)
+  setSelectedRecord(null);
+  setIsModalOpen(true);
+  setMData(null)
 
  }
 
@@ -216,8 +274,16 @@ function MyComponent() {
  
   return (<>
  
-            <Button onClick={handleCreate}>CREATE</Button>
-            <Table dataSource={Data} columns={columns} />
+                        <div style={{display:'flex', justifyContent:"flex-end"}}>
+           <Input type='text' style={{minWidth:"50px", width:"150px"}} placeholder='Search By Status' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
+           {/* <Button type="primary" onClick={handleCreate}>CREATE</Button> */}
+  </div>            <Table dataSource={Data} columns={columns} />
+            <Button onClick={PreviousPage}
+             disabled={pageNo<=1} 
+            >Previous</Button>
+            <Button onClick={NextPage} 
+             disabled={pageNo >= maxPage}
+             >Next</Button>
             <EditModal 
                selectedRecord={selectedRecord}
                Mdata={MData} 

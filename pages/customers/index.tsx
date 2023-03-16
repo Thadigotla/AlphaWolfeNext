@@ -246,7 +246,7 @@ function MyComponent() {
  
   return (<>
  
-            <Button onClick={handleCreate}>CREATE</Button>
+            {/* <Button type="primary" onClick={handleCreate}>CREATE</Button> */}
             <Table dataSource={Data} columns={columns} />
             <EditModal 
                selectedRecord={selectedRecord}

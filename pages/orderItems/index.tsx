@@ -4,9 +4,10 @@ import { useState } from 'react';
 import {useEffect} from 'react';
 import toast from 'react-hot-toast';
 import CustomLayout from '../../styles/components/produc';
+import { useUserData } from '@nhost/nextjs';
  
-const query = gql` query GetOrderDetails {
-  order_details {
+const query = gql` query GetOrderDetails($where: order_details_bool_exp,$limit:Int,$offset:Int) {
+  order_details (where: $where, offset:$offset, limit:$limit){
     quantity
 		report
 		status
@@ -20,6 +21,13 @@ const query = gql` query GetOrderDetails {
 		product_id
 		uuid
   }
+
+  order_details_aggregate {
+    aggregate{
+      count
+    }
+  }
+
 }
       `;
 
@@ -144,9 +152,19 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
 
 function MyComponent() {
 
+  const user = useUserData()
+
   const [Data, setData] = useState([])
 
   const [MData, setMData] = useState({})
+
+  const [searchText, setSearchText] = useState(null)
+
+  const [searchTextCondition, setsearchTextCondition] = useState(null)
+
+  const [limit, setLimit] = useState(10)
+
+  const [pageNo, setPageNo] = useState(1)
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -158,7 +176,48 @@ function MyComponent() {
   
   const [deleteFunction, { data:dData, loading:dLoading, error:dError}] = useMutation(delete_mutation);
 
-  const { data, loading, error } = useQuery(query);
+  const { data, loading, error,refetch  } = useQuery(
+    query,
+    { variables:{
+     "where":  searchTextCondition,
+     limit:limit,
+     offset:(pageNo-1)*limit
+    } });
+
+    
+  const count = data?.pets_aggregate?.aggregate?.count
+
+  const maxPage = Math.ceil(count/limit)
+
+  const onChangeText = (e) =>{
+
+    let where = {}
+    if (e){
+         where= {
+        "_or":  [
+          {"test_type": {"_ilike":"%"+e+"%" }},
+          // {"type": {"_ilike":"%"+e+"%" }}
+        ]
+      }
+    }
+    setSearchText(e)
+    setsearchTextCondition(where)
+
+  }
+
+  console.log("Page details ",pageNo)
+
+  const NextPage = () =>{
+
+      setPageNo((page) =>page+1)
+  }
+
+  const PreviousPage = () => {
+
+    if(pageNo>0){
+      setPageNo((page) =>page-1)
+     }
+  }
 
   const formatData = (data:[]) =>{ return [...data] }
 
@@ -212,17 +271,26 @@ function MyComponent() {
 
   console.log("new data", Data)
 
-  if (loading) return <div>Loading...</div>;
+  // if (loading) return <div>Loading...</div>;
 
-  if (error) return <div>Error: {error.message}</div>;
+  // if (error) return <div>Error: {error.message}</div>;
 
-  if(!Data) return <div>Loading...</div>
+  // if(!Data) return <div>Loading...</div>
 
  
   return (<>
  
-            <Button onClick={handleCreate}>CREATE</Button>
+ <div style={{display:'flex', justifyContent:"flex-end"}}>
+           <Input type='text' style={{minWidth:"50px", width:"150px"}} placeholder='Search By Status' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
+           {/* <Button type="primary" onClick={handleCreate}>CREATE</Button> */}
+  </div>
             <Table dataSource={Data} columns={columns} />
+            <Button onClick={PreviousPage}
+             disabled={pageNo<=1} 
+            >Previous</Button>
+            <Button onClick={NextPage} 
+             disabled={pageNo >= maxPage}
+             >Next</Button>
             <EditModal 
                selectedRecord={selectedRecord}
                Mdata={MData} 
