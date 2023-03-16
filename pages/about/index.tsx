@@ -1,6 +1,8 @@
 import  {Footer}  from "../../components/Footer";
 import  {Navbar}  from "../../components/Navbar";
 import React from "react";
+import Image from 'next/image'
+
 
  const About = () => {
   return (
@@ -46,11 +48,11 @@ import React from "react";
                 className="div-block-7"
               >
                 <div className="about-image-wrapper">
-                  <img
+                  <Image
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog.webp"
                     loading="lazy"
                     sizes="(max-width: 479px) 100vw, (max-width: 767px) 69vw, (max-width: 991px) 396.20635986328125px, 39vw"
-                    srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog-p-2600.webp 2600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog-p-3200.webp 3200w"
+                    // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog-p-2600.webp 2600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog-p-3200.webp 3200w"
                     alt=""
                     className="about-image"
                   />
@@ -61,11 +63,11 @@ import React from "react";
             <div className="about-sec-wrapper _2">
               <div className="div-block-7">
                 <div className="about-image-wrapper">
-                  <img
+                  <Image
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park.webp"
                     loading="lazy"
                     sizes="(max-width: 479px) 100vw, (max-width: 767px) 69vw, (max-width: 991px) 396.20635986328125px, 39vw"
-                    srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-2600.webp 2600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-3200.webp 3200w"
+                    // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-2600.webp 2600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-3200.webp 3200w"
                     alt=""
                     className="about-image _2"
                   />
@@ -98,11 +100,11 @@ import React from "react";
                 className="div-block-7"
               >
                 <div className="about-image-wrapper">
-                  <img
+                  <Image
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home.webp"
                     loading="lazy"
                     sizes="(max-width: 479px) 100vw, (max-width: 767px) 69vw, (max-width: 991px) 396.20635986328125px, 39vw"
-                    srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-2600.webp 2600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-3200.webp 3200w"
+                    // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-2600.webp 2600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-3200.webp 3200w"
                     alt=""
                     className="about-image"
                   />

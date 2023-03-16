@@ -1,6 +1,9 @@
 import React from "react";
-import { Navbar } from "../Navbar";
+import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
+import Image  from 'next/image'
+  
+
 
  const Epigenetics = () => {
   return (
@@ -19,17 +22,7 @@ import { Footer } from "../../components/Footer";
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       ></iframe>
 
-      {/* <section className="Alpha_Youtube">
-               <YouTube className="Alpha_Youtube_Video" 
-               opts={{
-                      "height": '100%',
-                      "width": '100%',
-                      controls: 0,
-                      rel: 0,
-                      showinfo:false
-                    }}
-                       videoId="muEyvtCV34w" />
-            </section> */}
+ 
 
       <section className="Alpha_details">
         <div className="Alpha_details_para_1">
@@ -67,7 +60,8 @@ import { Footer } from "../../components/Footer";
       </section>
 
       <section className="Alpha_details_block_1">
-        <img
+        <Image
+          alt="image"
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef350d228a5d8eda0ce_e1.webp"
           className="Alpha_details_block_1_left"
           loading="lazy"
@@ -143,7 +137,8 @@ import { Footer } from "../../components/Footer";
           </div>
         </div>
         <div className="Alpha_details_block_3_right">
-          <img
+          <Image
+            alt="image"
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2.webp"
             srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2.webp 846w"
           />
@@ -173,7 +168,8 @@ import { Footer } from "../../components/Footer";
       </section>
 
       <section className="Alpha_details_block_1">
-        <img
+        <Image
+          alt="image"
           className="Alpha_details_block_1_left"
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef490337bdf46734365_e3.webp"
           loading="lazy"
@@ -252,7 +248,7 @@ import { Footer } from "../../components/Footer";
             they fade away.
           </div>
           <div className="Alpha_details_block_3_left_para_2">
-            Alpha Wolfe has partnered with Cell Wellbeing's' Epigenetic
+            Alpha Wolfe has partnered with Cell Wellbeings Epigenetic
             technology to allows us to understand the interactions of impacts
             from the whole environmental picture and not just see each impacting
             wave or even the pebble in isolation. It is this information which
@@ -284,7 +280,8 @@ import { Footer } from "../../components/Footer";
           </div>
         </div>
         <div className="Alpha_details_block_3_right">
-          <img
+          <Image
+            alt="image"
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef33e9f3b0de3b18161_e4.webp"
             srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2.webp 846w"
           />
@@ -292,7 +289,8 @@ import { Footer } from "../../components/Footer";
       </section>
 
       <section className="Alpha_details_block_1">
-        <img
+        <Image
+          alt="image"
           className="Alpha_details_block_1_left"
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5.webp"
           srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5.webp 2507w"
@@ -368,7 +366,8 @@ import { Footer } from "../../components/Footer";
           </div>
         </div>
         <div className="Alpha_details_block_3_right">
-          <img
+          <Image
+            alt="image"
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6.webp"
             srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-2600.webp 2600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6.webp 2940w"
           />
@@ -403,7 +402,8 @@ import { Footer } from "../../components/Footer";
           </div>
         </div>
         <div className="Alpha_details_block_3_right">
-          <img
+          <Image
+            alt="image"
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3d036d8798f1d8786_e7.webp"
             srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3d036d8798f1d8786_e7-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3d036d8798f1d8786_e7.webp 692w"
           />

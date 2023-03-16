@@ -40,14 +40,12 @@ const Layout = ({ children = null }) => {
         <div className={styles['header-container']}>
           <div className={styles['logo-wrapper']}>
             <Link href="/">
-              <a>
                 <Image
                   src="/logo.svg"
                   alt="logo"
                   layout="fill"
                   objectFit="contain"
                 />
-              </a>
             </Link>
           </div>
 
@@ -80,10 +78,8 @@ const Layout = ({ children = null }) => {
                       <Menu.Item>
                         {href ? (
                           <Link href={href}>
-                            <a>
                               <Icon />
                               <span>{label}</span>
-                            </a>
                           </Link>
                         ) : (
                           <button onClick={onClick}>

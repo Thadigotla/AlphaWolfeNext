@@ -5,13 +5,15 @@ import React, { useState } from "react";
 import { Navbar } from "../../components/Navbar/index";
 import { nhost } from "../../pages/_app";
 import { useRouter } from 'next/router';
+import Image from 'next/image'
+
 
 export interface INavbar {
   //   username: string;
   //   password: string;
 }
 
-export const TermsConditions: React.FC = (props: any) => {
+const TermsConditions: React.FC = (props: any) => {
   //   // const { data, mutateAsync, isLoading } = useLogin();
   //   const { mutate: login, isLoading } = useLogin<ILoginForm>();
   //   const [form] = Form.useForm();
@@ -64,7 +66,7 @@ export const TermsConditions: React.FC = (props: any) => {
           <div className="faq-body">
             <div className="faq-headline-wrapper">
               <div className="heading-wrapper">
-                <img
+                <Image
                   src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c615312face_heading%20bg.svg"
                   loading="lazy"
                   data-w-id="12aee5a2-b9d0-5dd6-7495-4e128ba51863"
@@ -91,7 +93,7 @@ export const TermsConditions: React.FC = (props: any) => {
                     </div>
                     <div className="accordion-top-icon-2">
                       <div className="accordion-top-icon-wrap-2">
-                        <img
+                        <Image
                           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c1eff12fb37_angle-small-down-free-icon-font%20(1).svg"
                           loading="lazy"
                           alt=""
@@ -121,7 +123,7 @@ export const TermsConditions: React.FC = (props: any) => {
                     </div>
                     <div className="accordion-top-icon-2">
                       <div className="accordion-top-icon-wrap-2">
-                        <img
+                        <Image
                           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c1eff12fb37_angle-small-down-free-icon-font%20(1).svg"
                           loading="lazy"
                           alt=""
@@ -149,7 +151,7 @@ export const TermsConditions: React.FC = (props: any) => {
                     </div>
                     <div className="accordion-top-icon-2">
                       <div className="accordion-top-icon-wrap-2">
-                        <img
+                        <Image
                           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c1eff12fb37_angle-small-down-free-icon-font%20(1).svg"
                           loading="lazy"
                           alt=""
@@ -175,7 +177,7 @@ export const TermsConditions: React.FC = (props: any) => {
                     </div>
                     <div className="accordion-top-icon-2">
                       <div className="accordion-top-icon-wrap-2">
-                        <img
+                        <Image
                           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c1eff12fb37_angle-small-down-free-icon-font%20(1).svg"
                           loading="lazy"
                           alt=""
@@ -203,7 +205,7 @@ export const TermsConditions: React.FC = (props: any) => {
                     </div>
                     <div className="accordion-top-icon-2">
                       <div className="accordion-top-icon-wrap-2">
-                        <img
+                        <Image
                           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c1eff12fb37_angle-small-down-free-icon-font%20(1).svg"
                           loading="lazy"
                           alt=""
@@ -233,7 +235,7 @@ export const TermsConditions: React.FC = (props: any) => {
                     </div>
                     <div className="accordion-top-icon-2">
                       <div className="accordion-top-icon-wrap-2">
-                        <img
+                        <Image
                           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c1eff12fb37_angle-small-down-free-icon-font%20(1).svg"
                           loading="lazy"
                           alt=""
@@ -263,7 +265,7 @@ export const TermsConditions: React.FC = (props: any) => {
                     </div>
                     <div className="accordion-top-icon-2">
                       <div className="accordion-top-icon-wrap-2">
-                        <img
+                        <Image
                           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c1eff12fb37_angle-small-down-free-icon-font%20(1).svg"
                           loading="lazy"
                           alt=""
@@ -292,7 +294,7 @@ export const TermsConditions: React.FC = (props: any) => {
                     </div>
                     <div className="accordion-top-icon-2">
                       <div className="accordion-top-icon-wrap-2">
-                        <img
+                        <Image
                           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c1eff12fb37_angle-small-down-free-icon-font%20(1).svg"
                           loading="lazy"
                           alt=""
@@ -319,7 +321,7 @@ export const TermsConditions: React.FC = (props: any) => {
                     </div>
                     <div className="accordion-top-icon-2">
                       <div className="accordion-top-icon-wrap-2">
-                        <img
+                        <Image
                           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c1eff12fb37_angle-small-down-free-icon-font%20(1).svg"
                           loading="lazy"
                           alt=""
@@ -350,7 +352,7 @@ export const TermsConditions: React.FC = (props: any) => {
                     </div>
                     <div className="accordion-top-icon-2">
                       <div className="accordion-top-icon-wrap-2">
-                        <img
+                        <Image
                           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c1eff12fb37_angle-small-down-free-icon-font%20(1).svg"
                           loading="lazy"
                           alt=""
@@ -384,7 +386,7 @@ export const TermsConditions: React.FC = (props: any) => {
                     </div>
                     <div className="accordion-top-icon-2">
                       <div className="accordion-top-icon-wrap-2">
-                        <img
+                        <Image
                           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c1eff12fb37_angle-small-down-free-icon-font%20(1).svg"
                           loading="lazy"
                           alt=""
@@ -414,7 +416,7 @@ export const TermsConditions: React.FC = (props: any) => {
                     </div>
                     <div className="accordion-top-icon-2">
                       <div className="accordion-top-icon-wrap-2">
-                        <img
+                        <Image
                           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c1eff12fb37_angle-small-down-free-icon-font%20(1).svg"
                           loading="lazy"
                           alt=""
@@ -445,7 +447,7 @@ export const TermsConditions: React.FC = (props: any) => {
                     </div>
                     <div className="accordion-top-icon-2">
                       <div className="accordion-top-icon-wrap-2">
-                        <img
+                        <Image
                           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c1eff12fb37_angle-small-down-free-icon-font%20(1).svg"
                           loading="lazy"
                           alt=""
@@ -472,7 +474,7 @@ export const TermsConditions: React.FC = (props: any) => {
                     </div>
                     <div className="accordion-top-icon-2">
                       <div className="accordion-top-icon-wrap-2">
-                        <img
+                        <Image
                           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c1eff12fb37_angle-small-down-free-icon-font%20(1).svg"
                           loading="lazy"
                           alt=""
@@ -507,3 +509,5 @@ export const TermsConditions: React.FC = (props: any) => {
     </>
   );
 };
+
+export default TermsConditions;

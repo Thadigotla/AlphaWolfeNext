@@ -1,5 +1,5 @@
 import { Form, Input, Select } from "antd"
-import { Navbar } from "pages/LoginPage/Navbar";
+import { Navbar } from "../../components/Navbar/index";
 import React from "react"
 
 const ContactForm = () =>{

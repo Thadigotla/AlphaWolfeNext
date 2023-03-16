@@ -11,6 +11,7 @@ import   CartLogo  from "../../public/images/cart.svg";
 import { Dropdown, Space } from "antd";
 import { nhost } from "../../pages/_app";
 import { useAuthenticationStatus } from '@nhost/nextjs'
+import Image from 'next/image'
 
  
 // import { Product } from "../Products/Product";
@@ -122,7 +123,7 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
     <>
       <section className="navbar" style={{ zIndex: "1000" }}>
         <div className="logo">
-          <img
+          <Image
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f733050ef63f2e151dc369_AW-logo.jpeg"
             alt="logo"
             style={{ height: "50px", cursor: "pointer" }}

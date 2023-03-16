@@ -32,7 +32,7 @@ interface CustomLayoutProps {
       <Layout>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo" />
-          <Menu
+          <Menu 
             theme="dark"
             mode="inline"  
             selectedKeys={[router.pathname]}

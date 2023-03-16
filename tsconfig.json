@@ -22,8 +22,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "pages/epigenetics/index.js"  ],
+    "**/*.tsx",
+    "pages/epigenetics/index.js"
+  ],
   "exclude": [
     "node_modules"
   ]

@@ -14,7 +14,6 @@ import {
   message,
 } from "antd";
 import React, { useState, useEffect } from "react";
-import { Cart } from "../Cart/Cart";
 import { Navbar } from "../../components/Navbar/index";
 import {
   PlusOutlined,
@@ -23,7 +22,7 @@ import {
   CheckOutlined,
 } from "@ant-design/icons";
 
-import { Product } from "./Product";
+import { Product } from "../../components/Product/Product";
 import { StripeChecout } from "../../components/stripe/StripeChecoutForm";
 import { Formats } from "../../components/stripe/CheckingOutForm";
 // import { useTable } from "@pankod/refine-core";
@@ -455,12 +454,12 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
         <Row>
  
           <Col md={18} lg={18} sm={24} xs={24}>
-             {productsList?.map((product) => (
-              <section className="product-container">
+             {productsList?.map((product,i) => (
+              <section className="product-container" key={i}>
                 <Row>
                   <Col span={8} className="product-image">
                     <Space>
-                      <Image height={300} src={product.image_url} />
+                      <Image height={300} src={product.image_url} alt="image" />
                     </Space>
                   </Col>
                   <Col span={16} className="product-description">

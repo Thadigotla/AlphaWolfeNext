@@ -11,7 +11,8 @@ import React, { useState } from "react";
 // } from "@pankod/refine-antd";
 import { Drawer, Button, Badge, Avatar, Row, Col, InputNumber, Card,} from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { Image, List } from "antd";
+import {  List } from "antd";
+import Image from 'next/image'
 
 export interface IProduct {
   product: {
@@ -56,7 +57,7 @@ export const Product: React.FC<IProduct> = ({ product }) => {
     <section className="product-container">
       <Row>
         <Col span={10} className="product-image">
-          <Image height={300} src={product.url} />
+          <Image alt="image" height={300} src={product.url} />
         </Col>
         <Col span={14} className="product-description">
           <div className="product-name">Name: {product.name}</div>

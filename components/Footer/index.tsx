@@ -1,16 +1,18 @@
 import React from "react";
+import Image from 'next/image'
+
 
 export const Footer = () => {
   return (
     <div className="footer wf-section">
-      <img
+      <Image
         src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759cef2212fb1d_Mask%20Group.svg"
         loading="lazy"
         data-w-id="8eb6eabc-6568-003f-7abd-a08004a402ba"
         alt=""
         className="image-38"
       />
-      <img
+      <Image
         src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c2a1712fb1e_2.svg"
         loading="lazy"
         data-w-id="8eb6eabc-6568-003f-7abd-a08004a402bb"
@@ -29,7 +31,7 @@ export const Footer = () => {
             <div className="footer-links-wrapper">
               <a
                 href="https://www.instagram.com/alphawolfeuk/"
-                target="_blank"
+                 rel="noreferrer"
                 className="social-links-wrapper w-inline-block"
               >
                 <div className="sm-icon w-embed">
@@ -49,7 +51,7 @@ export const Footer = () => {
               </a>
               <a
                 href="https://www.linkedin.com/company/alphawolfeuk/"
-                target="_blank"
+                 rel="noreferrer"
                 className="social-links-wrapper w-inline-block"
               >
                 <div className="sm-icon w-embed">
@@ -71,7 +73,7 @@ export const Footer = () => {
               </a>
               <a
                 href="https://twitter.com/alphawolfeuk"
-                target="_blank"
+                 rel="noreferrer"
                 className="social-links-wrapper w-inline-block"
               >
                 <div className="sm-icon w-embed">
@@ -91,7 +93,7 @@ export const Footer = () => {
               </a>
               <a
                 href="https://www.youtube.com/@alphawolfeuk"
-                target="_blank"
+                 rel="noreferrer"
                 className="social-links-wrapper w-inline-block"
               >
                 <div className="sm-icon w-embed">
@@ -111,7 +113,7 @@ export const Footer = () => {
               </a>
               <a
                 href="https://www.facebook.com/alphawolfelondon"
-                target="_blank"
+                 rel="noreferrer"
                 className="social-links-wrapper w-inline-block"
               >
                 <div className="sm-icon w-embed">
@@ -133,7 +135,7 @@ export const Footer = () => {
               </a>
               <a
                 href="https://in.pinterest.com/alphawolfelondon/"
-                target="_blank"
+                 rel="noreferrer"
                 className="social-links-wrapper w-inline-block"
               >
                 <div className="sm-icon w-embed">

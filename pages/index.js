@@ -5,9 +5,11 @@ import React, { useEffect, useState } from "react";
 import { Navbar } from "../components/Navbar/index";
 import { Button, Collapse, Select } from "antd";
  import { NhostClient } from "@nhost/nhost-js";
-import { Divider, notification, Space,Col, Form, Image, Row, Spin, Input, Card  } from "antd";
+import { Divider, notification, Space,Col, Form, Row, Spin, Input, Card  } from "antd";
 import { Footer } from "../components/Footer";
+import Image from  'next/image'
 import { nhost } from "../pages/_app";
+import Link from 'next/link'
 // const Fade = require("react-reveal/Fade");
 // const Jump = require("react-reveal/Jump");
 
@@ -71,12 +73,12 @@ import { nhost } from "../pages/_app";
     {
       id: 1,
       name: "Immunity System",
-      desc: "An effective immune system can assist in protecting your dog from the worst effects of infection or environmental impacts. Boosting a dog's immune systems plays a role in vitality and wellbeing.",
+      desc: "An effective immune system can assist in protecting your dog from the worst effects of infection or environmental impacts. Boosting a dog s immune systems plays a role in vitality and wellbeing.",
     },
     {
       id: 2,
       name: "Canine Circulatory System",
-      desc: "Poor circulation reduces the ability of your dog's systems to transport nutrients and oxygen to where they are needed. You can support a dog's circulation with good nutritional food",
+      desc: "Poor circulation reduces the ability of your dogs systems to transport nutrients and oxygen to where they are needed. You can support a dog s circulation with good nutritional food",
     },
     {
       id: 3,
@@ -87,12 +89,12 @@ import { nhost } from "../pages/_app";
       id: 4,
 
       name: "Coat And Skin Condition",
-      desc: "A dog's coat and skin reflects the nutritional diet they are fed. Most dog's coat conditions can be enhanced by weekly feeding the dog natural omega 3 found in Salmon, Sardines or other such items.",
+      desc: "A dog s coat and skin reflects the nutritional diet they are fed. Most dog s coat conditions can be enhanced by weekly feeding the dog natural omega 3 found in Salmon, Sardines or other such items.",
     },
     {
       id: 5,
       name: "Optimize Growth",
-      desc: "A dog's balanced nutritional diet is essential to maintain or build growth. Growing puppies or dogs falling behind in growth need a balanced nutritional diet to feed their body and energy needs.",
+      desc: "A dog s balanced nutritional diet is essential to maintain or build growth. Growing puppies or dogs falling behind in growth need a balanced nutritional diet to feed their body and energy needs.",
     },
     {
       id: 6,
@@ -106,7 +108,7 @@ import { nhost } from "../pages/_app";
   const [selectedWelness, setSelectedWelness] = useState({
     id: 1,
     name: "Immunity System",
-    desc: "An effective immune system can assist in protecting your dog from the worst effects of infection or environmental impacts. Boosting a dog's immune systems plays a role in vitality and wellbeing.",
+    desc: "An effective immune system can assist in protecting your dog from the worst effects of infection or environmental impacts. Boosting a dog s immune systems plays a role in vitality and wellbeing.",
   });
 
   return (
@@ -121,22 +123,22 @@ import { nhost } from "../pages/_app";
             data-w-id="8de08dee-736c-7446-c511-e87704589a8e"
             className="hero-section wf-section"
           >
-            <img
+            <Image
+              alt="image"
               src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c794812facc_bg%20paw.svg"
               loading="lazy"
-              alt=""
               className="image-11"
             />
-            <img
+            <Image
+              alt="image"
               src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c5f1a12facd_big%20bg%20paw.svg"
               loading="lazy"
-              alt=""
               className="image-13"
             />
-            <img
+            <Image
+              alt="image"
               src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c794812facc_bg%20paw.svg"
               loading="lazy"
-              alt=""
               className="image-12"
             />
             <div className="container">
@@ -157,20 +159,21 @@ import { nhost } from "../pages/_app";
                     Get your individualised report on all your dogs nutritional
                     needs
                   </p>
-                  <a
+                  <Link
                     href="/products-list"
                     className="button secondary w-button"
+                    passHref
                   >
                     Shop Now
-                  </a>
+                  </Link>
                   <div className="crufts-block">
                     <div>Upcoming Event</div>
-                    <img
+                    <Image
+                      alt="image"
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6405f0619cc6e02bfb9e0550_crufts-logo-update.png"
                       loading="lazy"
                       sizes="(max-width: 479px) 100vw, 180px"
                       srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6405f0619cc6e02bfb9e0550_crufts-logo-update-p-500.png 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6405f0619cc6e02bfb9e0550_crufts-logo-update-p-800.png 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6405f0619cc6e02bfb9e0550_crufts-logo-update-p-1080.png 1080w"
-                      alt=""
                       className="crufts-logo"
                     />
                     <div>
@@ -182,68 +185,68 @@ import { nhost } from "../pages/_app";
                   </div>
                 </div>
                 <div className="hero-image-wrapper">
-                  <img
+                  <Image
+                    alt="image"
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6400765b9dc392dfa319d7dd_dog-food2.png"
                     loading="lazy"
-                    alt=""
                     className="image-3"
                   />
-                  <img
+                  <Image
+                    alt="image"
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f730a54180231e8d8c817e_dogbanner.png"
                     loading="lazy"
                     sizes="(max-width: 479px) 90vw, (max-width: 767px) 343.234375px, (max-width: 991px) 370.6875px, 47vw"
                     srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f730a54180231e8d8c817e_dogbanner-p-500.png 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f730a54180231e8d8c817e_dogbanner.png 635w"
-                    alt=""
                     className="image-47"
                   />
-                  <img
+                  <Image
+                    alt="image"
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c609312fb25_Group%2042488.png"
                     loading="lazy"
-                    alt=""
                     className="image-86"
                   />
                   {/* <Fade duration={5000} delay={1500} top forever> */}
-                    <img
+                    <Image
+                      alt="image"
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c267d12fac9_bite.png"
                       loading="lazy"
-                      alt=""
                       className="image-7"
                     />
-                    <img
+                    <Image
+                      alt="image"
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759cb1f412faca_bite%20blue.png"
                       loading="lazy"
-                      alt=""
                       className="image-6"
                     />
-                    <img
+                    <Image
+                      alt="image"
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759cdad812facb_blur.png"
                       loading="lazy"
-                      alt=""
                       className="image-8"
                     />
-                    <img
+                    <Image
+                      alt="image"
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c267d12fac9_bite.png"
                       loading="lazy"
-                      alt=""
                       className="image-4"
                     />
-                    <img
+                    <Image
+                      alt="image"
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c267d12fac9_bite.png"
                       loading="lazy"
-                      alt=""
                       className="image-5"
                     />
-                    <img
+                    <Image
+                      alt="image"
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759cdad812facb_blur.png"
                       loading="lazy"
-                      alt=""
                       className="image-10"
                     />
 
-                    <img
+                    <Image
+                      alt="image"
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c267d12fac9_bite.png"
                       loading="lazy"
-                      alt=""
                       className="image-9"
                     />
                   {/* </Fade> */}
@@ -312,31 +315,33 @@ import { nhost } from "../pages/_app";
                   </span>
                 </p>
                 <div className="div-block-15">
-                  <a
+                <Link
                     href="/products"
                     className="button white-on-hover w-button"
+                    passHref
                   >
                     Shop Now
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640756b64212e64bd05d52e3_Alpha%20Nutritional%20Test%20Sample%20Report.pdf"
-                    target="_blank"
+                    rel="noreferrer"
                     className="button tertiary w-button"
+                    passHref
                   >
                     Sample Report
-                  </a>
+                  </Link>
                 </div>
               </div>
-              <img
+              <Image
+                alt="image"
                 src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64008066ae42133add6e2898_medical-report.webp"
                 loading="lazy"
-                alt=""
                 className="bg-icon-test result"
               />
-              <img
+              <Image
+                alt="image"
                 src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64008066447e9f6aebe2687d_dog%20(1).webp"
                 loading="lazy"
-                alt=""
                 className="bg-icon-test"
               />
             </div>
@@ -351,7 +356,7 @@ import { nhost } from "../pages/_app";
             </h2>
             <div className="dog_quotation_parag">
               <div>
-                It's crucial to make sure your dog is getting the right kind of
+                It s crucial to make sure your dog is getting the right kind of
                 nutrition and
               </div>
               <div>deserves the right amount of happiness.</div>
@@ -369,11 +374,12 @@ import { nhost } from "../pages/_app";
               <div className="facilities_grid_1">
                 <div className="facilities_grid_1_block_1">
                   {/* <Fade bottom> */}
-                    <img
-                      className="facilities_grid_1_block_1_img"
+                    <Image
+                      alt="image"
+                      className="facilities_grid_1_block_1_Image"
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63ff36762159be3ea6d39791_dog.png"
-                    ></img>
-                    <div className="facilities_grid_1_block_1_img_heading">
+                    ></Image>
+                    <div className="facilities_grid_1_block_1_Image_heading">
                       Grooming
                     </div>
                     <div className="facilities_grid_1_block_1_para">
@@ -387,11 +393,12 @@ import { nhost } from "../pages/_app";
               <div className="facilities_grid_1">
                 <div className="facilities_grid_1_block_1">
                   {/* <Fade bottom> */}
-                    <img
-                      className="facilities_grid_1_block_1_img"
+                    <Image
+                      alt="image"
+                      className="facilities_grid_1_block_1_Image"
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63ff2b40e18884ea0a54d01a_dog-house%20(1).png"
-                    ></img>
-                    <div className="facilities_grid_1_block_1_img_heading">
+                    ></Image>
+                    <div className="facilities_grid_1_block_1_Image_heading">
                       Boarding
                     </div>
                     <div className="facilities_grid_1_block_1_para">
@@ -406,15 +413,16 @@ import { nhost } from "../pages/_app";
               <div className="facilities_grid_1">
                 <div className="facilities_grid_1_block_1">
                   {/* <Fade bottom> */}
-                    <img
-                      className="facilities_grid_1_block_1_img"
+                    <Image
+                      alt="image"
+                      className="facilities_grid_1_block_1_Image"
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63ff351baf3504539160e30c_no-jump.png"
-                    ></img>
-                    <div className="facilities_grid_1_block_1_img_heading">
+                    ></Image>
+                    <div className="facilities_grid_1_block_1_Image_heading">
                       Training
                     </div>
                     <div className="facilities_grid_1_block_1_para">
-                      Do you want to Improve your dog's intelligence and
+                      Do you want to Improve your dog s intelligence and
                       behaviour? Are you looking for professional dog training?
                     </div>
                   {/* </Fade> */}
@@ -426,15 +434,16 @@ import { nhost } from "../pages/_app";
               <div className="facilities_grid_1">
                 <div className="facilities_grid_1_block_1">
                   {/* <Fade bottom> */}
-                    <img
-                      className="facilities_grid_1_block_1_img"
+                    <Image
+                      alt="image"
+                      className="facilities_grid_1_block_1_Image"
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63ff351ca4768a11a7a41591_veterinarian.png"
-                    ></img>
-                    <div className="facilities_grid_1_block_1_img_heading">
+                    ></Image>
+                    <div className="facilities_grid_1_block_1_Image_heading">
                       Veterinary
                     </div>
                     <div className="facilities_grid_1_block_1_para">
-                      Trusting your pet's health in the right hands is an
+                      Trusting your pet s health in the right hands is an
                       important step in Pet care.
                     </div>
                   {/* </Fade> */}
@@ -444,11 +453,12 @@ import { nhost } from "../pages/_app";
               <div className="facilities_grid_1">
                 <div className="facilities_grid_1_block_1">
                   {/* <Fade bottom> */}
-                    <img
-                      className="facilities_grid_1_block_1_img"
+                    <Image
+                      alt="image"
+                      className="facilities_grid_1_block_1_Image"
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63ff351bf8bab329f0f50750_dog-food.png"
-                    ></img>
-                    <div className="facilities_grid_1_block_1_img_heading">
+                    ></Image>
+                    <div className="facilities_grid_1_block_1_Image_heading">
                       Nutrition
                     </div>
                     <div className="facilities_grid_1_block_1_para">
@@ -462,11 +472,12 @@ import { nhost } from "../pages/_app";
               <div className="facilities_grid_1">
                 <div className="facilities_grid_1_block_1">
                   {/* <Fade bottom> */}
-                    <img
-                      className="facilities_grid_1_block_1_img"
+                    <Image
+                      alt="image"
+                      className="facilities_grid_1_block_1_Image"
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63ff37c4e616ea049d8936a9_dog%20walking.png"
-                    ></img>
-                    <div className="facilities_grid_1_block_1_img_heading">
+                    ></Image>
+                    <div className="facilities_grid_1_block_1_Image_heading">
                       Walking
                     </div>
                     <div className="facilities_grid_1_block_1_para">
@@ -481,33 +492,35 @@ import { nhost } from "../pages/_app";
         </section>
 
         <section className="alpha_wolfie_promo">
-          <div className="alpha_wolfie_promo_img_left">
+          <div className="alpha_wolfie_promo_Image_left">
             {/* <Fade left> */}
-              <img
-                className="alpha_wolfie_promo_img_left_one"
+              <Image
+                alt="image"
+                className="alpha_wolfie_promo_Image_left_one"
                 src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6401e10557fbcb3eb24f3d88_Pillow%20Box-image.png"
-              ></img>
-              <img
-                className="alpha_wolfie_promo_img_left_two"
+              ></Image>
+              <Image
+                alt="image"
+                className="alpha_wolfie_promo_Image_left_two"
                 src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f75ea41b66070a3f8dc8dc_56-dog-png-image.png"
-              ></img>
+              ></Image>
             {/* </Fade> */}
           </div>
-          <div className="alpha_wolfie_promo_img_right_details">
+          <div className="alpha_wolfie_promo_Image_right_details">
             {/* <Fade left> */}
-              <h2 className="alpha_wolfie_promo_img_right_details_parag">
+              <h2 className="alpha_wolfie_promo_Image_right_details_parag">
                 Take the Alpha Nutritional Test for your furry friend today
               </h2>
-              {/* <div className="alpha_wolfie_promo_img_right_details_offer">
-                <div className="alpha_wolfie_promo_img_right_details_offer_details">
+              {/* <div className="alpha_wolfie_promo_Image_right_details_offer">
+                <div className="alpha_wolfie_promo_Image_right_details_offer_details">
                   USE CODE: ALPHA15 & get{" "}
-                  <span className="alpha_wolfie_promo_img_right_details_offer_details_highlight">
+                  <span className="alpha_wolfie_promo_Image_right_details_offer_details_highlight">
                     15% OFF
                   </span>
                 </div>
               </div> */}
 
-              <div className="alpha_wolfie_promo_img_right_details_offer_para">
+              <div className="alpha_wolfie_promo_Image_right_details_offer_para">
                 Just like us, our furry friends have dietary needs too.
               </div>
             {/* </Fade> */}
@@ -572,11 +585,11 @@ import { nhost } from "../pages/_app";
                 className="benefits-image-wrapper"
               >
                 {/* <Fade bottom delay={1000}> */}
-                  <img
+                  <Image
+                    alt="image"
                     className="image-98"
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c91b012fb35_photoshop-file%202.webp"
                     width={449}
-                    alt=""
                     sizes="(max-width: 479px) 72vw, (max-width: 767px) 50vw, (max-width: 991px) 45vw, 29vw"
                     data-w-id="199ad48c-16ca-b0ab-8e64-e9ff9b9f8823"
                     loading="lazy"
@@ -584,20 +597,20 @@ import { nhost } from "../pages/_app";
                   />
                 {/* </Fade> */}
 
-                <img
+                <Image
+                  alt="image"
                   src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c8c6412fae3_light%20paw.svg"
                   loading="lazy"
-                  alt=""
                   className="image-23"
                 />
                 {/* <Fade left> */}
-                  <img
+                  <Image
+                    alt="image"
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640086184ae39529c0c796de_concept-of-organic-pet-food-isolated-on-white-back-2021-09-03-16-05-30-utc-PhotoRoom.webp"
                     loading="lazy"
                     width={258}
                     srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640086184ae39529c0c796de_concept-of-organic-pet-food-isolated-on-white-back-2021-09-03-16-05-30-utc-PhotoRoom-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640086184ae39529c0c796de_concept-of-organic-pet-food-isolated-on-white-back-2021-09-03-16-05-30-utc-PhotoRoom-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640086184ae39529c0c796de_concept-of-organic-pet-food-isolated-on-white-back-2021-09-03-16-05-30-utc-PhotoRoom.webp 864w"
                     sizes="(max-width: 479px) 100vw, (max-width: 767px) 83vw, (max-width: 991px) 72vw, 52vw"
-                    alt=""
                     className="image-88"
                   />
                 {/* </Fade> */}
@@ -614,18 +627,18 @@ import { nhost } from "../pages/_app";
                     </p>
                   </div>
                 {/* </Fade> */}
-                <img
+                <Image
+                  alt="image"
                   src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c262d12fb36_Group%2041739.webp"
                   loading="lazy"
                   width={117}
-                  alt=""
                   className="image-89"
                 />
                 {/* <Fade right> */}
-                  <img
+                  <Image
+                    alt="image"
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c08f512fb34_Group%2041745.webp"
                     loading="lazy"
-                    alt=""
                     className="image-90"
                   />
                 {/* </Fade> */}
@@ -686,15 +699,16 @@ import { nhost } from "../pages/_app";
               Wellness <span className="brown-text">Overview</span>
             </h2>
             <p>
-              It's crucial to make sure your dog is getting the right kind of
+              It s crucial to make sure your dog is getting the right kind of
               nutrition and deserves the right amount of happiness.
             </p>
           </div>
           <div className="desc">
             <Row>
               <Col span={8} xs={11}>
-                {wellness.map((item) => (
+                {wellness.map((item,i) => (
                   <Button
+                    key={i}
                     type="text"
                     className="wellness-button"
                     block
@@ -711,7 +725,7 @@ import { nhost } from "../pages/_app";
                 xs={11}
               >
                 {selectedWelness?.desc}
-                <img
+                <Image
                   className="dog_paw_big"
                   height={"20%"}
                   src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f8bca7084382801892944f_paw.png"
@@ -728,26 +742,26 @@ import { nhost } from "../pages/_app";
               data-w-id="bb1c191a-fe48-be8b-c07c-a1233fb56c73"
               className="discount-body"
             >
-              <img
-                src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640098fc941bc48b57728e7d_AW%20Multi%20Product%20img.png"
+              <Image
+                alt="image"
+                src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640098fc941bc48b57728e7d_AW%20Multi%20Product%20Image.png"
                 loading="lazy"
                 sizes="(max-width: 479px) 83vw, (max-width: 991px) 250px, 360px"
-                srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640098fc941bc48b57728e7d_AW%20Multi%20Product%20img-p-500.png 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640098fc941bc48b57728e7d_AW%20Multi%20Product%20img-p-800.png 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640098fc941bc48b57728e7d_AW%20Multi%20Product%20img.png 992w"
-                alt=""
+                srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640098fc941bc48b57728e7d_AW%20Multi%20Product%20Image-p-500.png 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640098fc941bc48b57728e7d_AW%20Multi%20Product%20Image-p-800.png 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640098fc941bc48b57728e7d_AW%20Multi%20Product%20Image.png 992w"
                 className="image-33"
               />
-              <img
+              <Image
+                alt="image"
                 src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c47df12fb18_Mask%20Group.svg"
                 loading="lazy"
                 data-w-id="bb1c191a-fe48-be8b-c07c-a1233fb56c75"
-                alt=""
                 className="image-37"
               />
-              <img
+              <Image
+                alt="image"
                 src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c47df12fb18_Mask%20Group.svg"
                 loading="lazy"
                 data-w-id="bb1c191a-fe48-be8b-c07c-a1233fb56c76"
-                alt=""
                 className="image-35"
               />
               <div className="discount-heading-wrapper">
@@ -758,17 +772,18 @@ import { nhost } from "../pages/_app";
                 <p className="section-para max-47ch">
                   Grab your wellness kit today.
                 </p>
-                <a
+                <Link
                   href="/products-list"
                   className="button white-on-hover top-margin w-button"
+                  passHref
                 >
                   Shop Now
-                </a>
+                </Link>
               </div>
               <div className="hero-cta-wrapper centered">
-                <a href="#" className="button white-on-hover hide w-button">
+                <Link href="#" className="button white-on-hover hide w-button" passHref>
                   Book an appointment
-                </a>
+                </Link>
                 <div className="w-dyn-list">
                   <div role="list" className="w-dyn-items">
                     <div role="listitem" className="w-dyn-item">
@@ -800,9 +815,9 @@ import { nhost } from "../pages/_app";
                               aria-haspopup="dialog"
                               className="w-commerce-commerceaddtocartbutton button hide"
                             />
-                            <a href="#" className="button hide w-button">
+                            <Link href="#" className="button hide w-button" passHref>
                               Book an appointment
-                            </a>
+                            </Link>
                           </div>
                         </form>
                         <div
@@ -1065,15 +1080,16 @@ import { nhost } from "../pages/_app";
             <div className="collection-list-wrapper-4 w-dyn-list">
               <div role="list" className="collection-list-3 w-dyn-items">
                 <div role="listitem" className="w-dyn-item">
-                  <a
+                  <Link
                     href="https://www.instagram.com/p/CpknkAeP2bW/"
-                    target="_blank"
+                    rel="noreferrer"
                     className="ig-link w-inline-block"
-                  >
-                    <img
+                    passHref
+                  ><>
+                    <Image
+                      alt="image"
                       src="https://uploads-ssl.webflow.com/63f72693418023a99f8b9c8b/6409f268524846c752dae4b1_334492252_9429526233785312_381940871113454095_n.jpeg"
                       loading="lazy"
-                      alt=""
                       className="image-105"
                     />
                     <div className="ig-icon w-embed">
@@ -1092,18 +1108,20 @@ import { nhost } from "../pages/_app";
                         />
                       </svg>
                     </div>
-                  </a>
+                    </>
+                  </Link>
                 </div>
                 <div role="listitem" className="w-dyn-item">
-                  <a
+                  <Link
                     href="https://www.instagram.com/p/Cpj3NWLPBoS/"
-                    target="_blank"
+                    rel="noreferrer"
                     className="ig-link w-inline-block"
-                  >
-                    <img
+                    passHref
+                  ><>
+                    <Image
+                      alt="image"
                       src="https://uploads-ssl.webflow.com/63f72693418023a99f8b9c8b/64098fc1250ac12d0fd44643_332123138_729656732036342_4419359245497365322_n.jpeg"
                       loading="lazy"
-                      alt=""
                       className="image-105"
                     />
                     <div className="ig-icon w-embed">
@@ -1122,18 +1140,21 @@ import { nhost } from "../pages/_app";
                         />
                       </svg>
                     </div>
-                  </a>
+                    </>
+                  </Link>
                 </div>
                 <div role="listitem" className="w-dyn-item">
-                  <a
+                  <Link
                     href="https://www.instagram.com/p/CpjYfCvI7y6/"
-                    target="_blank"
+                    rel="noreferrer"
                     className="ig-link w-inline-block"
+                    passHref
                   >
-                    <img
+                    <>
+                    <Image
+                      alt="image"
                       src="https://uploads-ssl.webflow.com/63f72693418023a99f8b9c8b/640950a4ffb6d24f6cb84a39_334288629_1677301072707663_5921840318058457387_n.jpeg"
                       loading="lazy"
-                      alt=""
                       className="image-105"
                     />
                     <div className="ig-icon w-embed">
@@ -1152,7 +1173,8 @@ import { nhost } from "../pages/_app";
                         />
                       </svg>
                     </div>
-                  </a>
+                    </>
+                  </Link>
                 </div>
               </div>
             </div>

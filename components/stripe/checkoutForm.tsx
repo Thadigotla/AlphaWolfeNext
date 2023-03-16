@@ -83,7 +83,7 @@
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Button } from "antd";
-import { nhost } from "pages/_app";
+import { nhost } from "../../pages/_app";
 
 const stripePromise = loadStripe(
   "pk_test_51MhnQJSG1kawF0cmPOrpNBQTLbvjwZQHNPUGtJ8ZpB0exEJ8rZlpFUua7jMeufsGmqqDt0T8m2daZQkP1petTk2N00LzMYeZq4"
@@ -100,7 +100,7 @@ const user = nhost.auth.getUser();
       "https://ftql6xrbueq5gpygsqnsa6trw40rckpa.lambda-url.us-east-1.on.aws/",
       {
         method: "POST",
-        body: JSON.stringify({ couponDetails, totalPrice, user_id: user?.id }),
+        // body: JSON.stringify({ couponDetails, totalPrice, user_id: user?.id }),
         headers: {
           "Content-Type": "application/json",
         },
@@ -126,15 +126,15 @@ const user = nhost.auth.getUser();
   );
 };
 
-export async function getServerSideProps() {
-  const AWS = await import("aws-sdk");
-  AWS.config.update({
-    accessKeyId: "YOUR_ACCESS_KEY",
-    secretAccessKey: "YOUR_SECRET_ACCESS_KEY",
-    region: "us-easet-1",
-  });
-  const lambda = new AWS.Lambda({ region: "ap-south-1" });
-  return { props: {} };
-}
+// export async function getServerSideProps() {
+//   const AWS = await import("aws-sdk");
+//   AWS.config.update({
+//     accessKeyId: "YOUR_ACCESS_KEY",
+//     secretAccessKey: "YOUR_SECRET_ACCESS_KEY",
+//     region: "us-easet-1",
+//   });
+//   const lambda = new AWS.Lambda({ region: "ap-south-1" });
+//   return { props: {} };
+// }
 
 export default StripeCheckoutComponent;

@@ -1,6 +1,8 @@
 import React from "react";
 import { Navbar } from "../../components/Navbar/index";
 import { Footer } from "../../components/Footer";
+import Image from 'next/image'
+
 
  const SDriveTechnology = () => {
   return (
@@ -72,11 +74,12 @@ import { Footer } from "../../components/Footer";
       </section>
 
       <section className="Alpha_details_block_1">
-        <img
+        <Image
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716acf80a805b0f6cb5a1_s1.webp"
           className="Alpha_details_block_1_left md-24"
           loading="lazy"
-          srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716acf80a805b0f6cb5a1_s1-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716acf80a805b0f6cb5a1_s1.webp 500w"
+          alt="image"
+          // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716acf80a805b0f6cb5a1_s1-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716acf80a805b0f6cb5a1_s1.webp 500w"
         />
         <div className="Alpha_details_block_1_right ">
           <div className="Alpha_details_block_1_right_para_1">
@@ -152,10 +155,11 @@ import { Footer } from "../../components/Footer";
           </div>{" "}
         </div>
         <div className="Alpha_details_block_3_right">
-          <img
+          <Image
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6407142ec344653327fa70f9_s2.webp"
             loading="lazy"
-            srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6407142ec344653327fa70f9_s2-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6407142ec344653327fa70f9_s2.webp 600w"
+            alt="image"
+            // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6407142ec344653327fa70f9_s2-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6407142ec344653327fa70f9_s2.webp 600w"
           />{" "}
         </div>
       </section>
@@ -183,11 +187,12 @@ import { Footer } from "../../components/Footer";
       </section>
 
       <section className="Alpha_details_block_1">
-        <img
+        <Image
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6.webp"
           className="Alpha_details_block_1_left"
           loading="lazy"
-          srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-2600.webp 2600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6.webp 2940w"
+          alt="image"
+          // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-2600.webp 2600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6.webp 2940w"
         />
         <div className="Alpha_details_block_1_right">
           <div className="Alpha_details_block_1_right_para_1">
@@ -226,13 +231,13 @@ import { Footer } from "../../components/Footer";
       </section>
 
       <section className="footer_image">
-        <img
-          className="footer_image_img"
+        <Image
+          className="footer_image_Image"
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4.webp"
           loading="lazy"
           sizes="(max-width: 991px) 90vw, 95vw"
-          srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4.webp 1920w"
-          alt=""
+          // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4.webp 1920w"
+          alt="image"
         />
       </section>
     </div>
