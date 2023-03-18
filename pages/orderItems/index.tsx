@@ -1,24 +1,45 @@
 import { gql, useMutation, useQuery } from '@apollo/client';
-import { Button, Col, Form, Input, Modal, Row, Table } from 'antd';
+import {  Col, Form, Input, Modal, Row, Space, Table } from 'antd';
 import { useState } from 'react';
 import {useEffect} from 'react';
 import toast from 'react-hot-toast';
 import CustomLayout from '../../styles/components/produc';
 import { useUserData } from '@nhost/nextjs';
- 
+import Image from 'next/image'
+import type { UploadProps } from 'antd';
+import { Button, message, Upload } from 'antd';
+import { nhost } from '../_app';
+import { EyeInvisibleOutlined, EyeOutlined, EditOutlined, DeleteFilled } from '@ant-design/icons';
+import moment from 'moment';
+
+
 const query = gql` query GetOrderDetails($where: order_details_bool_exp,$limit:Int,$offset:Int) {
-  order_details (where: $where, offset:$offset, limit:$limit){
+  order_details (where: $where, offset:$offset, limit:$limit,order_by:  {uid: desc}){
     quantity
 		report
+    uid
 		status
 		test_type
+    report
 		created_at
 		updated_at
 		card_id
 		customer_id
+    customer{
+      id
+      displayName
+    }
 		id
+
 		order_id
+    order{
+      uid
+    }
 		product_id
+    product{
+      name
+      uid
+    }
 		uuid
   }
 
@@ -31,14 +52,14 @@ const query = gql` query GetOrderDetails($where: order_details_bool_exp,$limit:I
 }
       `;
 
-const update_mutation = gql`mutation update_by_pk($id: uuid!, $set: products_set_input!)   {
-                        update_products_by_pk(pk_columns: {id: $id}, _set: $set) {
+const update_mutation = gql`mutation update_by_pk($id: uuid!, $set: order_details_set_input!)   {
+                        update_order_details_by_pk(pk_columns: {id: $id}, _set: $set) {
                         id
                         }
                      }`
 
-const insert_mutation = gql `mutation MyMutation3($object:products_insert_input!) {
-                             insert_products_one(object:$object) {
+const insert_mutation = gql `mutation MyMutation3($object:order_details_insert_input!) {
+                             insert_order_details_one(object:$object) {
                                  id
                                 }
                               }
@@ -46,13 +67,15 @@ const insert_mutation = gql `mutation MyMutation3($object:products_insert_input!
 
 const delete_mutation = gql`
                            mutation delete($id:uuid!){
-                           delete_products_by_pk(id:$id){
+                           delete_order_details_by_pk(id:$id){
                               id
                            }
-                           }`
+   
+   
+                       }`
 
 
-const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,insertFunction, updateFunction}) =>{
+const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,insertFunction, updateFunction, user_id, refetch}) =>{
 
 
    const showModal = () => { setIsModalOpen(true); };
@@ -67,6 +90,22 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
       setMData({...Mdata, [e?.target?.id]:e?.target?.value}) 
    }
 
+
+   const fileUploadProps = {
+    beforeUpload: async (file) => {
+      const link = await nhost.storage.upload({ file, bucketId: "public" });
+      const links = await nhost.storage.getPublicUrl({
+        fileId: link.fileMetadata.id,
+      });
+    
+      console.log("Links ",links)
+      // setFileLink(links);
+      setMData({...Mdata,"report":links})
+      // refetch();
+    },
+  };
+
+
    console.log("MDATA is", Mdata)
    const onFinish = async () =>{
 
@@ -80,10 +119,7 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
              variables: {
                id: Mdata.id,
                set: {
-                 cost: Mdata.cost,
-                 currency: Mdata.currency,
-                 description: Mdata.description,
-                 name: Mdata.name
+                 report:Mdata?.report
                }
              }
              
@@ -91,8 +127,10 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
 
            console.log("selectedrecord", result)
    
-           if (result?.data?.update_products_by_pk?.id) {
+           if (result?.data?.update_order_details_by_pk?.id) {
              toast.success("Updated successfully");
+             setIsModalOpen(false)
+
            }
          } else {
       console.log("selectedrecord else",selectedRecord)
@@ -109,12 +147,17 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
              }
            });
    
-           if (result?.data?.insert_products_one?.id) {
+           if (result?.data?.insert_order_details_one?.id) {
              toast.success("Created successfully");
+             setIsModalOpen(false)
+
            }
          }
        } catch(error) {
          toast.error(`Error: ${error}`);
+       }finally{
+        refetch()
+
        }
    
          }
@@ -128,7 +171,7 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                <Modal title="Basic Modal" open={isModalOpen} okText="Close" onOk={handleOk} onCancel={handleCancel}>
                   <Form    onChange={onChange}    onFinish={onFinish}>
                      <Row gutter={15}>
-                        <Col  className="gutter-row"  >
+                        {/* <Col  className="gutter-row"  >
                            <Input id="name" required  placeholder='Name' value={selectedRecord?.name} />
                         </Col>
                         <Col  className="gutter-row">
@@ -139,8 +182,19 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                         </Col>
                         <Col  className="gutter-row">
                         <Input id="currency" required placeholder='Currencty' value={selectedRecord?.currency} />
+                        </Col> */}
+                        <Col  className="gutter-row">
+                          <Upload
+                            style={{ color: "skyblue" }}
+                            {...fileUploadProps}
+                            accept="image/*"
+                          >
+                            Upload
+                          </Upload>                 
                         </Col>
+
                      </Row>
+                     <br/>
                      <Button htmlType='submit'  type='primary'>Submit</Button>
 
                      </Form>
@@ -219,7 +273,29 @@ function MyComponent() {
      }
   }
 
-  const formatData = (data:[]) =>{ return [...data] }
+  const formatData = (data:[]) =>{ 
+    
+    
+
+     let modifieData = []
+
+
+     modifieData = data?.map((e:any,i)=>{
+
+    return ({...e, 
+             user_name : e?.customer?.displayName,
+             order_uid : e?.order?.uid,
+             product_uid:e?.product?.uid,
+             product_name:e?.product?.name,
+
+    
+    })
+     })
+     console.log("Data is ",data,modifieData)
+
+    
+    
+    return [...modifieData] }
 
   useEffect(()=>{
    if(data?.order_details){
@@ -247,26 +323,46 @@ function MyComponent() {
 
  }
 
+   
+    //Open new tab if clicks on an image
+    const openInNewTab = (url) => {
+      const newWindow = window.open(url, "_blank", "noopener,noreferrer")
+      if (newWindow) newWindow.opener = null
+    }
+  
+
   const columns = [
-   { title: 'Id', dataIndex: 'uuid', key: 'uuid', },
+   { title: 'Id', dataIndex: 'uid', key: 'uid', },
+   { title: 'Order Id', dataIndex: 'order_uid', key: 'order_uid', },
    { title: 'Quantity', dataIndex: 'quantity', key: 'quantity', },
-   { title: 'Total Amount', dataIndex: 'status', key: 'status', },
+   { title: 'UserName', dataIndex: 'user_name', key: 'user_name', },
+   { title: 'Product Id', dataIndex: 'product_uid', key: 'product_uid', },
+   { title: 'Product Name', dataIndex: 'product_name', key: 'product_name', },
+   { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', render:(val) => moment(val).format('MMMM Do YYYY, h:mm:ss a') }, 
+
+   { title: 'report', dataIndex: 'report', key: 'report',
+    render: (text, record) => {
+      return text ?  <EyeOutlined  onClick={()=>openInNewTab(text) }/> : <EyeInvisibleOutlined/>;
+   }
+},
+  
+   { title: 'Status', dataIndex: 'status', key: 'status', },
    { title: 'Test Type', dataIndex: 'test_type', key: 'test_type', },
-   { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', }, 
-  //  { title: 'Action', dataIndex: 'action', key: 'action', 
+   { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', render:(val) => moment(val).format('MMMM Do YYYY, h:mm:ss a') }, 
+   { title: 'Action', dataIndex: 'action', key: 'action', 
    
-  //  render: (_,record) => {
+   render: (_,record) => {
 
-  //     return (  <>
-  //                 <Button  onClick={() => handleEdit(record)} > Edit </Button>
-  //                 <Button  onClick={() => handleDelete(record)} > Delete </Button>
-  //                 </>
+      return (  <Space>
+                  <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button>
+                  <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button>
+                  </Space>
 
-  //             )
+              )
                   
-  //                 }, 
+                  }, 
    
-  //  },   
+   },   
   ]
 
   console.log("new data", Data)
@@ -299,6 +395,8 @@ function MyComponent() {
                isModalOpen={isModalOpen}
                insertFunction ={insertFunction}
                updateFunction ={updateFunction}
+               user_id={user?.id}
+               refetch={refetch}
            />
         </>  );
 }

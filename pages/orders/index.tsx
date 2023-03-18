@@ -1,20 +1,29 @@
 import { gql, useMutation, useQuery } from '@apollo/client';
-import { Button, Col, Form, Input, Modal, Row, Table } from 'antd';
+import { Button, Col, Form, Input, Row, Table, Modal, Select } from 'antd';
 import { useState } from 'react';
 import {useEffect} from 'react';
 import toast from 'react-hot-toast';
 import CustomLayout from '../../styles/components/produc';
 import { useUserData } from '@nhost/nextjs';
- 
+import { InputPicker } from 'rsuite';
+import moment from 'moment';
+import { EditOutlined, DeleteFilled } from '@ant-design/icons';
+
 const query = gql` query GetOrders($where: orders_bool_exp,$limit:Int,$offset:Int) {
-  orders (where: $where, offset:$offset, limit:$limit) {
+  orders (where: $where, offset:$offset, limit:$limit,order_by: {uid: desc}) {
     user_id
 		status
 		created_at
 		updated_at
 		total_amount
+    user_id 
+    user{
+      id
+      displayName
+    }
 		id
 		uid
+    created_at
   }
   orders_aggregate {
     aggregate{
@@ -24,14 +33,14 @@ const query = gql` query GetOrders($where: orders_bool_exp,$limit:Int,$offset:In
 }
      `;
 
-const update_mutation = gql`mutation update_by_pk($id: uuid!, $set: products_set_input!)   {
-                        update_products_by_pk(pk_columns: {id: $id}, _set: $set) {
+const update_mutation = gql`mutation update_by_pk($id: uuid!, $set: orders_set_input!)   {
+                        update_orders_by_pk(pk_columns: {id: $id}, _set: $set) {
                         id
                         }
                      }`
 
-const insert_mutation = gql `mutation MyMutation3($object:products_insert_input!) {
-                             insert_products_one(object:$object) {
+const insert_mutation = gql `mutation MyMutation3($object:orders_insert_input!) {
+                             insert_orders_one(object:$object) {
                                  id
                                 }
                               }
@@ -39,14 +48,34 @@ const insert_mutation = gql `mutation MyMutation3($object:products_insert_input!
 
 const delete_mutation = gql`
                            mutation delete($id:uuid!){
-                           delete_products_by_pk(id:$id){
+                           delete_orders_by_pk(id:$id){
                               id
                            }
                            }`
 
+const EditData =gql`query Users {
+                        users {
+                          id
+                          displayName
+                        }
 
-const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,insertFunction, updateFunction}) =>{
+                        enum_order_status{
+                          value
+                          comment
+                        }
 
+                      }`
+
+const status_data =gql`query OrderStatus {
+  enum_order_status{
+    value
+    comment
+  }
+}`
+
+const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,insertFunction, updateFunction, user_id,refetch,UserData=[],OrderStatus=[]}) =>{
+
+  console.log("Mdataasdasdsad",UserData,OrderStatus)
 
    const showModal = () => { setIsModalOpen(true); };
 
@@ -73,10 +102,9 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
              variables: {
                id: Mdata.id,
                set: {
-                 cost: Mdata.cost,
-                 currency: Mdata.currency,
-                 description: Mdata.description,
-                 name: Mdata.name
+                status: Mdata.status,
+                total_amount: Mdata.total_amount,
+                user_id: Mdata.user_id
                }
              }
              
@@ -84,8 +112,10 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
 
            console.log("selectedrecord", result)
    
-           if (result?.data?.update_products_by_pk?.id) {
+           if (result?.data?.update_orders_by_pk?.id) {
              toast.success("Updated successfully");
+             setIsModalOpen(false)
+
            }
          } else {
       console.log("selectedrecord else",selectedRecord)
@@ -94,46 +124,80 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
            const result = await insertFunction({
              variables: {
                object: {
-                 cost: Mdata.cost,
-                 currency: Mdata.currency,
-                 description: Mdata.description,
-                 name: Mdata.name
+                 status: Mdata.status,
+                 total_amount: Mdata.total_amount,
+                 user_id: Mdata.user_id
                }
              }
            });
    
-           if (result?.data?.insert_products_one?.id) {
+           if (result?.data?.insert_orders_one?.id) {
              toast.success("Created successfully");
+             setIsModalOpen(false)
+
            }
          }
        } catch(error) {
          toast.error(`Error: ${error}`);
+       }finally{
+        refetch()
+
        }
    
          }
 
 
+         const onSelects = (field,e) =>{
+
+          console.log("Details ",field, e)
+
+          setMData({...Mdata, [field]:e}) 
+
+         }
+
+
+         console.log("meta data", Mdata)
+
 
       return     <div >
-               {/* <Button type="primary" onClick={showModal}>
-                  { selectedRecord ? "EDIT" :  "CREATE"}
-               </Button> */}
-               <Modal title="Basic Modal" open={isModalOpen} okText="Close" onOk={handleOk} onCancel={handleCancel}>
-                  <Form    onChange={onChange}    onFinish={onFinish}>
-                     <Row gutter={15}>
-                        <Col  className="gutter-row"  >
-                           <Input id="name" required  placeholder='Name' value={selectedRecord?.name} />
+ 
+               <Modal title="Basic Modal"  open={isModalOpen} okText="Close" onOk={handleOk} onCancel={handleCancel}>
+                  <Form    onChange={onChange}    onFinish={onFinish} >
+                     <Row gutter={[16, 16]}>
+                      
+                        <Col  className="gutter-row" span={12}>
+                        <Input id="total_amount"  required placeholder='total_amount' value={Mdata?.total_amount} />
                         </Col>
-                        <Col  className="gutter-row">
-                        <Input id="description"  required placeholder='Descritpion' value={selectedRecord?.description} />
+                        <Col  className="gutter-row" span={12} >
+                          <div>
+ 
+                          <Select
+                              showSearch
+                              placeholder="User"
+                              optionFilterProp="children"
+                              value={Mdata?.user_id}
+                              onChange={(e)=>onSelects("user_id",e)}
+                              options={[...UserData]}
+                             />                     
+                                </div>
+
                         </Col>
-                        <Col  className="gutter-row">
-                        <Input id="cost" required placeholder='Cost' value={selectedRecord?.cost} />
+
+                        <Col  className="gutter-row" span={12} >
+ 
+                          <Select
+                              showSearch
+                              placeholder="status"
+                              optionFilterProp="children"
+                              value={Mdata?.status}
+                              onChange={(e)=>onSelects("status",e)}
+                              options={[...OrderStatus]}
+                             />                     
+
                         </Col>
-                        <Col  className="gutter-row">
-                        <Input id="currency" required placeholder='Currencty' value={selectedRecord?.currency} />
-                        </Col>
+  
                      </Row>
+                     <br/>
                      <Button htmlType='submit'  type='primary'>Submit</Button>
 
                      </Form>
@@ -169,13 +233,23 @@ function MyComponent() {
   
   const [deleteFunction, { data:dData, loading:dLoading, error:dError}] = useMutation(delete_mutation);
 
-  const { data, loading, error } = useQuery(
+  const { data, loading, error, refetch } = useQuery(
     query,
     { variables:{
      "where":  searchTextCondition,
      limit:limit,
      offset:(pageNo-1)*limit
     } });
+
+    const { data:UserData, loading:ULoading, error:UError, refetch:URefetch } = useQuery(
+      EditData,
+      );
+
+      
+      
+
+      console.log("UserData",UserData)
+    
 
     const count = data?.orders_aggregate?.aggregate?.count
 
@@ -188,9 +262,13 @@ function MyComponent() {
       if (e){
            where= {
           "_or":  [
-            {"status": {"_ilike":"%"+e+"%" }},
-            // {"type": {"_ilike":"%"+e+"%" }}
+            {"user": {"displayName":  {"_ilike": "%"+e+"%"}}
+            },
+            {"enum_order_status": {"value": {"_ilike":"%"+e+"%"} }}
+
           ]
+          // {"type": {"_ilike":"%"+e+"%" }}
+          // ]
         }
       }
       setSearchText(e)
@@ -213,10 +291,30 @@ function MyComponent() {
     }
   
   
-  const formatData = (data:[]) =>{ return [...data] }
+  const formatData = (data:[]) =>{
+    
+    console.log("daasdasdis ",data)
+
+    let modifiedData= [];
+
+    // if(data?.length>0){
+
+    modifiedData= data?.map((e:any,i)=>{
+
+        return {...e,"user_name":user?.displayName}
+       })
+    // }
+
+
+    return [...modifiedData] 
+  
+  
+  
+  }
 
   useEffect(()=>{
    if(data?.orders){
+
       setData(formatData(data?.orders))
    }
   },[data?.orders])
@@ -235,9 +333,13 @@ function MyComponent() {
 
  }
 
- const handleDelete= (record) =>{
+ const handleDelete=async (record) =>{
    console.log("delete record is",record)
-   deleteFunction({variables:{id:record?.id}})
+  const result = await deleteFunction({variables:{id:record?.id}})
+   refetch()
+
+   if(result?.data?.delete_products_by_pk)return toast("deleted sucessfully")
+   else toast("Not Deleted")
 
  }
 
@@ -245,37 +347,37 @@ function MyComponent() {
    { title: 'Id', dataIndex: 'uid', key: 'uid', },
    { title: 'Status', dataIndex: 'status', key: 'status', },
    { title: 'Total Amount', dataIndex: 'total_amount', key: 'total_amount', },
-   { title: 'Cost', dataIndex: 'cost', key: 'cost', },
-   { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', }, 
-  //  { title: 'Action', dataIndex: 'action', key: 'action', 
+   { title: 'UserName', dataIndex: 'user_name', key: 'user_name', },
+   { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', render:(val) => moment(val)?.format('MMMM Do YYYY, h:mm:ss a') }, 
+   { title: 'Action', dataIndex: 'action', key: 'action', 
    
-  //  render: (_,record) => {
+   render: (_,record) => {
 
-  //     return (  <>
-  //                 <Button  onClick={() => handleEdit(record)} > Edit </Button>
-  //                 <Button  onClick={() => handleDelete(record)} > Delete </Button>
-  //                 </>
+      return (  <>
+                  <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button>
+                  <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button>
+                  </>
 
-  //             )
+              )
                   
-  //                 }, 
+                  }, 
    
-  //  },   
+   },   
   ]
 
   console.log("new data", Data)
 
-  if (loading) return <div>Loading...</div>;
+  // if (loading) return <div>Loading...</div>;
 
-  if (error) return <div>Error: {error.message}</div>;
+  // if (error) return <div>Error: {error.message}</div>;
 
-  if(!Data) return <div>Loading...</div>
+  // if(!Data) return <div>Loading...</div>
 
  
   return (<>
  
                         <div style={{display:'flex', justifyContent:"flex-end"}}>
-           <Input type='text' style={{minWidth:"50px", width:"150px"}} placeholder='Search By Status' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
+           <Input type='text' style={{minWidth:"50px", width:"200px"}} placeholder='Search By Name, Status' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
            {/* <Button type="primary" onClick={handleCreate}>CREATE</Button> */}
   </div>            <Table dataSource={Data} columns={columns} />
             <Button onClick={PreviousPage}
@@ -292,6 +394,10 @@ function MyComponent() {
                isModalOpen={isModalOpen}
                insertFunction ={insertFunction}
                updateFunction ={updateFunction}
+               UserData={UserData?.users?.map((e,i)=>({label:e?.displayName,value:e?.id}))}
+               OrderStatus={UserData?.enum_order_status?.map((e,i)=>({label:e?.comment,value:e?.value}))}
+               user_id={user?.id}
+               refetch={refetch}
            />
         </>  );
 }

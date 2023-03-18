@@ -54,7 +54,7 @@ interface CustomLayoutProps {
                 key: '/products',
                 // icon: <VideoCameraOutlined />,
                 label: 'Products',
-                onClick: () => router.push("/products")
+                onClick: () => router.push("/productss")
               },
 
               {

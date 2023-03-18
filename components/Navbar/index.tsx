@@ -152,15 +152,20 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
       <section className="navbar" style={{ zIndex: "1000" }}>
         
         <div className="logo">
-          <span style={{position:"relative"}}>
+          <div className="logo_wrapper_">
           <Image
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f733050ef63f2e151dc369_AW-logo.jpeg"
             alt="logo"
             layout="fill"
-            style={{ height: "50px", cursor: "pointer" }}
+            className="logo_wrapper_imgs"
+            objectFit="cover"
+            loader={()=>"https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f733050ef63f2e151dc369_AW-logo.jpeg"}
+            // height={100}
+            // width={50}
+            // style={{ height: "50px", cursor: "pointer" }}
             onClick={() => (router.push("/"), handleClickScrollHome())}
           />
-          </span>
+          </div>
         </div>
 
  

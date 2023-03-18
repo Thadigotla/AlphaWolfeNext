@@ -9,8 +9,9 @@ import { Divider, notification, Space,Col, Form, Row, Spin, Input, Card  } from 
 import { Footer } from "../components/Footer/index";
 import { nhost } from "../pages/_app";
 import { useRouter } from "next/router";
-import Image from 'next/image';
+import Image from  "next/image";
 import Link from "next/link";
+
 
 // const Fade = require("react-reveal/Fade");
 // const Jump = require("react-reveal/Jump");
@@ -23,7 +24,7 @@ import Link from "next/link";
  const Home  = (props) => {
   // const { data, mutateAsync, isLoading } = useLogin();
   // const { mutate: login, isLoading } = useLogin();
-  const { push } = useRouter();
+  const router = useRouter();
   const { Panel } = Collapse;
 
   const [signIn, SetsignIn] = useState(true);
@@ -33,6 +34,11 @@ import Link from "next/link";
   const createNotification = (message ) => {
     api.info({ message, placement: "topRight" });
   };
+
+  const openInNewTab = (url) => {
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer")
+    if (newWindow) newWindow.opener = null
+  }
 
   // const onFinish = async (values ) => {
   //   console.log("values ", values);
@@ -73,12 +79,12 @@ import Link from "next/link";
     {
       id: 1,
       name: "Immunity System",
-      desc: "An effective immune system can assist in protecting your dog from the worst effects of infection or environmental impacts. Boosting a dog's immune systems plays a role in vitality and wellbeing.",
+      desc: "An effective immune system can assist in protecting your dog from the worst effects of infection or environmental impacts. Boosting a dog s immune systems plays a role in vitality and wellbeing.",
     },
     {
       id: 2,
       name: "Canine Circulatory System",
-      desc: "Poor circulation reduces the ability of your dog's systems to transport nutrients and oxygen to where they are needed. You can support a dog's circulation with good nutritional food",
+      desc: "Poor circulation reduces the ability of your dog s systems to transport nutrients and oxygen to where they are needed. You can support a dog s circulation with good nutritional food",
     },
     {
       id: 3,
@@ -89,17 +95,17 @@ import Link from "next/link";
       id: 4,
 
       name: "Coat And Skin Condition",
-      desc: "A dog's coat and skin reflects the nutritional diet they are fed. Most dog's coat conditions can be enhanced by weekly feeding the dog natural omega 3 found in Salmon, Sardines or other such items.",
+      desc: "A dog s coat and skin reflects the nutritional diet they are fed. Most dog s coat conditions can be enhanced by weekly feeding the dog natural omega 3 found in Salmon, Sardines or other such items.",
     },
     {
       id: 5,
       name: "Optimize Growth",
-      desc: "A dog's balanced nutritional diet is essential to maintain or build growth. Growing puppies or dogs falling behind in growth need a balanced nutritional diet to feed their body and energy needs.",
+      desc: "A dog s balanced nutritional diet is essential to maintain or build growth. Growing puppies or dogs falling behind in growth need a balanced nutritional diet to feed their body and energy needs.",
     },
     {
       id: 6,
       name: "Food Restrictions",
-      desc: "There are foods which your dog may be eating which show NO physical signs and symptoms of being a problem – but which might not support the body’s needs, as they take up more energy to digest than the body gets in return.",
+      desc: "There are foods which your dog may be eating which show NO physical signs and symptoms of being a problem – but which might not support the body s needs, as they take up more energy to digest than the body gets in return.",
     },
   ];
 
@@ -108,7 +114,7 @@ import Link from "next/link";
   const [selectedWelness, setSelectedWelness] = useState({
     id: 1,
     name: "Immunity System",
-    desc: "An effective immune system can assist in protecting your dog from the worst effects of infection or environmental impacts. Boosting a dog's immune systems plays a role in vitality and wellbeing.",
+    desc: "An effective immune system can assist in protecting your dog from the worst effects of infection or environmental impacts. Boosting a dog s immune systems plays a role in vitality and wellbeing.",
   });
 
   return (
@@ -166,15 +172,17 @@ import Link from "next/link";
                     Get your individualised report on all your dogs nutritional
                     needs
                   </p>
-                  <a
-                    href="/products-list"
-                    className="button secondary w-button"
-                  >
-                    Shop Now
-                  </a>
+                  <div
+                  // href="/products"
+                  className="button white-on-hover top-margin w-button"
+                  // passHref
+                  onClick={()=>router.push("/products")}
+                >
+                  Shop Now
+                </div>
                   <div className="crufts-block" >
                     <div>Upcoming Event</div>
-                    <div style={{position:'relative', height:"100%",width:"100%"}}>
+                    <div style={{position: relative , height:"100%",width:"100%"}}>
                     <Image
                       style={{height:"100%", width:"100%"}}
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6405f0619cc6e02bfb9e0550_crufts-logo-update.png"
@@ -197,52 +205,106 @@ import Link from "next/link";
                   </div>
                 </div>
                 <div className="hero-image-wrapper">
-                  <img
+                  <div className="hero-image-wrapper-test image-3">
+
+                 
+                  <Image
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6400765b9dc392dfa319d7dd_dog-food2.png"
                     loading="lazy"
                     alt=""
+                    layout="fill"
+                    objectFit="contain"
+                    
                     className="image-3"
                   />
-                  <img
+                      </div>
+                      
+
+                      <div className="image-47-wrapper image-47">
+
+                      <Image
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f730a54180231e8d8c817e_dogbanner.png"
                     loading="lazy"
+                    layout="fill"
                     sizes="(max-width: 479px) 90vw, (max-width: 767px) 343.234375px, (max-width: 991px) 370.6875px, 47vw"
                     srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f730a54180231e8d8c817e_dogbanner-p-500.png 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f730a54180231e8d8c817e_dogbanner.png 635w"
                     alt=""
+                    objectFit="contain"
                     className="image-47"
                   />
-                  <img
+
+                      </div>
+
+              
+              <div     className="image-86-wrapper ">
+              <Image
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c609312fb25_Group%2042488.png"
                     loading="lazy"
+                    layout="fill"
+                    objectFit="contain"
                     alt=""
                     className="image-86"
                   />
+
+              </div>
+
                   {/* <Fade duration={5000} delay={1500} top forever> */}
-                    <img
+
+                  <div className="image-7-wrapper">
+
+                  <Image
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c267d12fac9_bite.png"
                       loading="lazy"
                       alt=""
-                      className="image-7"
+                      layout="fill"
+                      objectFilt="contain"
+                      // className="image-7"
                     />
-                    <img
+
+                  </div>
+
+                  <div className="image-8-wrapper">
+
+                    
+                    <Image
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759cb1f412faca_bite%20blue.png"
                       loading="lazy"
                       alt=""
-                      className="image-6"
+                      layout="fill"
+                      objectFilt="contain"
+                      // className="image-6"
                     />
-                    <img
+                    </div>
+
+                    <div className="image-9-wrapper">
+
+
+                    <Image
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759cdad812facb_blur.png"
                       loading="lazy"
                       alt=""
-                      className="image-8"
+                      layout="fill"
+                      objectFilt="contain"
+                      // className="image-8"
                     />
-                    <img
+                    </div>
+
+                    <div className="image-4-wrapper">
+
+
+                    <Image
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c267d12fac9_bite.png"
                       loading="lazy"
                       alt=""
-                      className="image-4"
+                      layout="fill"
+                      objectFit="contain"
+                      // className="image-4"
                     />
-                    <img
+
+                    </div>
+
+                   
+                    {/* <img
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c267d12fac9_bite.png"
                       loading="lazy"
                       alt=""
@@ -260,7 +322,7 @@ import Link from "next/link";
                       loading="lazy"
                       alt=""
                       className="image-9"
-                    />
+                    /> */}
                   {/* </Fade> */}
                 </div>
               </div>
@@ -327,38 +389,64 @@ import Link from "next/link";
                   </span>
                 </p>
                 <div className="div-block-15">
-                  <a
-                    href="/products"
-                    className="button white-on-hover w-button"
-                  >
-                    Shop Now
-                  </a>
-                  <a
+                <div
+                  // href="/products"
+                  className="button white-on-hover top-margin w-button"
+                  // passHref
+                  onClick={()=>router.push("/products")}
+                >
+                  Shop Now
+                </div>
+
+                <div
+                  className="button white-on-hover top-margin w-button"
+                  // onClick={()=>router.push("/products")}
+                  onClick={()=>openInNewTab("https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640756b64212e64bd05d52e3_Alpha%20Nutritional%20Test%20Sample%20Report.pdf")}
+                  style={{backgroundColor:"white", color:"black"}}
+                >
+                  Sample Report
+                </div>
+
+                  {/* <a
                     href="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640756b64212e64bd05d52e3_Alpha%20Nutritional%20Test%20Sample%20Report.pdf"
                     target="_blank"
                     className="button tertiary w-button"
                   >
                     Sample Report
-                  </a>
+                  </a> */}
+
+                  {/* <div
+                  // href="/products"
+                  className="button tertiary w-button"
+                  // passHref
+                  onClick={()=>router.push("/products")}
+                >
+                  Sample Report
+                </div> */}
                 </div>
               </div>
-               <Image
+              {/* <div className="bg-icon-test-wrapper">
+
+
+                <img
                 src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64008066ae42133add6e2898_medical-report.webp"
                 loading="lazy"
                 alt=""
-                // width={10}
-                // height={10}
                 layout="fill"
-                
-                className="bg-icon-test result"
+                objectFit="cover"
+                className="bg-icon-test   result"
               />
-               <Image
+
+
+
+              </div> */}
+
+               {/* <img
                 src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64008066447e9f6aebe2687d_dog%20(1).webp"
                 loading="lazy"
                 alt=""
-                layout="fill"
                 className="bg-icon-test"
-              />
+              /> */}
             </div>
           </div>
         </div>
@@ -371,7 +459,7 @@ import Link from "next/link";
             </h2>
             <div className="dog_quotation_parag">
               <div>
-                It's crucial to make sure your dog is getting the right kind of
+                It s crucial to make sure your dog is getting the right kind of
                 nutrition and
               </div>
               <div>deserves the right amount of happiness.</div>
@@ -419,7 +507,7 @@ import Link from "next/link";
                       Boarding
                     </div>
                     <div className="facilities_grid_1_block_1_para">
-                      No dog enjoys being left behind. In case your buddy can’t
+                      No dog enjoys being left behind. In case your buddy can t
                       join in, boarding your dog at a good day care facility can
                       be an option.
                     </div>
@@ -440,7 +528,7 @@ import Link from "next/link";
                       Training
                     </div>
                     <div className="facilities_grid_1_block_1_para">
-                      Do you want to Improve your dog's intelligence and
+                      Do you want to Improve your dog s intelligence and
                       behaviour? Are you looking for professional dog training?
                     </div>
                   {/* </Fade> */}
@@ -462,7 +550,7 @@ import Link from "next/link";
                       Veterinary
                     </div>
                     <div className="facilities_grid_1_block_1_para">
-                      Trusting your pet's health in the right hands is an
+                      Trusting your pet s health in the right hands is an
                       important step in Pet care.
                     </div>
                   {/* </Fade> */}
@@ -608,34 +696,50 @@ import Link from "next/link";
                 className="benefits-image-wrapper"
               >
                 {/* <Fade bottom delay={1000}> */}
-                  <img
-                    className="image-98"
+                <div className="image-98-wrapper image-98">
+                  <Image
+                    className=""
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c91b012fb35_photoshop-file%202.webp"
                     width={449}
                     alt=""
+                    layout="fill"
+                    objectFit="contain"
                     sizes="(max-width: 479px) 72vw, (max-width: 767px) 50vw, (max-width: 991px) 45vw, 29vw"
                     data-w-id="199ad48c-16ca-b0ab-8e64-e9ff9b9f8823"
                     loading="lazy"
                     srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c91b012fb35_photoshop-file%25202-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c91b012fb35_photoshop-file%202.webp 518w"
                   />
-                {/* </Fade> */}
+                </div>
 
-                <img
+                {/* </Fade> */}
+                <div className="image-23-wrapper">
+                <Image
                   src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c8c6412fae3_light%20paw.svg"
                   loading="lazy"
+                  layout="fill"
+                  objectFit="contain"
                   alt=""
                   className="image-23"
                 />
+                </div>
                 {/* <Fade left> */}
-                  <img
+                <div className="image-88-wrapper image-88">
+
+                <Image
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640086184ae39529c0c796de_concept-of-organic-pet-food-isolated-on-white-back-2021-09-03-16-05-30-utc-PhotoRoom.webp"
                     loading="lazy"
                     width={258}
+                    layout="fill"
+                    objectFit="contain"
                     srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640086184ae39529c0c796de_concept-of-organic-pet-food-isolated-on-white-back-2021-09-03-16-05-30-utc-PhotoRoom-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640086184ae39529c0c796de_concept-of-organic-pet-food-isolated-on-white-back-2021-09-03-16-05-30-utc-PhotoRoom-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640086184ae39529c0c796de_concept-of-organic-pet-food-isolated-on-white-back-2021-09-03-16-05-30-utc-PhotoRoom.webp 864w"
                     sizes="(max-width: 479px) 100vw, (max-width: 767px) 83vw, (max-width: 991px) 72vw, 52vw"
                     alt=""
-                    className="image-88"
                   />
+
+
+
+                </div>
+
                 {/* </Fade> */}
                 {/* <Fade delay={1500} bottom> */}
                   <div
@@ -650,20 +754,20 @@ import Link from "next/link";
                     </p>
                   </div>
                 {/* </Fade> */}
-                <img
+                {/* <img
                   src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c262d12fb36_Group%2041739.webp"
                   loading="lazy"
                   width={117}
                   alt=""
                   className="image-89"
-                />
+                /> */}
                 {/* <Fade right> */}
-                  <img
+                  {/* <img
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c08f512fb34_Group%2041745.webp"
                     loading="lazy"
                     alt=""
                     className="image-90"
-                  />
+                  /> */}
                 {/* </Fade> */}
               </div>
               <div className="benefits-content-wrapper">
@@ -722,16 +826,17 @@ import Link from "next/link";
               Wellness <span className="brown-text">Overview</span>
             </h2>
             <p>
-              It's crucial to make sure your dog is getting the right kind of
+              It s crucial to make sure your dog is getting the right kind of
               nutrition and deserves the right amount of happiness.
             </p>
           </div>
           <div className="desc">
             <Row>
               <Col span={8} xs={11}>
-                {wellness.map((item) => (
+                {wellness.map((item,i) => (
                   <Button
                     type="text"
+                    key={i}
                     className="wellness-button"
                     block
                     onMouseEnter={() => setSelectedWelness(item)}
@@ -747,12 +852,12 @@ import Link from "next/link";
                 xs={11}
               >
                 {selectedWelness?.desc}
-                <img
+                {/* <img
                   className="dog_paw_big"
                   height={"20%"}
                   src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f8bca7084382801892944f_paw.png"
                   alt="dog-paw"
-                />
+                /> */}
               </Col>
             </Row>
           </div>
@@ -803,12 +908,14 @@ import Link from "next/link";
                 <p className="section-para max-47ch">
                   Grab your wellness kit today.
                 </p>
-                <a
-                  href="/products-list"
+                <div
+                  // href="/products"
                   className="button white-on-hover top-margin w-button"
+                  // passHref
+                  onClick={()=>router.push("/products")}
                 >
                   Shop Now
-                </a>
+                </div>
               </div>
               <div className="hero-cta-wrapper centered">
                 <a href="#" className="button white-on-hover hide w-button">
@@ -867,7 +974,7 @@ import Link from "next/link";
                             data-node-type="commerce-add-to-cart-error"
                             data-w-add-to-cart-quantity-error="Product is not available in this quantity."
                             data-w-add-to-cart-general-error="Something went wrong when adding this item to the cart."
-                            data-w-add-to-cart-mixed-cart-error="You can’t purchase another product with a subscription."
+                            data-w-add-to-cart-mixed-cart-error="You can t purchase another product with a subscription."
                             data-w-add-to-cart-buy-now-error="Something went wrong when trying to purchase this item."
                             data-w-add-to-cart-checkout-disabled-error="Checkout is disabled on this site."
                             data-w-add-to-cart-select-all-options-error="Please select an option in each set."
@@ -978,7 +1085,7 @@ import Link from "next/link";
               key="8"
             >
               <p>
-                Yes, you can edit your shipping address if your order hasn’t
+                Yes, you can edit your shipping address if your order hasn t
                 been dispatched yet. If your order has been shipped, you cannot
                 change address it is being sent to.
               </p>
@@ -992,8 +1099,8 @@ import Link from "next/link";
               <p>
                 We work to keep you informed at every step of our order process.
                 So, upon dispatch you will receive a tracking number which you
-                can monitor as your order makes it’s way to you. If your order
-                doesn’t seem to be making any progress, you can contact the
+                can monitor as your order makes it s way to you. If your order
+                doesn t seem to be making any progress, you can contact the
                 delivery provider. If more issues persist, contact us at
                 contact@alpha-wolfe.com.
               </p>
@@ -1018,7 +1125,7 @@ import Link from "next/link";
               <p>
                 Wondering where your package is? We provide tracking information
                 via an email confirmation upon dispatch. You can use this to
-                check on your order’s journey. If your item doesn’t seem to be
+                check on your order s journey. If your item doesn t seem to be
                 making any progress, you can contact the delivery provider. If
                 more issues persist, contact us at contact@alpha-wolfe.com.
               </p>
@@ -1057,7 +1164,7 @@ import Link from "next/link";
               <p>
                 Wondering where your package is? We provide tracking information
                 via an email confirmation upon dispatch. You can use this to
-                check on your order’s journey. If your item doesn’t seem to be
+                check on your order s journey. If your item doesn t seem to be
                 making any progress, you can contact the delivery provider. If
                 more issues persist, contact us at contact@alpha-wolfe.com.
               </p>

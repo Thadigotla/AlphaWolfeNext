@@ -1,14 +1,17 @@
 import { gql, useMutation, useQuery } from '@apollo/client';
-import { Button, Col, Form, Input, Modal, Row, Table } from 'antd';
+import { Button, Col, Form, Input, Modal, Row, Space, Table, Upload } from 'antd';
 import { useState } from 'react';
 import {useEffect} from 'react';
 import toast from 'react-hot-toast';
 import CustomLayout from '../../styles/components/produc';
 import { useUserData } from '@nhost/nextjs';
+import moment from 'moment';
+import { DeleteFilled, EditOutlined, EyeInvisibleOutlined, EyeOutlined, PlusSquareFilled } from '@ant-design/icons';
+import { nhost } from '../_app';
  
 const query = gql` query ($where: products_bool_exp,$limit:Int,$offset:Int) {
-   products(where: $where, offset:$offset, limit:$limit)
-    { id uid name description cost currency 
+   products(where: $where, offset:$offset, limit:$limit,order_by:  {uid: desc})
+    { id uid name description cost currency  image_url created_at
     }
     products_aggregate {
       aggregate{
@@ -38,7 +41,7 @@ const delete_mutation = gql`
                            }`
 
 
-const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,insertFunction, updateFunction}) =>{
+const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,insertFunction, updateFunction, user_id,refetch}) =>{
 
 
    const showModal = () => { setIsModalOpen(true); };
@@ -69,7 +72,8 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                  cost: Mdata.cost,
                  currency: Mdata.currency,
                  description: Mdata.description,
-                 name: Mdata.name
+                 name: Mdata.name,
+                 image_url:Mdata?.image_url
                }
              }
              
@@ -79,6 +83,8 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
    
            if (result?.data?.update_products_by_pk?.id) {
              toast.success("Updated successfully");
+             setIsModalOpen(false)
+
            }
          } else {
       console.log("selectedrecord else",selectedRecord)
@@ -90,21 +96,42 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                  cost: Mdata.cost,
                  currency: Mdata.currency,
                  description: Mdata.description,
-                 name: Mdata.name
+                 name: Mdata.name,
+                 image_url:Mdata?.image_url
+
                }
              }
            });
    
            if (result?.data?.insert_products_one?.id) {
              toast.success("Created successfully");
+             setIsModalOpen(false)
+
            }
          }
        } catch(error) {
          toast.error(`Error: ${error}`);
+       }finally{
+        refetch()
+
        }
    
          }
 
+         
+   const fileUploadProps = {
+    beforeUpload: async (file) => {
+      const link = await nhost.storage.upload({ file, bucketId: "public" });
+      const links = await nhost.storage.getPublicUrl({
+        fileId: link.fileMetadata.id,
+      });
+    
+      console.log("Links ",links)
+      // setFileLink(links);
+      setMData({...Mdata,"image_url":links})
+      // refetch();
+    },
+  };
 
 
       return     <div >
@@ -113,20 +140,30 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                </Button> */}
                <Modal title="Basic Modal" open={isModalOpen} okText="Close" onOk={handleOk} onCancel={handleCancel}>
                   <Form    onChange={onChange}    onFinish={onFinish}>
-                     <Row gutter={15}>
-                        <Col  className="gutter-row"  >
-                           <Input id="name" required  placeholder='Name' value={selectedRecord?.name} />
+                     <Row gutter={[16, 16]}>
+                        <Col  className="gutter-row" span={12}   >
+                           <Input id="name" required  placeholder='Name'  value={Mdata?.name} />
+                        </Col>
+                        <Col  className="gutter-row" span={12} >
+                        <Input id="description"  required placeholder='Descritpion' value={Mdata?.description} />
+                        </Col>
+                        <Col  className="gutter-row" span={12} >
+                        <Input id="cost" required placeholder='Cost' value={Mdata?.cost} />
+                        </Col>
+                        <Col  className="gutter-row" span={12} >
+                        <Input id="currency" required placeholder='Currency' value={Mdata?.currency} />
                         </Col>
                         <Col  className="gutter-row">
-                        <Input id="description"  required placeholder='Descritpion' value={selectedRecord?.description} />
-                        </Col>
-                        <Col  className="gutter-row">
-                        <Input id="cost" required placeholder='Cost' value={selectedRecord?.cost} />
-                        </Col>
-                        <Col  className="gutter-row">
-                        <Input id="currency" required placeholder='Currencty' value={selectedRecord?.currency} />
+                          <Upload
+                            style={{ color: "skyblue" }}
+                            {...fileUploadProps}
+                            accept="image/*"
+                          >
+                            Upload
+                          </Upload>                 
                         </Col>
                      </Row>
+                     <br/>
                      <Button htmlType='submit'  type='primary'>Submit</Button>
 
                      </Form>
@@ -221,17 +258,27 @@ function MyComponent() {
  }
 
  const handleCreate = (record) => {
-   setSelectedRecord(record);
+   setSelectedRecord(null);
    setIsModalOpen(true);
-   setMData(record)
+   setMData(null)
 
  }
 
- const handleDelete= (record) =>{
+ const handleDelete=async (record) =>{
    console.log("delete record is",record)
-   deleteFunction({variables:{id:record?.id}})
+  const result = await deleteFunction({variables:{id:record?.id}})
+   refetch()
+   if(result?.data?.delete_products_by_pk)return toast("deleted sucessfully")
+   else toast("Not Deleted")
 
  }
+
+     //Open new tab if clicks on an image
+     const openInNewTab = (url) => {
+      const newWindow = window.open(url, "_blank", "noopener,noreferrer")
+      if (newWindow) newWindow.opener = null
+    }
+  
 
   const columns = [
    { title: 'Id', dataIndex: 'uid', key: 'uid', },
@@ -239,14 +286,22 @@ function MyComponent() {
    { title: 'Desc', dataIndex: 'description', key: 'description', },
    { title: 'Cost', dataIndex: 'cost', key: 'cost', },
    { title: 'Currency', dataIndex: 'currency', key: 'currency', }, 
+   { title: 'image_url', dataIndex: 'image_url', key: 'image_url',
+   render: (text, record) => {
+    console.log("text ",text)
+     return text ?  <EyeOutlined  onClick={()=>openInNewTab(text) }/> : <EyeInvisibleOutlined/>
+  }
+},
+   { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', render:(val) => moment(val).format('MMMM Do YYYY, h:mm:ss a') }, 
+
    { title: 'Action', dataIndex: 'action', key: 'action', 
    
    render: (_,record) => {
 
-      return (  <>
-                  <Button  onClick={() => handleEdit(record)} > Edit </Button>
-                  <Button  onClick={() => handleDelete(record)} > Delete </Button>
-                  </>
+      return (  <Space>
+                <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button>
+                  <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button>
+                  </Space>
 
               )
                   
@@ -267,10 +322,10 @@ function MyComponent() {
   return (<>
     <div style={{display:'flex', justifyContent:"flex-end"}}>
            <Input type='text' style={{minWidth:"50px", width:"150px"}} onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
-           <Button type="primary" onClick={handleCreate}>CREATE</Button>
+           <Button type="primary" onClick={handleCreate} icon={<PlusSquareFilled />} ghost>CREATE</Button>
   </div>
  
-            <Button type="primary" onClick={handleCreate}>CREATE</Button>
+            {/* <Button type="primary" onClick={handleCreate}>CREATE</Button> */}
             <Table dataSource={Data} columns={columns} />
             <Button onClick={PreviousPage}
              disabled={pageNo<=1} 
@@ -286,6 +341,8 @@ function MyComponent() {
                isModalOpen={isModalOpen}
                insertFunction ={insertFunction}
                updateFunction ={updateFunction}
+               user_id={user?.id}
+               refetch={refetch}
            />
         </>  );
 }

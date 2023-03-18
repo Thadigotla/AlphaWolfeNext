@@ -1,5 +1,5 @@
 import { gql, useMutation, useQuery } from '@apollo/client';
-import { Button, Col, Form, Input, Modal, Row, Table } from 'antd';
+import { Button, Col, Form, Input, Modal, Row, Space, Table } from 'antd';
 import { useState } from 'react';
 import {useEffect} from 'react';
 import toast from 'react-hot-toast';
@@ -9,11 +9,13 @@ import {
 
   useUserData
 } from '@nhost/nextjs'
+import moment from 'moment';
+import { DeleteFilled, DeleteOutlined, EditOutlined, PlusSquareFilled } from '@ant-design/icons';
 
  
 
 const query = gql`query GetPets($where: pets_bool_exp,$limit:Int,$offset:Int) {
-  pets(where: $where, offset:$offset, limit:$limit) {
+  pets(where: $where, offset:$offset, limit:$limit,order_by: {uid: desc}) {
     name
     type
     gender
@@ -140,27 +142,28 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                {/* <Button type="primary" onClick={showModal}>
                   { selectedRecord ? "EDIT" :  "CREATE"}
                </Button> */}
-               <Modal title="Basic Modal" open={isModalOpen} okText="Close" onOk={handleOk} onCancel={handleCancel}>
+               <Modal   title = { selectedRecord ? "EDIT" :  "CREATE"} open={isModalOpen} okText="Close" onOk={handleOk} onCancel={handleCancel}>
                   <Form    onChange={onChange}    onFinish={onFinish}>
-                     <Row gutter={15}>
-                        <Col  className="gutter-row"  >
+                     <Row gutter={[16, 16]}>
+                        <Col  className="gutter-row" span={12}  >
                            <Input id="name" required  placeholder='Name' value={Mdata?.name} />
                         </Col>
-                        <Col  className="gutter-row">
+                        <Col  className="gutter-row" span={12}>
                         <Input id="type"  required placeholder='Type' value={Mdata?.type} />
                         </Col>
-                        <Col  className="gutter-row">
+                        <Col  className="gutter-row" span={12}>
                         <Input id="gender" required placeholder='Gender' value={Mdata?.gender} />
                         </Col>
-                        <Col  className="gutter-row">
-                        <Input id="date_of_birth" required placeholder='Date of Birth' value={Mdata?.date_of_birth} />
+                        <Col  className="gutter-row" span={12}>
+                        <Input id="date_of_birth" type='date' required placeholder='Date of Birth' value={Mdata?.date_of_birth} />
                         </Col>
 
-                        <Col  className="gutter-row">
+                        <Col  className="gutter-row" span={12}>
                         <Input id="description" required placeholder='Description' value={Mdata?.description} />
                         </Col>
 
                      </Row>
+                     <br/>
                      <Button htmlType='submit'  type='primary'>Submit</Button>
 
                      </Form>
@@ -283,14 +286,15 @@ function MyComponent() {
    { title: 'Type', dataIndex: 'type', key: 'type', },
    { title: 'Gender', dataIndex: 'gender', key: 'gender', },
    { title: 'DOB', dataIndex: 'date_of_birth', key: 'date_of_birth', }, 
+   { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', render:(val) => moment(val).format('MMMM Do YYYY, h:mm:ss a') }, 
    { title: 'Action', dataIndex: 'action', key: 'action', 
    
    render: (_,record) => {
 
-      return (  <>
-                  <Button  onClick={() => handleEdit(record)} > Edit </Button>
-                  <Button  onClick={() => handleDelete(record)} > Delete </Button>
-                  </>
+      return (  <Space>
+                  <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button>
+                  <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button>
+                  </Space>
 
               )
                   
@@ -306,7 +310,7 @@ function MyComponent() {
   return (<>
   <div style={{display:'flex', justifyContent:"flex-end"}}>
            <Input type='text' style={{minWidth:"50px", width:"150px"}} placeholder='Search By Name' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
-           <Button type="primary" onClick={handleCreate}>CREATE</Button>
+           <Button type="primary" onClick={handleCreate} icon={<PlusSquareFilled />} ghost>CREATE</Button>
   </div>
          
             <Table dataSource={Data} columns={columns} />

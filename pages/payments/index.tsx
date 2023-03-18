@@ -5,9 +5,10 @@ import {useEffect} from 'react';
 import toast from 'react-hot-toast';
 import CustomLayout from '../../styles/components/produc';
 import { useUserData } from '@nhost/nextjs';
+import moment from 'moment';
  
 const query = gql`query GetPayments($where: payments_bool_exp,$limit:Int,$offset:Int) {
-  payments(where: $where, offset:$offset, limit:$limit) {
+  payments(where: $where, offset:$offset, limit:$limit,order_by:  {uid: desc}) {
     uid
 		total_amount
 		event_object
@@ -259,12 +260,13 @@ function MyComponent() {
   const columns = [
    { title: 'Id', dataIndex: 'uid', key: 'uid', },
    { title: 'Total Amount', dataIndex: 'total_amount', key: 'total_amount', },
-   { title: 'Default Role', dataIndex: 'default_role', key: 'default_role', },
+  //  { title: 'Default Role', dataIndex: 'default_role', key: 'default_role', },
    { title: 'Status', dataIndex: 'status', key: 'status', },
    { title: 'SubTotal', dataIndex: 'amount_subtotal', key: 'amount_subtotal', },
    { title: 'Total', dataIndex: 'amount_total', key: 'amount_total', },
    { title: 'Discouunt', dataIndex: 'amount_discount', key: 'amount_discount', },
-   { title: 'Created At', dataIndex: 'created_at', key: 'created_at', },
+   { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', render:(val) => moment(val).format('MMMM Do YYYY, h:mm:ss a') }, 
+   { title: 'UpdatedAt', dataIndex: 'updated_at', key: 'updated_at', render:(val) => moment(val).format('MMMM Do YYYY, h:mm:ss a') }, 
   //  { title: 'Action', dataIndex: 'action', key: 'action', 
    
   //  render: (_,record) => {

@@ -496,9 +496,9 @@ const TermsConditions: React.FC = (props: any) => {
               <p className="tnc-end-para">
                 If you have any questions or concerns about our terms and
                 conditions, please{" "}
-                <a href="/contact" className="text-link">
+                <div onClick={()=>router.push("/contact")}   className="text-link">
                   contact us
-                </a>
+                </div>
                 for assistance.
               </p>
             </div>

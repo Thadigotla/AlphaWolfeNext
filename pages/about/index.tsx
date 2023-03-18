@@ -47,14 +47,17 @@ import Image from 'next/image'
                 id="w-node-_7a0bbc8a-b233-6632-318e-b87cd8f74b23-53fdb79f"
                 className="div-block-7"
               >
-                <div className="about-image-wrapper">
+                <div className="about-image-wrapper about-image">
                   <Image
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3dc0da600a9bb400c_vet-checks-dog.webp"
                     loading="lazy"
                     layout="fill"
+                    objectFit="cover"
                     sizes="(max-width: 479px) 100vw, (max-width: 767px) 69vw, (max-width: 991px) 396.20635986328125px, 39vw"
                     alt="image"
-                    className="about-image"
+                    className="new_img"
+                    // style={{borderRadius:"1em"}}
+                    // className="about-image"
                   />
                   <div className="rotated-border" />
                 </div>
@@ -62,18 +65,19 @@ import Image from 'next/image'
             </div>
             <div className="about-sec-wrapper _2">
               <div className="div-block-7">
-                <div className="about-image-wrapper">
+                <div className="about-image-wrapper about-image _2">
                   <Image
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park.webp"
                     loading="lazy"
                     layout="fill"
-
                     sizes="(max-width: 479px) 100vw, (max-width: 767px) 69vw, (max-width: 991px) 396.20635986328125px, 39vw"
                     // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-2600.webp 2600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3257c7480df1b5c4a_happy-family-with-cute-bichon-dog-in-the-park-p-3200.webp 3200w"
                     alt=""
-                    className="about-image _2"
+                    className="new_img"
+
+                    // className="about-image _2"
                   />
-                  <div className="rotated-border _2" />
+                  <div className="rotated-border _2 rotated_border_2" />
                 </div>
               </div>
               <div className="div-block-6">
@@ -101,16 +105,16 @@ import Image from 'next/image'
                 id="w-node-_7cc9a9a1-c1ac-28e9-f0d0-9a738973d116-53fdb79f"
                 className="div-block-7"
               >
-                <div className="about-image-wrapper">
+                <div className="about-image-wrapper about-image">
                   <Image
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home.webp"
                     loading="lazy"
                     layout="fill"
-
+                    className="new_img"
                     sizes="(max-width: 479px) 100vw, (max-width: 767px) 69vw, (max-width: 991px) 396.20635986328125px, 39vw"
                     // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-2600.webp 2600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64058eb3f813ce7a070b184f_woman-feeding-dog-with-nutritional-food-at-home-p-3200.webp 3200w"
                     alt=""
-                    className="about-image"
+                    // className="about-image"
                   />
                   <div className="rotated-border" />
                 </div>

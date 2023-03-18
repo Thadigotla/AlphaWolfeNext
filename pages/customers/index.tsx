@@ -4,6 +4,7 @@ import { useState } from 'react';
 import {useEffect} from 'react';
 import toast from 'react-hot-toast';
 import CustomLayout from '../../styles/components/produc';
+import moment from 'moment';
  
 const query = gql`query GetUsersView {
   users_view {
@@ -217,7 +218,7 @@ function MyComponent() {
    { title: 'Disabled', dataIndex: 'disabled', key: 'disabled', },
    { title: 'Email Verified', dataIndex: 'email_verified', key: 'email_verified', },
    { title: 'Phone No', dataIndex: 'phone_number', key: 'phone_number', },
-   { title: 'Created At', dataIndex: 'created_at', key: 'created_at', },
+   { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', render:(val) => moment(val).format('MMMM Do YYYY, h:mm:ss a') }, 
    { title: 'Last Seen', dataIndex: 'last_seen', key: 'last_seen', },
   //  { title: 'Action', dataIndex: 'action', key: 'action', 
    

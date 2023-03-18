@@ -1371,3 +1371,162 @@ th {
 .bg-icon-test{
   background-color: rgb(4, 255, 4);
 } */
+
+/* .picker-dropdown {
+  z-index: 1051 !important;
+} */
+
+.logo_wrapper_{
+
+                             /* background-color: green;    */
+
+                             position: relative !important;
+
+                             height: 55px;
+                             width:250px;
+
+
+}
+
+
+.logo_wrapper_imgs{
+  position: absolute;
+  /* height: 100%;
+  width: 100%; */
+}
+
+
+.bg-icon-test-wrapper{
+  height: 100px;
+  width: 100px;
+  position:relative !important;
+  background-color: #9192cb;
+ }
+
+ 
+ .result{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  /* background-color: gold; */
+  /* height: 100%;
+  width: 100%; */
+  /* background-color: #0fa71e; */
+ }
+ 
+
+ .skkkk{
+  /* background-color: black; */
+ }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .image-98-wrapper{
+  /* background-color: green; */
+  position:  relative !important;
+  height: 600px;
+  width: 1000px;
+ }
+ 
+
+ .image-88-wrapper{
+  /* background-color: #1890ff; */
+  height: 1099px;
+  width: 599px;
+ }

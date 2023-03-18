@@ -21,7 +21,7 @@ import Image  from 'next/image'
         title="Hey Pet Owner, Check out the Alpha Wolfe Nutritional Test that would make your dog healthy and happy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       ></iframe> */}
-      <iframe width="100%" height="621" src="https://www.youtube.com/embed/muEyvtCV34w" title="Hey Pet Owner, Check out the Alpha Wolfe Nutritional Test that would make your dog healthy and happy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe width="100%" height="621" src="https://www.youtube.com/embed/muEyvtCV34w" title="Hey Pet Owner, Check out the Alpha Wolfe Nutritional Test that would make your dog healthy and happy"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
 
  
 
