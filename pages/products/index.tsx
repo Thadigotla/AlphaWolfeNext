@@ -20,6 +20,7 @@ import {
   DeleteOutlined,
   LoadingOutlined,
   CheckOutlined,
+  CloseOutlined 
 } from "@ant-design/icons";
 
 import { Product } from "../../components/Product/Product";
@@ -121,6 +122,8 @@ export interface Item {
 
   const [promoValid, setPromoValid] = useState<boolean>(false);
 
+  const [stripePromoValid, setStripePromoValid] = useState<boolean>(false);
+
   const addItem = (item: Item) => {
     const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
     if (existingItem) {
@@ -202,6 +205,8 @@ export interface Item {
     if (result?.valid && result?.id) {
       setCoupon_Code(result);
       setPromoValid(true);
+    }else{
+      setStripePromoValid(true)
     }
   };
 
@@ -415,8 +420,9 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
               <Input onChange={(e) => setCoupon(e?.target?.value)} />
             </span>
             <span>
-              {promoValid && promo && <CheckOutlined />}
-              {!promoValid && promo && <LoadingOutlined />}
+              {promoValid && promo &&!stripePromoValid&& <CheckOutlined />}
+              {!promoValid && promo && !stripePromoValid && <LoadingOutlined />}
+              {stripePromoValid && promo && <CloseOutlined />}
             </span>
           </Space>
         </Space>
@@ -467,10 +473,10 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
                     <div className="product-quantity">
                       <span style={{ paddingRight: "10px" }}>
                         Quantity :
-                        {/* {
-                          cartItems.find((item) => item.id === product.id)
+                        {
+                          cartItems?.find((item) => item.id === product.id)
                             ?.quantity
-                        } */}
+                        }
                       </span>
  
                     </div>

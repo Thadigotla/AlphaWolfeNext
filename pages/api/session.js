@@ -8,7 +8,8 @@ const session = async  (req, res) => {
   const cartItems = req.body;
   console.log("req", cartItems, cartItems?.totalPrice, cartItems?.couponDetails?.id);
 
-  const Session = await stripeClient.checkout.sessions.create({
+
+  let options = {
     payment_method_types: ["card"],
     line_items: [
       {
@@ -28,16 +29,55 @@ const session = async  (req, res) => {
       payment_id: cartItems.payment_id,
       order_id: cartItems.order_id,
     },
-    discounts: [
-      {
-        coupon: cartItems?.Coupon_Code?.id,
-      },
-    ],
     success_url: "https://alpha-wolfe-next-ovcdatqcz-thadigotla.vercel.app/payments",
     cancel_url: "https://alpha-wolfe-next-ovcdatqcz-thadigotla.vercel.app/products",
     shipping_address_collection: {
       allowed_countries: ["US", "CA", "IN", "GB"], // List of countries where shipping addresses can be collected
     },
+  }
+
+
+  if(cartItems?.Coupon_Code?.id){
+    options ={
+      ...options,
+      discounts: [
+        {
+          coupon: cartItems?.Coupon_Code?.id,
+        },
+      ],
+      }
+  }
+  const Session = await stripeClient.checkout.sessions.create({
+    // payment_method_types: ["card"],
+    // line_items: [
+    //   {
+    //     price_data: {
+    //       currency: "inr",
+    //       product_data: {
+    //         name: "Amount",
+    //       },
+    //       unit_amount: cartItems.totalPrice * 100,
+    //     },
+    //     quantity: 1,
+    //   },
+    // ],
+    // mode: "payment",
+    // metadata: {
+    //   customer_id: cartItems.user_id,
+    //   payment_id: cartItems.payment_id,
+    //   order_id: cartItems.order_id,
+    // },
+    // discounts: [
+    //   {
+    //     coupon: cartItems?.Coupon_Code?.id,
+    //   },
+    // ],
+    // success_url: "https://alpha-wolfe-next-ovcdatqcz-thadigotla.vercel.app/payments",
+    // cancel_url: "https://alpha-wolfe-next-ovcdatqcz-thadigotla.vercel.app/products",
+    // shipping_address_collection: {
+    //   allowed_countries: ["US", "CA", "IN", "GB"], // List of countries where shipping addresses can be collected
+    // },
+    ...options
   });
 
   res.status(200).json({
