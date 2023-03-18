@@ -1222,6 +1222,15 @@ th {
     flex-wrap: wrap;
   }
 
+  .image-3{
+    display:none;
+  }
+  
+  
+  .image-86-wrapper {
+    display:none;
+  }
+
   .nutritional_banner_heading,
   .dog_quotation_heading,
   .mission_right_head {
