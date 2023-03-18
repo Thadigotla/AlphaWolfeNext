@@ -91,7 +91,7 @@ const SignIn = () => {
 
       if(forgotPassword){
       const result =  await resetPassword(email, {
-          redirectTo: 'http://localhost:3000/forgot'
+          redirectTo: 'https://alpha-wolfe-next-ovcdatqcz-thadigotla.vercel.app/forgot'
         })
 
         console.log("result is",result)
