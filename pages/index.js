@@ -182,7 +182,7 @@ import Link from "next/link";
                 </div>
                   <div className="crufts-block" >
                     <div>Upcoming Event</div>
-                    <div style={{position: relative , height:"100%",width:"100%"}}>
+                    <div style={{position: "relative" , height:"100%",width:"100%"}}>
                     <Image
                       style={{height:"100%", width:"100%"}}
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6405f0619cc6e02bfb9e0550_crufts-logo-update.png"
