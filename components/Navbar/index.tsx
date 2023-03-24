@@ -231,7 +231,9 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
               size="large"
               icon={
                 <Badge count={itemsCount} color="blue">
-                  {/* <CartLogo /> */}
+             <Avatar shape="square" style={{background:"none"}} size="large">
+              <ShoppingCartOutlined size={50} style={{ fontSize: "28px", color:"green" }} />
+            </Avatar>
                 </Badge>
               }
               type="primary"
