@@ -1,17 +1,17 @@
 import { gql, useMutation, useQuery } from '@apollo/client';
-import { Button, Col, Form, Input, Modal, Row, Space, Table, Upload } from 'antd';
+import { Button, Col, Form, Image, Input, Modal, Row, Select, Space, Table, Upload } from 'antd';
 import { useState } from 'react';
 import {useEffect} from 'react';
 import toast from 'react-hot-toast';
 import CustomLayout from '../../styles/components/produc';
 import { useUserData } from '@nhost/nextjs';
 import moment from 'moment';
-import { DeleteFilled, EditOutlined, EyeInvisibleOutlined, EyeOutlined, PlusOutlined, PlusSquareFilled } from '@ant-design/icons';
+import { DeleteFilled, DeleteOutlined, EditOutlined, EyeInvisibleOutlined, EyeOutlined, PlusOutlined, PlusSquareFilled } from '@ant-design/icons';
 import { nhost } from '../_app';
  
 const query = gql` query ($where: products_bool_exp,$limit:Int,$offset:Int) {
    products(where: $where, offset:$offset, limit:$limit,order_by:  {uid: desc})
-    { id uid name description cost currency  image_url created_at
+    { id uid name description cost currency features  image_url images created_at
     }
     products_aggregate {
       aggregate{
@@ -50,11 +50,6 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
 
    const handleCancel = () => { setIsModalOpen(false); };
 
-   const onChange = (e) =>{ 
-      console.log("Checking event is ",e, e?.target?.id, e?.target?.value)
-      
-      setMData({...Mdata, [e?.target?.id]:e?.target?.value}) 
-   }
 
    console.log("MDATA is", Mdata)
    const onFinish = async () =>{
@@ -73,7 +68,9 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                  currency: Mdata.currency,
                  description: Mdata.description,
                  name: Mdata.name,
-                 image_url:Mdata?.image_url
+                 features: Mdata?.features?.length>0 ? Mdata?.features : [],
+                 image_url:Mdata?.image_url,
+                 images:Mdata?.images?.length>0 ? Mdata?.images : [],
                }
              }
              
@@ -97,7 +94,9 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                  currency: Mdata.currency,
                  description: Mdata.description,
                  name: Mdata.name,
-                 image_url:Mdata?.image_url
+                 image_url:Mdata?.image_url,
+                 features: Mdata?.features?.length>0 ? Mdata?.features : [],
+                 images:Mdata?.images?.length>0 ? Mdata?.images : [],
 
                }
              }
@@ -133,6 +132,88 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
     },
   };
 
+  const OtherFilesUploadProps = {
+    beforeUpload: async (file) => {
+      const link = await nhost.storage.upload({ file, bucketId: "public" });
+      const links = await nhost.storage.getPublicUrl({
+        fileId: link.fileMetadata.id,
+      });
+    
+      console.log("Links ",links)
+
+      let Images = [...(Mdata?.images ? Mdata?.images :[]),links]
+      // setFileLink(links);
+      setMData({...Mdata,"images":Images})
+      // refetch();
+    },
+  };
+
+
+  const onChange = (e) =>{ 
+
+    if(e?.target?.id=="features"){
+      
+      return  Mdata
+    }
+    console.log("Checking event is ",e, e?.target?.id, e?.target?.value)
+    
+    setMData({...Mdata, [e?.target?.id]:e?.target?.value}) 
+ }
+
+
+  const handleSelect = (e) =>{
+
+    let copyData = {...Mdata}
+
+    copyData["features"] = [...(Mdata["features"] ? Mdata["features"] : []), e ]
+
+    setMData({...copyData})
+
+  }
+  
+ const handleDeselect = (e) =>{
+
+      let copyData = {...Mdata}
+
+      if(copyData?.["features"]?.includes(e)){
+
+        const newArray = copyData?.["features"].filter((element) => element !== e);
+
+        copyData["features"] = newArray
+
+      }
+
+  setMData({...copyData})
+
+
+ } 
+ const deleteImage =(e,i) =>{
+
+
+  if(e==="images"){
+
+    const imagesCopy =[...Mdata?.images]
+
+    console.log("asd",e,i,imagesCopy, Array.isArray(imagesCopy), imagesCopy.slice(i, 1)  )
+
+    imagesCopy.splice(i, 1);
+
+   return setMData({...Mdata,images:imagesCopy})
+
+
+  }
+
+  if(e=="image_url"){
+
+
+   return setMData({...Mdata,image_url:null})
+
+
+  }
+
+
+
+ }
 
       return     <div >
                {/* <Button type="primary" onClick={showModal}>
@@ -142,24 +223,78 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                   <Form    onChange={onChange}    onFinish={onFinish}>
                      <Row gutter={[16, 16]}>
                         <Col  className="gutter-row" span={12}   >
+                           <label htmlFor='name'>Name</label>
                            <Input id="name" required  placeholder='Name'  value={Mdata?.name} />
                         </Col>
                         <Col  className="gutter-row" span={12} >
+                        <label htmlFor='description'>Descritpion</label>
+
                         <Input id="description"  required placeholder='Descritpion' value={Mdata?.description} />
                         </Col>
                         <Col  className="gutter-row" span={12} >
+                        <label htmlFor='cost'>Cost</label>
+
                         <Input id="cost" required placeholder='Cost' value={Mdata?.cost} />
                         </Col>
                         <Col  className="gutter-row" span={12} >
+                        <label htmlFor='currency'>Currency</label>
+
                         <Input id="currency" required placeholder='Currency' value={Mdata?.currency} />
                         </Col>
-                        <Col  className="gutter-row">
+                        <Col  className="gutter-row" span={24} >
+                        <label htmlFor='name'>Features</label>
+
+                        <Select
+                            mode="tags"
+                            id='features'
+                            style={{ width: '100%' }}
+                            placeholder="Enter Features"
+                            value={Mdata?.features}
+                            onSelect={handleSelect}
+                            onDeselect={handleDeselect}
+                            showSearch={false}
+                          />
+                        </Col>
+
+                        <Col  className="gutter-row" span={24} >
+                        <label htmlFor='name'>Primary Image</label>
+
                           <Upload
+                             
                             style={{ color: "skyblue" }}
                             {...fileUploadProps}
                             accept="image/*"
+                            
                           >
-                            Upload
+                              {Mdata?.image_url ? 
+                              <span onClick={e=>e.stopPropagation()} >
+                                <>
+                                <Image src={Mdata?.image_url} alt="avatar" style={{ width: '50px',height:"50px" }} />
+                                <Button onClick={()=>deleteImage("image_url",null)}   icon={<DeleteOutlined />}></Button>
+                                </>  </span>
+                              :
+                               <Button>Upload</Button>}
+                          </Upload>                 
+                        </Col>
+                        <Col  className="gutter-row" span={24} >
+                        <label htmlFor='name'>Other Images</label>
+
+                          <Upload
+                            style={{ color: "skyblue" }}
+                            {...OtherFilesUploadProps}
+                            accept="image/*"
+                          >
+                              <span onClick={e=>e.stopPropagation()}>
+                                  {Mdata?.images?.map((e,i)=>
+                                             <>
+                                             <Image src={e} alt="avatar" style={{ width: '50px',height:"50px",margin:"1px" }} />
+                                             <Button onClick={()=>deleteImage("images",i)}   icon={<DeleteOutlined />}></Button>
+                                             </>
+                                             )
+                                  } 
+                                     </span>
+                               <Button>Upload</Button>
+                              
                           </Upload>                 
                         </Col>
                      </Row>

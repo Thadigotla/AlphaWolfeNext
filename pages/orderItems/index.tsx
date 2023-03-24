@@ -184,6 +184,7 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                         <Input id="currency" required placeholder='Currencty' value={selectedRecord?.currency} />
                         </Col> */}
                         <Col  className="gutter-row">
+                          <label htmlFor='report'> Report</label>
                           <Upload
                             style={{ color: "skyblue" }}
                             {...fileUploadProps}

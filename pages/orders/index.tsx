@@ -166,9 +166,12 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                      <Row gutter={[16, 16]}>
                       
                         <Col  className="gutter-row" span={12}>
-                        <Input id="total_amount"  required placeholder='total_amount' value={Mdata?.total_amount} />
+                        <label htmlFor='total_amount'>Total Amount</label>
+                        <Input id="total_amount"  required placeholder='Total Amount' value={Mdata?.total_amount} />
                         </Col>
                         <Col  className="gutter-row" span={12} >
+                        <label htmlFor='user'>User</label>
+
                           <div>
  
                           <Select
@@ -184,6 +187,7 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                         </Col>
 
                         <Col  className="gutter-row" span={12} >
+                        <label htmlFor='status'>Status</label>
  
                           <Select
                               showSearch

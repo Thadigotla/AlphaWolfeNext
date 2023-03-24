@@ -135,19 +135,24 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                   <Form    onChange={onChange}    onFinish={onFinish}>
                      <Row gutter={15}>
                         <Col  className="gutter-row"  >
+                           <label htmlFor='name'>Name</label>
                            <Input id="name" required  placeholder='Name' value={selectedRecord?.name} />
                         </Col>
                         <Col  className="gutter-row">
+                        <label htmlFor='type'>Type</label>
                         <Input id="type"  required placeholder='Type' value={selectedRecord?.type} />
                         </Col>
                         <Col  className="gutter-row">
+                        <label htmlFor='gender'>Gender</label>
                         <Input id="gender" required placeholder='Gender' value={selectedRecord?.gender} />
                         </Col>
                         <Col  className="gutter-row">
+                        <label htmlFor='date_of_birth'>Date of Birth</label>
                         <Input id="date_of_birth" required placeholder='Date of Birth' value={selectedRecord?.date_of_birth} />
                         </Col>
 
                         <Col  className="gutter-row">
+                        <label htmlFor='description'>Description</label>
                         <Input id="description" required placeholder='Description' value={selectedRecord?.description} />
                         </Col>
 
