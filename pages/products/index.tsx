@@ -469,7 +469,10 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
                   </Col>
                   <Col span={16} className="product-description">
                     <div className="product-name">{product.name}</div>
+                    <p>{product.description}</p>
+                    <br/>
                     <div className="product-price">&#163; {product.cost}</div>
+                    <br/>
                     <div className="product-quantity">
                       <span style={{ paddingRight: "10px" }}>
                         Quantity :
@@ -480,6 +483,8 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
                       </span>
  
                     </div>
+                    <br/>
+
                     <div className="buttons">
                       <Space>
                         <Button
