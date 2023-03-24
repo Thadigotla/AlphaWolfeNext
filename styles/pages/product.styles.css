@@ -1,0 +1,103 @@
+.products-list {
+  /* width: 80%;
+    margin: 0 auto; */
+  margin-top: 86px;
+}
+
+.product-container {
+  font-size: 1.8em;
+  width: 80%;
+  margin: 40px auto;
+}
+
+.product-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-left: 40px;
+}
+
+.product-image {
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+  background-color: #c4b2a0;
+}
+
+.product-name {
+  font-family: Optima, sans-serif;
+  font-size: 1.9em;
+  font-weight: 700;
+}
+
+.product-price {
+  font-family: Optima, sans-serif;
+  font-size: 1.6em;
+}
+
+.product-quantity {
+  font-size: 1.4em;
+  display: flex;
+  align-items: center;
+}
+
+.cart-item {
+  font-size: 1em;
+  font-weight: 400;
+}
+
+/* .product-cart {
+    position: fixed;
+    top: 100;
+    right: 0;
+    width: 40%;
+    border-radius: 8px;
+} */
+
+@media only screen and (max-width: 600px) {
+  .products-list {
+    margin-top: 1em;
+  }
+
+  .product-container {
+    font-size: 24px;
+    width: 100%;
+    margin: 40px auto;
+  }
+
+  .product-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 20px;
+  }
+
+  .product-image {
+    display: flex;
+    justify-content: center;
+    border-radius: 12px;
+    background-color: #c4b2a0;
+  }
+
+  .product-name {
+    font-family: Optima, sans-serif;
+    font-size: 1.6em;
+    font-weight: 700;
+  }
+
+  .product-price {
+    font-family: Optima, sans-serif;
+    font-size: 1.5em;
+  }
+
+  .product-quantity {
+    font-size: 1.4em;
+    display: flex;
+    align-items: center;
+  }
+
+  .product-cart {
+    position: relative;
+    width: 100%;
+  }
+}

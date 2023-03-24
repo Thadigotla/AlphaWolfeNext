@@ -1,0 +1,44 @@
+{
+  "name": "nhost-quickstart-nextjs",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.0.1",
+    "@apollo/client": "^3.7.10",
+    "@headlessui/react": "^1.6.0",
+    "@heroicons/react": "^1.0.6",
+    "@nhost/nextjs": "^1.13.15",
+    "@nhost/react": "^2.0.9",
+    "@nhost/react-apollo": "^5.0.10",
+    "@stripe/react-stripe-js": "^2.0.0",
+    "@stripe/stripe-js": "^1.49.0",
+    "@types/node": "^18.15.3",
+    "@types/react": "^18.0.28",
+    "antd": "^5.3.1",
+    "bootstrap": "^5.2.3",
+    "classnames": "^2.3.1",
+    "express": "^4.18.2",
+    "graphql": "^16.6.0",
+    "micro": "^10.0.1",
+    "micro-cors": "^0.1.1",
+    "moment": "^2.29.4",
+    "next": "12.1.5",
+    "pg": "^8.10.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-hot-toast": "^2.2.0",
+    "react-query": "^3.39.3",
+    "rsuite": "^5.28.2",
+    "stripe": "^11.14.0",
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "eslint": "8.14.0",
+    "eslint-config-next": "12.1.5"
+  }
+}
