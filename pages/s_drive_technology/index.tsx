@@ -9,7 +9,7 @@ import Image from "next/image"
     <>
          <Navbar />
 
-    <div className="wrapper">
+    <p className="wrapper">
       <section className="Header">
         <h1 className="Header_one">S-Drive Technology</h1>
         <h3 className="Header_two">
@@ -39,21 +39,21 @@ import Image from "next/image"
             </section> */}
 
       <section className="Alpha_details">
-        <div className="Alpha_details_para_1">
+        <p className="Alpha_details_para_1">
           The S- Drive is a wellness device, it is not designed to diagnose,
           detect or cure any illness. The S Drive is operated in 67 countries
           by: wellbeing practitioners, sports professionals, fitness and beauty
           centres, nutritional professionals, Dietary Advisors, Weight Loss
           Centres, Spa Resorts and preventative organisations.
-        </div>
-        <div className="Alpha_details_para_2">
+        </p>
+        <p className="Alpha_details_para_2">
           The S Drive is a portable device with a spectrum coil in its centre.
           We use the hair root bulb as an informational source, since the hair
           follicle is a part of the sensory system of the body. This In-Vivo
           biomarker expresses information from the environment that is present
           in the energy field.
-        </div>
-        <div className="Alpha_details_para_3">
+        </p>
+        <p className="Alpha_details_para_3">
           The coil detects the hair & bulb resonance information, which is then
           digitized and sent securely to our remote computer centre in Germany,
           where the hair and bulbs digitized information is then decrypted. The
@@ -63,18 +63,18 @@ import Image from "next/image"
           provides a personalized, real-time overview of the underlying
           nutritional and metabolic conditions, which determine wellness and
           wellbeing.
-        </div>
-        <div className="Alpha_details_para_4">
+        </p>
+        <p className="Alpha_details_para_4">
           The technology relies on digitizing the information found in four
           strands of hair with their bulbs attached, Plucked from the occipital
           area of the scull and within three minutes digitised. The hair and
           bulb follicles have proven to be effective biomarkers, as they
           accumulate information of Homeostasis and epigenetics over time.
-        </div>
+        </p>
       </section>
 
       <section className="Alpha_details_block_1">
-        <div     className="Alpha_details_block_1_left">
+        <p     className="Alpha_details_block_1_left">
         <Image
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716acf80a805b0f6cb5a1_s1.webp"
           loading="lazy"
@@ -82,37 +82,37 @@ import Image from "next/image"
           layout="fill"
           objectFit="cover"
         />
-        </div>
+        </p>
 
-        <div className="Alpha_details_block_1_right ">
-          <div className="Alpha_details_block_1_right_para_1">
+        <p className="Alpha_details_block_1_right ">
+          <p className="Alpha_details_block_1_right_para_1">
             Our Technology uses In-Vivo bio-information to distinguish which
             information is relevant to supporting efficiency and optimal
             expression.
-          </div>
-          <div className="Alpha_details_block_1_right_para_2">
+          </p>
+          <p className="Alpha_details_block_1_right_para_2">
             This resulting information reflects a variety of underlying
             metabolic processes, often before the expression of a symptom.
-          </div>
-          <div className="Alpha_details_block_1_right_para_3">
+          </p>
+          <p className="Alpha_details_block_1_right_para_3">
             Many scientists believe that computerized informational medicine has
             become possible due, in part, to the increasing understanding of
             Homeostasis and epigenetic environmental information.
-          </div>
-          <div className="Alpha_details_block_1_right_para_4">
+          </p>
+          <p className="Alpha_details_block_1_right_para_4">
             Hair shafts and their bulb / follicles store former metabolic and
             nutritional information, which reveals sensory bio-information.
-          </div>
-          <div className="Alpha_details_block_1_right_para_5">
+          </p>
+          <p className="Alpha_details_block_1_right_para_5">
             Hair can be found on all of the major visible surfaces of the body.
             It is also the only body structure that is completely renewable
             without scarring.
-          </div>
-        </div>
+          </p>
+        </p>
       </section>
 
       <section className="Alpha_details_block_2">
-        <div className="Alpha_details_block_2_para">
+        <p className="Alpha_details_block_2_para">
           The ectoderm is the extreme outer layer of the neural tube, which
           forms at the end of the 4th week of gestation. This develops the hair
           as well as the rest of integumentary system, which comprises the skin,
@@ -124,20 +124,20 @@ import Image from "next/image"
           will ever have, as follicles cannot be added later in life. When we
           grow older, the size of the body increases and the density of hair
           follicles on the skin decreases.
-        </div>
+        </p>
       </section>
 
       <section className="Alpha_details_block_3">
-        <div className="Alpha_details_block_3_left">
-          <div className="Alpha_details_block_3_left_para_1">
+        <p className="Alpha_details_block_3_left">
+          <p className="Alpha_details_block_3_left_para_1">
             The resonant information changes over time as it is connected
             through resonance with the Epigenetic influence of the person. Our
             macro and micro environments have an effect, such as – chemical
             toxins, air quality, food and nutrients absorbed, the
             electromagnetic environment and even the 50,000+ thoughts we have
             per day.
-          </div>
-          <div className="Alpha_details_block_3_left_para_2">
+          </p>
+          <p className="Alpha_details_block_3_left_para_2">
             {" "}
             The S Drives digitized hair information is then sent via a secure
             connection to our high-speed servers in Hamburg Germany, which use
@@ -146,19 +146,19 @@ import Image from "next/image"
             environmental influences. No personal information is sent to Germany
             of the clients. Their names or addresses as well as other details
             remain completely on the S-Drive operator’s computer.
-          </div>
-          <div className="Alpha_details_block_3_left_para_3">
+          </p>
+          <p className="Alpha_details_block_3_left_para_3">
             The resulting Epigenetic information is presented in a comprehensive
             report which is returned to the S-Drive operator within 15 minutes.
-          </div>
-          <div className="Alpha_details_block_3_left_para_4">
+          </p>
+          <p className="Alpha_details_block_3_left_para_4">
             {" "}
             The Report is relevant for a period of 60-days as the Epigenetic
             influences are constantly changing.{" "}
-          </div>{" "}
-        </div>
-        <div className="Alpha_details_block_3_right">
-          <div  className="Alpha_details_block_3_right_img">
+          </p>{" "}
+        </p>
+        <p className="Alpha_details_block_3_right">
+          <p  className="Alpha_details_block_3_right_img">
           <Image
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6407142ec344653327fa70f9_s2.webp"
             loading="lazy"
@@ -166,13 +166,13 @@ import Image from "next/image"
             layout="fill"
             objectFit="contain"
           />
-          </div>
+          </p>
 
-        </div>
+        </p>
       </section>
 
       <section className="Alpha_details_block_4">
-        <div className="Alpha_details_block_4_para_1">
+        <p className="Alpha_details_block_4_para_1">
           {" "}
           Alpha Wolfe’s partnership with Cell Wellbeing’s intelligent epigenetic
           mapping system consists of two parts: the biological information
@@ -183,18 +183,18 @@ import Image from "next/image"
           algorithms in Germany receive the secure digitized biological field
           data, they then decrypt and decode this data before using its content
           to map the complicated biological information.{" "}
-        </div>
-        <div className="Alpha_details_block_4_para_2">
+        </p>
+        <p className="Alpha_details_block_4_para_2">
           {" "}
           The German algorithm calculates the relevancy of each specific data
-          item to determine the weighting of each individual category. The
+          item to determine the weighting of each inpidual category. The
           report presents this information as a % of relevancy in each
-          individual pie chart graph.{" "}
-        </div>
+          inpidual pie chart graph.{" "}
+        </p>
       </section>
 
       <section className="Alpha_details_block_5">
-        <div className="Alpha_details_block_5_left">
+        <p className="Alpha_details_block_5_left">
         <Image
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6.webp"
           loading="lazy"
@@ -203,28 +203,28 @@ import Image from "next/image"
           objectFit="contain"
          
         />
-        </div>
-        <div className="Alpha_details_block_5_right">
-          <div className="Alpha_details_block_5_right_para_1">
+        </p>
+        <p className="Alpha_details_block_5_right">
+          <p className="Alpha_details_block_5_right_para_1">
             When the mapping process is completed, the specific epigenetic data
             is then returned as an encrypted data file to the geo located
             S-Drive using the same unique encrypted sending codes.
-          </div>
-          <div className="Alpha_details_block_5_right_para_2">
+          </p>
+          <p className="Alpha_details_block_5_right_para_2">
             Upon receipt by the S-Drive, its automated software decrypts the
             data file, generates a readable file and then adds the client’s full
             name and details to the epigenetic report.
-          </div>
-          <div className="Alpha_details_block_5_right_para_3">
+          </p>
+          <p className="Alpha_details_block_5_right_para_3">
             *Note: At all times the clients’ personal data remains on the local
             S-Drive licensed computer and is not stored on the Cell Wellbeing
             German facility’s database
-          </div>
-        </div>
+          </p>
+        </p>
       </section>
 
       <section className="Alpha_details_block_6">
-        <div className="Alpha_details_block_6_para">
+        <p className="Alpha_details_block_6_para">
           The S-Drive has an intended use that relates to supporting,
           maintaining or encouraging a general state of health. The S-Drive
           detects epigenetic signals that influence gene expression, so that
@@ -237,11 +237,11 @@ import Image from "next/image"
           diagnose, treat, cure, or prevent disease, as expressly stated on the
           reports that are generated from the S-Drive. The S-Drive is fully
           compliant with FDA guidance 1300013 (UCM429674).
-        </div>
+        </p>
       </section>
 
       <section className="footer_image">
-        <div className="footer_image_Image">
+        <p className="footer_image_Image">
         <Image
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4.webp"
           loading="lazy"
@@ -253,9 +253,9 @@ import Image from "next/image"
           // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4.webp 1920w"
           alt="image"
         />
-        </div>
+        </p>
       </section>
-    </div>
+    </p>
     <Footer></Footer>
 
     </>
