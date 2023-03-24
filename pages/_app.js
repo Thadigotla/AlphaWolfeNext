@@ -12,6 +12,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import React from "react";
 
 import   '../styles/pages/Home.module.css'
+import   '../styles/pages/research.css'
+import   '../styles/pages/gut_support.css'
+import   '../styles/pages/emf_and_elf_sensitivity.css'
 import   '../styles/pages/epigenitics.css'
 import   '../styles/pages/hairBulbFolicle.css'
 import   '../styles/pages/loginPage.css'

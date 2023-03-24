@@ -81,6 +81,31 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
         </Link>
       ),
     },
+    {
+      key: '4',
+      label: (
+        <Link  href="/research">
+         Research
+        </Link>
+      ),
+    },
+    {
+      key: '5',
+      label: (
+        <Link  href="/gut_support">
+         Gut Support
+        </Link>
+      ),
+    },
+    {
+      key: '6',
+      label: (
+        <Link  href="/emf_and_elf_sensitivity">
+         EMF & ELF Sensitivity
+
+        </Link>
+      ),
+    },
   ];
   const certificateItems = [
     {

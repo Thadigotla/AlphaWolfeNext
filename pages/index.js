@@ -285,7 +285,7 @@ import Link from "next/link";
                       loading="lazy"
                       alt=""
                       layout="fill"
-                      objectFilt="contain"
+                      objectFit="contain"
                       // className="image-7"
                     />
 
@@ -299,7 +299,7 @@ import Link from "next/link";
                       loading="lazy"
                       alt=""
                       layout="fill"
-                      objectFilt="contain"
+                      objectFit="contain"
                       // className="image-6"
                     />
                     </div>
@@ -312,7 +312,7 @@ import Link from "next/link";
                       loading="lazy"
                       alt=""
                       layout="fill"
-                      objectFilt="contain"
+                      objectFit="contain"
                       // className="image-8"
                     />
                     </div>
