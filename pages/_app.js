@@ -8,11 +8,13 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import CustomLayout from "../styles/components/produc/index";
 import { NhostApolloProvider } from '@nhost/react-apollo';
 import { useRouter } from 'next/router';
+import {CartItemsContextProvider} from "../store/Item"
 import 'bootstrap/dist/css/bootstrap.css';
 import React from "react";
 
 import   '../styles/pages/Home.module.css'
 import   '../styles/pages/research.css'
+import   '../styles/pages/product-details.css'
 import   '../styles/pages/gut_support.css'
 import   '../styles/pages/emf_and_elf_sensitivity.css'
 import   '../styles/pages/epigenitics.css'
@@ -50,7 +52,8 @@ function MyApp({ Component, pageProps }) {
 
  
   return (
-    
+    <CartItemsContextProvider>
+
     <NhostProvider nhost={nhost} initial={pageProps.nhostSession}>
       <NhostApolloProvider nhost={nhost} client={client}>
 
@@ -67,6 +70,7 @@ function MyApp({ Component, pageProps }) {
     </NhostApolloProvider>
 
     </NhostProvider>
+    </CartItemsContextProvider>
 
   )
 }

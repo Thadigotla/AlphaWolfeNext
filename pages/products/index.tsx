@@ -13,7 +13,7 @@ import {
   Drawer,
   message,
 } from "antd";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,  useContext} from "react";
 import { Navbar } from "../../components/Navbar/index";
 import {
   PlusOutlined,
@@ -33,6 +33,7 @@ import { Footer } from "../../components/Footer";
 import { client, nhost } from "../../pages/_app";
 import { useQuery, gql, useMutation } from '@apollo/client';
 import { useRouter } from 'next/router'
+import CartItemsContext from "../../store/Item";
 
 export interface IProducts {
   //   username: string;
@@ -57,6 +58,12 @@ export interface Item {
 
   const route= useRouter()
  
+  // const [cartItems, setCartItems] = useState<Item[]>([]);
+
+
+  const {cartItems,setCartItems,open,totalCount,totalPrice ,showDrawer,onClose} = useContext(CartItemsContext)
+  // contextData.items
+
   console.log("Data is is",props?.products)
 
   console.log(props?.tableQueryResult?.data?.data, "XXXXXXX");
@@ -72,11 +79,11 @@ export interface Item {
     }
   }, []);
 
-  const [cartItems, setCartItems] = useState<Item[]>([]);
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
+  
   const [promo, setPromo] = useState<boolean>(false);
 
   const [promoValid, setPromoValid] = useState<boolean>(false);
@@ -92,13 +99,15 @@ export interface Item {
       setCartItems([...cartItems, { ...item, quantity: 1 }]);
     }
   };
-
+ 
   const removeItem = (item: Item) => {
     const newCartItems = cartItems.filter(
       (cartItem) => cartItem.id !== item.id
     );
     setCartItems(newCartItems);
   };
+
+ 
 
   const removeOneItem = (item: any) => {
     const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
@@ -110,14 +119,16 @@ export interface Item {
     }
   };
 
-  const totalPrice = cartItems.reduce(
-    (accumulator, current) => accumulator + current.cost * current.quantity,
-    0
-  );
-  const totalCount = cartItems.reduce(
-    (accumulator, current) => accumulator + current.quantity,
-    0
-  );
+  
+ 
+  // const totalPrice = cartItems.reduce(
+  //   (accumulator, current) => accumulator + current.cost * current.quantity,
+  //   0
+  // );
+  // const totalCount = cartItems.reduce(
+  //   (accumulator, current) => accumulator + current.quantity,
+  //   0
+  // );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -261,15 +272,15 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
     // setIsModalOpen(false);
   };
 
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
 
-  const showDrawer = () => {
-    setOpen(true);
-  };
+  // const showDrawer = () => {
+  //   setOpen(true);
+  // };
 
-  const onClose = () => {
-    setOpen(false);
-  };
+  // const onClose = () => {
+  //   setOpen(false);
+  // };
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -280,6 +291,7 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
     });
   };
 
+  
   return (
     <>
       <Navbar showDrawer={showDrawer} itemsCount={totalCount}/>
@@ -319,7 +331,7 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
           {cartItems.length > 0 && (
             <div>
               <p>
-                Total price: <strong>&#163;{totalPrice.toFixed(2)}</strong>
+                Total price: <strong>&#163;{totalPrice()?.toFixed(2)}</strong>
               </p>
             </div>
           )}
@@ -384,7 +396,7 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
                     </Space>
                   </Col>
                   <Col span={16} className="product-description">
-                    <div className="product-name" onClick={()=>route.push(`/products/${product.id}`)}>{product.name}</div>
+                    <div className="product-name" style={{cursor:"pointer"}} onClick={()=>route.push(`/products/${product.id}`)}>{product.name}</div>
                     <p>{product.description}</p>
                     <br/>
                     <div className="product-price">&#163; {product.cost}</div>

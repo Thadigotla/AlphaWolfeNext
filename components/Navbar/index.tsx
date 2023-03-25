@@ -181,11 +181,12 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
             </Button>
           )}
 
-          {pathname === "/products" ? (
+          {/* {pathname === "/products" ? ( */}
+          {pathname.startsWith("/products") ? (
             <Button
               size="large"
               icon={
-                <Badge count={itemsCount} color="blue">
+                <Badge count={itemsCount()} color="blue">
                   <Avatar
                     shape="square"
                     style={{ background: "none" }}
