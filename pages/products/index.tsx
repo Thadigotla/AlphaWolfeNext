@@ -32,6 +32,7 @@ import StripeCheckoutComponent from "../../components/stripe/checkoutForm";
 import { Footer } from "../../components/Footer";
 import { client, nhost } from "../../pages/_app";
 import { useQuery, gql, useMutation } from '@apollo/client';
+import { useRouter } from 'next/router'
 
 export interface IProducts {
   //   username: string;
@@ -53,6 +54,8 @@ export interface Item {
   const [form] = Form.useForm();
 
   const user = nhost.auth.getUser();
+
+  const route= useRouter()
  
   console.log("Data is is",props?.products)
 
@@ -381,7 +384,7 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
                     </Space>
                   </Col>
                   <Col span={16} className="product-description">
-                    <div className="product-name">{product.name}</div>
+                    <div className="product-name" onClick={()=>route.push(`/products/${product.id}`)}>{product.name}</div>
                     <p>{product.description}</p>
                     <br/>
                     <div className="product-price">&#163; {product.cost}</div>
@@ -454,7 +457,9 @@ const {data:products} = await client.query({query});
   return {
     props: {
       products
-    }
+    },
+    //In development it runs everytime... But in production this number matter
+    revalidate:30
   }
 
 
