@@ -30,7 +30,7 @@ import { Formats } from "../../components/stripe/CheckingOutForm";
 import { loadStripe } from "@stripe/stripe-js";
 import StripeCheckoutComponent from "../../components/stripe/checkoutForm";
 import { Footer } from "../../components/Footer";
-import { nhost } from "../../pages/_app";
+import { client, nhost } from "../../pages/_app";
 import { useQuery, gql, useMutation } from '@apollo/client';
 
 export interface IProducts {
@@ -53,56 +53,12 @@ export interface Item {
   const [form] = Form.useForm();
 
   const user = nhost.auth.getUser();
+ 
+  console.log("Data is is",props?.products)
 
-  const onFinishFailed = (errorInfo: any) => {};
+  console.log(props?.tableQueryResult?.data?.data, "XXXXXXX");
 
-  // Table
-  // const products = useTable<any>({
-  //   resource: "products",
-  //   metaData: {
-  //     fields: [
-  //       "id",
-  //       "name",
-  //       "description",
-  //       "cost",
-  //       "currency",
-  //       "image_url",
-  //       { image: ["id", "etag"] },
-  //     ],
-  //   },
-  //   initialSorter: [
-  //     {
-  //       field: "created_at",
-  //       order: "asc",
-  //     },
-  //   ],
-  // });
-  const query = gql` query GetProducts {
-    products {
-      uid
-      cost
-      currency
-      description
-      image_url
-      name
-      created_at
-      updated_at
-      id
-      image_id
-    }
-  }`;
-
-
-  // const products = useQuery(query)
-  
-
-  const { data:products, loading, error } = useQuery(query);
-
-  console.log("Data is is",products)
-
-  console.log(products?.tableQueryResult?.data?.data, "XXXXXXX");
-
-  const productsList = products?.products;
+  const productsList = props?.products?.products;
 
   useEffect(() => {
     let items: any = localStorage.getItem("cartItems");
@@ -166,22 +122,7 @@ export interface Item {
   const [Coupon_Code, setCoupon_Code] = useState({});
 
   const checkPromo = async () => {
-    // const params = {
-    //   FunctionName: 'testhello',
-    //   Payload: JSON.stringify({key: JSON.stringify({
-    //     "coupon_name":Coupon,
-    //   })})
-    // };
-
-    // lambda.invoke(params, function(err, data) {
-    //   if (err) {
-    //     console.log(err);
-    //   } else {
-    //     // setResult(data.Payload);
-    //     console.log("ata is ",data)
-    //   }
-    // });
-
+ 
     setPromo(true);
     const response = await fetch(
       "/api/checkpromo",
@@ -221,11 +162,7 @@ export interface Item {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
-  // const { mutateAsync: createOrderDetails } = useCreateMany<any>();
-  // const { mutateAsync: createOrder } = useCreate<any>();
-  // const { mutateAsync: createPayment } = useCreate<any>();
-
+ 
   
 const insert_mutation_order_details = gql `mutation MyMutation1($object: [order_details_insert_input!]!) {
   insert_order_details(  objects: $object) {
@@ -260,15 +197,7 @@ const insert_mutation = gql `mutation MyMutation3($object:payments_insert_input!
   );
   const onFinish = async () => {
     if (cartItems?.length > 0) {
-      // const createdOrder = await createOrder({
-      //   resource: "orders",
-      //   values: {
-      //     user_id: user?.id,
-      //     status: "placed",
-      //     total_amount: totalPrice,
-      //   },
-      // });
-
+ 
      const createdOrder = await createOrder({variables:{object:{ user_id: user?.id,status: "placed", total_amount: totalPrice}}})
 console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
       
@@ -284,30 +213,14 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
           // card_id: createdCard.data.id,
         };
       });
-
-      // const createdOrderDetails = await createOrderDetails({
-      //   resource: "order_details",
-      //   values: [...formattedCartItems],
-      // });
+ 
      const createdOrderDetails = await createOrderDetails({variables:{object:[...formattedCartItems]}})
      console.log("createdOrderDetails", createdOrderDetails)
      
-      // const createdPayment = await createPayment({
-      //   resource: "payments",
-      //   values: {
-      //     user_id: user?.id,
-      //     // order_id: createdOrder.data.id,
-      //     status: "pending",
-      //     total_amount: totalPrice,
-      //   },
-      // });
-
+ 
       const createdPayment =await createPayment({variables:{ object:{user_id: user?.id, status: "pending",total_amount: totalPrice}}})
       console.log("createdPayment", createdPayment)
-
-      // console.log("CreatedPayment", createdPayment?.data?.id);
-      // console.log("createdOrderDetails", createdOrder?.data?.id);
-
+ 
       const stripe = await stripePromise;
 
       // Call your backend to create the Checkout Session
@@ -518,5 +431,33 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
   );
 };
 
+export async function getStaticProps() {
+  const query = gql` query GetProducts {
+    products {
+      uid
+      cost
+      currency
+      description
+      image_url
+      name
+      created_at
+      updated_at
+      id
+      image_id
+    }
+  }`;
+
+
+const {data:products} = await client.query({query});
+
+  console.log("products are", products)
+  return {
+    props: {
+      products
+    }
+  }
+
+
+}
 
 export default Products;
