@@ -65,7 +65,7 @@ import Image  from 'next/image'
         <Image
           alt="image"
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef350d228a5d8eda0ce_e1.webp"
-           loading="lazy"
+          loading="lazy"
           layout="fill"
           srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef350d228a5d8eda0ce_e1-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef350d228a5d8eda0ce_e1.webp 741w"
         />
@@ -139,10 +139,11 @@ import Image  from 'next/image'
             and the 50,000+ thoughts we have per day.
           </p>
         </div>
-        <div className="Alpha_details_block_3_right" style={{position:"relative"}}>
+        <div className="Alpha_details_block_3_right" style={{position:"relative",  }}>
           <Image
             alt="image"
             layout="fill"
+            style={{borderRadius:"10px"}}
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2.webp"
             srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2.webp 846w"
           />
@@ -172,12 +173,12 @@ import Image  from 'next/image'
       </section>
 
       <section className="Alpha_details_block_1" style={{position:"relative"}}>
-        <div className="Alpha_details_block_1_left">
+        <div className="Alpha_details_block_1_left" >
         <Image
           alt="image"
           layout="fill"
           objectFit="contain"
-          style={{borderRadius:"5%"}}
+          // style={{background:"green"}}
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef490337bdf46734365_e3.webp"
           loading="lazy"
         />
@@ -294,6 +295,8 @@ import Image  from 'next/image'
             alt="image"
             layout="fill"
             objectFit="contain"
+            style={{borderRadius:"10px"}}
+
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef33e9f3b0de3b18161_e4.webp"
             srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef30a0b1f400283f29b_e2.webp 846w"
           />
@@ -307,6 +310,8 @@ import Image  from 'next/image'
         <Image
           alt="image"
           layout="fill"
+          style={{borderRadius:"10px"}}
+
           objectFit="contain"
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5.webp"
           srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3c34465e3acfa120c_e5.webp 2507w"
@@ -387,6 +392,8 @@ import Image  from 'next/image'
           <Image
             alt="image"
             layout="fill"
+            style={{borderRadius:"10px"}}
+
             objectFit="contain"
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6.webp"
             srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-2000.webp 2000w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6-p-2600.webp 2600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6.webp 2940w"
@@ -425,6 +432,7 @@ import Image  from 'next/image'
           <Image
             layout="fill"
             alt="image"
+            style={{borderRadius:"10px"}}
             objectFit="contain"
             src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3d036d8798f1d8786_e7.webp"
             srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3d036d8798f1d8786_e7-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3d036d8798f1d8786_e7.webp 692w"

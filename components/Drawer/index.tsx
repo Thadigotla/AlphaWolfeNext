@@ -57,7 +57,7 @@ const DrawerComp = ( ) =>{
     const onFinish = async () => {
         if (cartItems?.length > 0) {
      
-         const createdOrder = await createOrder({variables:{object:{ user_id: user?.id,status: "placed", total_amount: totalPrice}}})
+         const createdOrder = await createOrder({variables:{object:{ user_id: user?.id,status: "placed", total_amount: totalPrice()}}})
            
     
          const formattedCartItems = await cartItems.map((item) => {
@@ -89,7 +89,7 @@ const DrawerComp = ( ) =>{
               method: "POST",
               body: JSON.stringify({
                 Coupon_Code,
-                totalPrice,
+                totalPrice:totalPrice(),
                 user_id: user?.id,
                 payment_id: createdPayment?.data?.insert_payments_one?.id,
                 order_id: createdOrder?.data?.insert_orders_one?.id,
