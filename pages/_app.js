@@ -2,7 +2,6 @@ import '../styles/globals.css';
 import { Toaster } from 'react-hot-toast';
 import { UserProvider } from '../UserProvider';
 import Layout from "../components/Layout";
-
 import { NhostProvider, NhostClient } from '@nhost/nextjs';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import CustomLayout from "../styles/components/produc/index";
@@ -39,10 +38,7 @@ export const client = new ApolloClient({
 
 
 function MyApp({ Component, pageProps }) {
-
   console.log("component and pageas", Component, pageProps)
-
-
   const router = useRouter()
   
 
@@ -53,22 +49,13 @@ function MyApp({ Component, pageProps }) {
  
   return (
     <CartItemsContextProvider>
-
     <NhostProvider nhost={nhost} initial={pageProps.nhostSession}>
       <NhostApolloProvider nhost={nhost} client={client}>
-
         <UserProvider>
-      {/* <CustomLayout> */}
-      {/* <Layout> */}
-
           <Component {...pageProps} />
-        {/* </CustomLayout> */}
-        {/* </Layout> */}
           <Toaster />
         </UserProvider>
-
     </NhostApolloProvider>
-
     </NhostProvider>
     </CartItemsContextProvider>
 

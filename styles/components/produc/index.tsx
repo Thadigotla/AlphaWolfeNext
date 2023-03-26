@@ -16,6 +16,11 @@ interface CustomLayoutProps {
 
   const CustomLayout: React.FC<CustomLayoutProps> = ({children}:any) => {
     const [collapsed, setCollapsed] = useState(false);
+    const user = nhost.auth.getUser();
+
+    console.log("userasdetails",user)
+
+
     const {
       token: { colorBgContainer },
     } = theme.useToken();
@@ -25,6 +30,70 @@ interface CustomLayoutProps {
 
     const router = useRouter()
 
+
+
+    
+    const sideBarItems = [
+      {
+        key: '/pets',
+        icon: <AliwangwangOutlined />,
+        label: 'Pets',
+        onClick: () => router.push("/pets")
+      },
+
+ 
+
+      {
+        key: '/orders',
+        icon: <UnorderedListOutlined />,
+        label: 'Orders',
+        onClick: () => router.push("/orders")
+      },
+
+      {
+        key: '/orderItems',
+        icon: <OrderedListOutlined />,
+        label: 'Order Items',
+        onClick: () => router.push("/orderItems")
+      },       
+      
+      {
+        key: '/payments',
+        icon: <PoundCircleOutlined />,
+        label: 'Payments',
+        onClick: () => router.push("/payments")
+      },
+      {
+        key: '/customers',
+        icon: <UserOutlined />,
+        label: 'Customers',
+        onClick: () => router.push("/customers")
+      },
+      {
+        key: '/home',
+        icon: <HomeOutlined />,
+        label: 'Home',
+        onClick: () => (setHelp(false), router.push("/"))
+      },
+      {
+        key: '/logout',
+        icon: <LeftCircleOutlined />,
+        label: 'Logout',
+        onClick: () => (nhost.auth.signOut(), router.push("/"))
+      }
+      ,
+
+    ]
+
+    if(user?.defaultRole=="admin"){
+        sideBarItems.push(    
+          {
+            key: '/products',
+            icon: <ProfileOutlined />,
+            label: 'Products',
+            onClick: () => router.push("/productss")
+          },)
+    }
     
     return (
 
@@ -61,65 +130,63 @@ interface CustomLayoutProps {
             mode="inline"  
           
             selectedKeys={[router.pathname]}
-        
-            items={[
+            items={sideBarItems}
+            // items={[
+            //   {
+            //     key: '/pets',
+            //     icon: <AliwangwangOutlined />,
+            //     label: 'Pets',
+            //     onClick: () => router.push("/pets")
+            //   },
 
+            //   {
+            //     key: '/products',
+            //     icon: <ProfileOutlined />,
+            //     label: 'Products',
+            //     onClick: () => router.push("/productss")
+            //   },
 
-              {
-                key: '/pets',
-                icon: <AliwangwangOutlined />,
-                label: 'Pets',
-                onClick: () => router.push("/pets")
-              },
+            //   {
+            //     key: '/orders',
+            //     icon: <UnorderedListOutlined />,
+            //     label: 'Orders',
+            //     onClick: () => router.push("/orders")
+            //   },
 
-              {
-                key: '/products',
-                icon: <ProfileOutlined />,
-                label: 'Products',
-                onClick: () => router.push("/productss")
-              },
-
-              {
-                key: '/orders',
-                icon: <UnorderedListOutlined />,
-                label: 'Orders',
-                onClick: () => router.push("/orders")
-              },
-
-              {
-                key: '/orderItems',
-                icon: <OrderedListOutlined />,
-                label: 'Order Items',
-                onClick: () => router.push("/orderItems")
-              },       
+            //   {
+            //     key: '/orderItems',
+            //     icon: <OrderedListOutlined />,
+            //     label: 'Order Items',
+            //     onClick: () => router.push("/orderItems")
+            //   },       
               
-              {
-                key: '/payments',
-                icon: <PoundCircleOutlined />,
-                label: 'Payments',
-                onClick: () => router.push("/payments")
-              },
-              {
-                key: '/customers',
-                icon: <UserOutlined />,
-                label: 'Customers',
-                onClick: () => router.push("/customers")
-              },
-              {
-                key: '/home',
-                icon: <HomeOutlined />,
-                label: 'Home',
-                onClick: () => (setHelp(false), router.push("/"))
-              },
-              {
-                key: '/logout',
-                icon: <LeftCircleOutlined />,
-                label: 'Logout',
-                onClick: () => (nhost.auth.signOut(), router.push("/"))
-              }
-              ,
+            //   {
+            //     key: '/payments',
+            //     icon: <PoundCircleOutlined />,
+            //     label: 'Payments',
+            //     onClick: () => router.push("/payments")
+            //   },
+            //   {
+            //     key: '/customers',
+            //     icon: <UserOutlined />,
+            //     label: 'Customers',
+            //     onClick: () => router.push("/customers")
+            //   },
+            //   {
+            //     key: '/home',
+            //     icon: <HomeOutlined />,
+            //     label: 'Home',
+            //     onClick: () => (setHelp(false), router.push("/"))
+            //   },
+            //   {
+            //     key: '/logout',
+            //     icon: <LeftCircleOutlined />,
+            //     label: 'Logout',
+            //     onClick: () => (nhost.auth.signOut(), router.push("/"))
+            //   }
+            //   ,
 
-            ]}
+            // ]}
           />
         </Sider>
         <Layout className="site-layout">
