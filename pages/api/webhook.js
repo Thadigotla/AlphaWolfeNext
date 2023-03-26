@@ -33,7 +33,7 @@ const webhook = async (req, res)  => {
 //   const rawBody = await getRawBody(req);
 
   
-  const endpointSecret = 'whsec_eNuaTDmk7W1IfUaBAt2r1dWfJlA7ynKr';
+  const endpointSecret = 'whsec_4znrTomCPsXqTwoSYIPfUvC5G49CBpvF';
   // const endpointSecret = 'whsec_1491123cc83ee6b79094fb750e735abddba1188932c24a3ad2fa9b833744f580';
   
   let Event;
