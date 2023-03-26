@@ -106,7 +106,7 @@ const ContactForm = () =>{
 <div style={{textAlign:"center"}}>
 
 <h3>Thank you for contacting Alpha Wolfe!</h3>
-<h3> We'll get back to you soon!</h3>
+<h3> We will get back to you soon!</h3>
 
 </div>
 

@@ -37,7 +37,7 @@ const ProductDetail = ({id,data,othersProducts}) =>{
       <div className="otherproducts">
         {
           othersProducts?.map((e,i)=>{
-            return <div className="otherproducts_images">
+            return <div key={i} className="otherproducts_images">
                   
                     <Image
                      className="otherproducts_img"

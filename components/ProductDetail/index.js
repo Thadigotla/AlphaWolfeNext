@@ -110,7 +110,7 @@ return <>
     <p>Key Features: </p>
     <br/>
      {data?.features?.map((e,i)=>{
-       return <p className="product_info_right_features_one">✅ {e}</p>
+       return <p key={i} className="product_info_right_features_one">✅ {e}</p>
 
      })}
         
