@@ -34,6 +34,7 @@ import { client, nhost } from "../../pages/_app";
 import { useQuery, gql, useMutation } from '@apollo/client';
 import { useRouter } from 'next/router'
 import CartItemsContext from "../../store/Item";
+import DrawerComp from "../../components/Drawer/index"
 
 export interface IProducts {
   //   username: string;
@@ -185,6 +186,8 @@ const insert_mutation_order_details = gql `mutation MyMutation1($object: [order_
 }
 
 `
+
+
 const insert_mutation_order = gql `mutation MyMutation2($object:orders_insert_input!) {
   insert_orders_one(object:$object) {
       id
@@ -298,6 +301,8 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
       {/* for warning */}
       {/* {contextHolder} */}
 
+      <DrawerComp  />
+{/* 
       <Drawer title="Cart" placement="right" onClose={onClose} open={open}>
         <Space direction="vertical">
           {cartItems.length === 0 && <p>Your cart is empty.</p>}
@@ -381,7 +386,7 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
         </div>
 
         <Space></Space>
-      </Drawer>
+      </Drawer> */}
 
       <div className="products-list">
         <Row>

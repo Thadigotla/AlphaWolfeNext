@@ -7,6 +7,7 @@ import { TagOutlined } from "@ant-design/icons";
 import CartItemsContext from "../../store/Item";
 import { ProductDetailsC } from "../../components/ProductDetail";
 import { useRouter } from "next/router";
+import  DrawerComp from "../../components/Drawer/index"
 
 
 const ProductDetail = ({id,data,othersProducts}) =>{
@@ -25,6 +26,8 @@ const ProductDetail = ({id,data,othersProducts}) =>{
    const {cartItems,setCartItems, showDrawer, totalCount } = useContext(CartItemsContext);
  
     return <>
+      <DrawerComp  />
+
       <ProductDetailsC data={data}/>
  
       <h2  style={{marginLeft:"15%", marginTop:"15%"}}>You may also need</h2>
