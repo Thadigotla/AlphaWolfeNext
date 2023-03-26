@@ -25,7 +25,7 @@ const webhook = async (req, res)  => {
   const buf = await buffer(req);
 
 //   const stripe = require("stripe")("whsec_zQnKCbddcaaAg65xrkh04KmplbG4wnuy");whsec_eNuaTDmk7W1IfUaBAt2r1dWfJlA7ynKr
-  const stripe = require("stripe")("whsec_eNuaTDmk7W1IfUaBAt2r1dWfJlA7ynKr");
+  const stripe = require("stripe")("sk_test_51MhnQJSG1kawF0cmcJ7aHuOic23iOFNbJOFfbZRz9Ac6KOGge98uSe9RERjMUMrZ8U7AOzqv088sqCRZl4uT0EEG000uFyqDOP");
   // const stripe = require("stripe")("sk_test_51MhnQJSG1kawF0cmcJ7aHuOic23iOFNbJOFfbZRz9Ac6KOGge98uSe9RERjMUMrZ8U7AOzqv088sqCRZl4uT0EEG000uFyqDOP");
 
   const sig = req.headers['stripe-signature'];
@@ -33,8 +33,9 @@ const webhook = async (req, res)  => {
 //   const rawBody = await getRawBody(req);
 
   
-  const endpointSecret = 'whsec_1491123cc83ee6b79094fb750e735abddba1188932c24a3ad2fa9b833744f580';
-    
+  const endpointSecret = 'whsec_eNuaTDmk7W1IfUaBAt2r1dWfJlA7ynKr';
+  // const endpointSecret = 'whsec_1491123cc83ee6b79094fb750e735abddba1188932c24a3ad2fa9b833744f580';
+  
   let Event;
  
   console.log("RAW Headers",req,req.body)
