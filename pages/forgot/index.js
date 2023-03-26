@@ -62,7 +62,7 @@ const [newPassword, setNewPassword] = React.useState('');
     </Button>
 
   </form>
-  <Button onClick={()=>router.push("/sign-in")}>Login</Button>
+  {/* <Button onClick={()=>router.push("/sign-in")}>Login</Button> */}
 
   </>
 }
