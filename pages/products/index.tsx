@@ -408,10 +408,10 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
                     <br/>
                     <div className="product-quantity">
                       <span style={{ paddingRight: "10px" }}>
-                        Quantity :
+                        Quantity : &nbsp;
                         {
                           cartItems?.find((item) => item.id === product.id)
-                            ?.quantity
+                            ?.quantity || 0
                         }
                       </span>
  
@@ -436,7 +436,7 @@ console.log("createdOrder", createdOrder?.data?.insert_orders_one?.id)
                         </Button>
                       </Space>
                     </div>
-                    <div className="description">Read more...</div>
+                    {/* <div className="description">Read more...</div> */}
                   </Col>
                 </Row>
               </section>

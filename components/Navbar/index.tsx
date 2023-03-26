@@ -1,19 +1,15 @@
 import { ShoppingCartOutlined } from "@ant-design/icons";
-// import { useNavigation } from "@pankod/refine-core";
 import { Avatar, Badge, Button, Col, MenuItemProps, Row } from "antd";
 import React, { useState } from "react";
-// import { useLocation } from "react-router";
 import { useRouter } from "next/router";
-
-//  import { Cart } from "../Cart/Cart";
-import type { MenuProps } from "antd";
-import CartLogo from "../../public/images/cart.svg";
 import { Dropdown, Space } from "antd";
 import { nhost } from "../../pages/_app";
 import { useAuthenticationStatus } from "@nhost/nextjs";
 import Image from "next/image";
 
 import Link from "next/link";
+import {useContext} from 'react';
+import CartItemsContext from "../../store/Item";
 
 export interface INavbar {
   showDrawer?: any;
@@ -24,20 +20,26 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
   const { isLoading, isAuthenticated } = useAuthenticationStatus();
   const pathname = useRouter().pathname;
   const router = useRouter();
+  const {help, setHelp}= useContext(CartItemsContext)
 
   console.log("pathname is", pathname);
 
-  const handleClickScroll = () => {
-    if (pathname != "/") router.push("/");
+  React.useEffect(()=>{
+    const element = document.querySelector(".frequently_asked_questions");
+    if(element &&help){
+    
+      element.scrollIntoView({ behavior: "smooth" });
+    }
 
-    window.onload = function () {
-      const element = document.querySelector(".frequently_asked_questions");
-      if (element) {
-        // 👇 Will scroll smoothly to the top of the next section
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    };
+  },[help])
+
+  const handleClickScroll = () => {
+    setHelp(true)
+
+    if (pathname != "/") router.push("/");
+ 
   };
+
   const handleClickScrollHome = () => {
     const element = document.getElementById("login-page");
     if (element) {
@@ -118,7 +120,7 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
               loader={() =>
                 "https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f733050ef63f2e151dc369_AW-logo.jpeg"
               }
-              onClick={() => (router.push("/"), handleClickScrollHome())}
+              onClick={() => (setHelp(false),router.push("/"))}
             />
           </div>
         </div>
@@ -128,7 +130,13 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
           style={{ display: "flex", justifyContent: "space-evenly" }}
         >
           <Button
-            onClick={() => (router.push("/products"), handleClickScroll())}
+            onClick={() => (setHelp(false),router.push("/"))}
+            type="link"
+          >
+            Home
+          </Button>
+          <Button
+            onClick={() => (router.push("/products"))}
             type="link"
           >
             Products
@@ -138,16 +146,16 @@ export const Navbar: React.FC<INavbar> = ({ showDrawer, itemsCount }) => {
             About
           </Button>
 
-          <Button onClick={() => handleClickScroll()} type="link">
+          <Button onClick={() => (setHelp(true), handleClickScroll())} type="link">
             Help
           </Button>
 
           <Dropdown menu={{ items: whatWeDoitems }} placement="bottomLeft"  >
-            <Button>What we Do ?</Button>
+            <Button style={{boxShadow:"none"}}>What we Do ?</Button>
           </Dropdown>
 
           <Dropdown menu={{ items: certificateItems }} placement="bottomLeft">
-            <Button>Certificates</Button>
+            <Button style={{boxShadow:"none"}}>Certificates</Button>
           </Dropdown>
 
           <Button onClick={() => router.push("/contact")} type="link">

@@ -40,60 +40,7 @@ import Link from "next/link";
     if (newWindow) newWindow.opener = null
   }
 
-
-  // useEffect(()=>{
-
-  //   var myElement = document.getElementById("floatButton");
-
-  //   var windowWidth = window.innerWidth;
-  //   var elementWidth = myElement.offsetWidth;
-
-  //   console.log("ggggh", windowWidth,elementWidth)
-
-  //   window.addEventListener("scroll", function() {
-  //     // Get the current scroll position
-  //     var scrollPosition = window.scrollY;
-
-  //     // Calculate the new position of the element
-  //     var newPosition = (scrollPosition / (windowWidth - elementWidth)) * (windowWidth - elementWidth);
-    
-  //     // Update the position of the element
-  //     myElement.style.left = newPosition + "px";
-  //     myElement.style.right = newPosition + "px";
-  //   });
-
-    
-  // },[])
-
-  // const onFinish = async (values ) => {
-  //   console.log("values ", values);
-
-  //   try {
-  //     if (signIn) {
-  //       // const result:any  =  login({username:values});
-  //       const result = await login({
-  //         username: values?.email,
-  //         password: values?.password,
-  //       });
-
-  //       console.log("Sign In result", result, values?.email, values?.password);
-  //     }
-
-  //     if (!signIn) {
-  //       const result = await nhost.auth.signUp({
-  //         email: values?.email,
-  //         password: values?.password,
-  //       });
-
-  //       if (result?.error?.message) createNotification(result?.error?.message);
-
-  //       console.log("Sign Up result", result?.error?.message);
-  //     }
-  //   } catch (error) {
-  //     console.log("error is", error);
-  //   }
-  // };
-
+ 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
@@ -156,7 +103,7 @@ import Link from "next/link";
             className="hero-section wf-section"
             style={{position:"relative"}}
           >
-            <Image
+            {/* <Image
               src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c794812facc_bg%20paw.svg"
               loading="lazy"
               alt=""
@@ -179,12 +126,12 @@ import Link from "next/link";
               layout="fill"
               objectFit="contain"
               className="image-12"
-            />
+            /> */}
             <div className="container">
               <div className="hero-body">
                 <div className="hero-content-wrapper">
                   <div className="hero-heading-wrapper">
-                    <h1>
+                    <h1 className="hero-heading-wrapper-heading">
                       Help your dog live a{" "}
                       {/* <Fade top> */}
                         <span className="tan-font-color">
@@ -208,10 +155,10 @@ import Link from "next/link";
                 </div>
                 {/* <Button id="floatButton" >Button</Button> */}
 
-                  <div className="crufts-block" >
-                    <div>Upcoming Event</div>
-                    <div style={{position: "relative" , height:"100%",width:"100%"}}>
-                    <Image
+                  {/* <div className="crufts-block" > */}
+                    {/* <div>Upcoming Event</div> */}
+                    {/* <div style={{position: "relative" , height:"100%",width:"100%"}}> */}
+                    {/* <Image
                       style={{height:"100%", width:"100%"}}
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/6405f0619cc6e02bfb9e0550_crufts-logo-update.png"
                       loading="lazy"
@@ -221,19 +168,35 @@ import Link from "next/link";
                       layout="fill"
                       objectFit="contain"
                       className="crufts-logo"
-                    />
-                    </div>
-                    <div>
+                    /> */}
+                    {/* </div> */}
+                    {/* <div>
                       NEC Birmingham{" "}
                       <span className="inline-text">
                         from March 08 to 11, 2023
                       </span>Alpha Nutritional Test
 
-                    </div>
-                  </div>
+                    </div> */}
+                  {/* </div> */}
                 </div>
                 <div className="hero-image-wrapper">
-                  <div className="hero-image-wrapper-test image-3">
+       
+                        <div className="image-47-wrapper image-47">
+
+                  <Image
+                      src="https://i.postimg.cc/g0Gw0cM9/saves-transformed.jpg"
+                      loading="lazy"
+                  layout="fill"
+                  sizes="(max-width: 479px) 90vw, (max-width: 767px) 343.234375px, (max-width: 991px) 370.6875px, 47vw"
+                  srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f730a54180231e8d8c817e_dogbanner-p-500.png 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f730a54180231e8d8c817e_dogbanner.png 635w"
+                  alt=""
+                  objectFit="contain"
+                  className="image-47"
+                  />
+
+                  </div>
+
+                  {/* <div className="hero-image-wrapper-test image-3">
 
                  
                   <Image
@@ -261,9 +224,9 @@ import Link from "next/link";
                     className="image-47"
                   />
 
-                      </div>
+                      </div> */}
 
-              
+{/*               
               <div     className="image-86-wrapper ">
               <Image
                     src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c609312fb25_Group%2042488.png"
@@ -274,11 +237,11 @@ import Link from "next/link";
                     className="image-86"
                   />
 
-              </div>
+              </div> */}
 
                   {/* <Fade duration={5000} delay={1500} top forever> */}
 
-                  <div className="image-7-wrapper">
+                  {/* <div className="image-7-wrapper">
 
                   <Image
                       src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f7267539759c267d12fac9_bite.png"
@@ -289,9 +252,9 @@ import Link from "next/link";
                       // className="image-7"
                     />
 
-                  </div>
+                  </div> */}
 
-                  <div className="image-8-wrapper">
+                  {/* <div className="image-8-wrapper">
 
                     
                     <Image
@@ -302,8 +265,8 @@ import Link from "next/link";
                       objectFit="contain"
                       // className="image-6"
                     />
-                    </div>
-
+                    </div> */}
+{/* 
                     <div className="image-9-wrapper">
 
 
@@ -315,9 +278,9 @@ import Link from "next/link";
                       objectFit="contain"
                       // className="image-8"
                     />
-                    </div>
+                    </div> */}
 
-                    <div className="image-4-wrapper">
+                    {/* <div className="image-4-wrapper">
 
 
                     <Image
@@ -329,7 +292,7 @@ import Link from "next/link";
                       // className="image-4"
                     />
 
-                    </div>
+                    </div> */}
 
                    
                     {/* <img
@@ -452,31 +415,22 @@ import Link from "next/link";
                 </div> */}
                 </div>
               </div>
-              {/* <div className="bg-icon-test-wrapper">
-
-
-                <img
-                src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64008066ae42133add6e2898_medical-report.webp"
-                loading="lazy"
-                alt=""
-                layout="fill"
-                objectFit="cover"
-                className="bg-icon-test   result"
-              />
-
-
-
-              </div> */}
-
-               {/* <img
-                src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64008066447e9f6aebe2687d_dog%20(1).webp"
-                loading="lazy"
-                alt=""
-                className="bg-icon-test"
-              /> */}
+ 
             </div>
           </div>
         </div>
+        <section className="how_it_works">
+          <h2 className="how_it_works_heading">How it works</h2>
+        <iframe 
+         width="98%"
+         height="700" 
+         className="youtubes"
+         src="https://www.youtube.com/embed/gL9En8lu_YE" 
+         title="Alpha Wolfe" 
+         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          ></iframe>
+        </section>
+
         <section className="dog_quotation">
           <div>
             <h2 className="dog_quotation_heading">
@@ -670,7 +624,7 @@ import Link from "next/link";
             Tips and Advice for your furry friend
           </div>
           <div className="tips_and_advices_heading_2">
-            T5 ways to optimise the{" "}
+            5 ways to optimise the{" "}
             <span className="tips_and_advices_heading_2_highlight">
               well being
             </span>{" "}
@@ -867,6 +821,7 @@ import Link from "next/link";
                     className="wellness-button"
                     block
                     onMouseEnter={() => setSelectedWelness(item)}
+                    
                   >
                     {item.name}
                   </Button>
@@ -1252,11 +1207,12 @@ import Link from "next/link";
                   >
                     <>
                     <Image
-                      src="https://uploads-ssl.webflow.com/63f72693418023a99f8b9c8b/6409f268524846c752dae4b1_334492252_9429526233785312_381940871113454095_n.jpeg"
+                      src="https://uploads-ssl.webflow.com/63f72693418023a99f8b9c8b/641e8efd6bcc7272076da074_330175938_2894002654063334_3482619952637872400_n.jpeg"
                       loading="lazy"
                       alt=""
                       width={"1000%"}
                       height={"1000%"}
+                      onClick={()=>openInNewTab("https://www.instagram.com/p/CqM3AwHrbvl/?img_index=1")}
                       style={{border:"2px solid black"}}
                       // layout="fill"
                       // objectFit="contain"
@@ -1291,9 +1247,10 @@ import Link from "next/link";
                     <Image
                       width={"1000%"}
                       height={"1000%"}
-                      src="https://uploads-ssl.webflow.com/63f72693418023a99f8b9c8b/64098fc1250ac12d0fd44643_332123138_729656732036342_4419359245497365322_n.jpeg"
+                      src="https://uploads-ssl.webflow.com/63f72693418023a99f8b9c8b/641e8efd15ba363c99ea447a_337386924_234966642431613_7163172747185443374_n.jpeg"
                       loading="lazy"
                       alt=""
+                      onClick={()=>openInNewTab("https://www.instagram.com/p/CqM28ByLX02/?img_index=1")}
                       className="image-105"
                     />
                     <div className="ig-icon w-embed">
@@ -1322,11 +1279,12 @@ import Link from "next/link";
                     className="ig-link w-inline-block"
                   ><>
                     <Image
-                      src="https://uploads-ssl.webflow.com/63f72693418023a99f8b9c8b/640950a4ffb6d24f6cb84a39_334288629_1677301072707663_5921840318058457387_n.jpeg"
+                      src="https://uploads-ssl.webflow.com/63f72693418023a99f8b9c8b/641d4183255b9758a6a46436_337294724_1633521850431220_4041649041892109658_n.jpeg"
                       loading="lazy"
                       width={"1000%"}
                       height={"1000%"}
                       alt=""
+                      onClick={()=>openInNewTab("https://www.instagram.com/p/CqKUBpcPVys/?img_index=1")}
                       className="image-105"
                     />
                     <div className="ig-icon w-embed">

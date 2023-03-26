@@ -1,17 +1,10 @@
-import React, { useState } from 'react';
-// import {
-//   MenuFoldOutlined,
-//   MenuUnfoldOutlined,
-//   UploadOutlined,
-//   UserOutlined,
-//   VideoCameraOutlined,
-// } from '@ant-design/icons';
+import React, { useState,useContext } from 'react';
 import { Layout, Menu, theme } from 'antd';
-import Link from "next/link"
 import { useRouter } from 'next/router';
 import { nhost } from '../../../pages/_app';
 import Image from 'next/image';
 import { AliwangwangOutlined, HomeOutlined, LeftCircleOutlined, MenuFoldOutlined, MenuUnfoldOutlined, MoneyCollectOutlined, OrderedListOutlined, PoundCircleOutlined, ProfileOutlined, UnorderedListOutlined, UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import CartItemsContext from '../../../store/Item';
 
 const { Header, Sider, Content } = Layout;
 
@@ -26,6 +19,9 @@ interface CustomLayoutProps {
     const {
       token: { colorBgContainer },
     } = theme.useToken();
+
+
+    const {setHelp} = useContext(CartItemsContext)
 
     const router = useRouter()
 
@@ -113,7 +109,7 @@ interface CustomLayoutProps {
                 key: '/home',
                 icon: <HomeOutlined />,
                 label: 'Home',
-                onClick: () => ( router.push("/"))
+                onClick: () => (setHelp(false), router.push("/"))
               },
               {
                 key: '/logout',

@@ -49,7 +49,7 @@ const ProductDetail = ({id,data,othersProducts}) =>{
                 <br/>
 
      
-                <div className="">
+                <div className="otherproducts_img_images">
             
                 <Space>
                 {
@@ -59,7 +59,9 @@ const ProductDetail = ({id,data,othersProducts}) =>{
                 } 
             
                 </Space>
-                <h3 className="other_details_name" onClick={()=>router.push(`/products/${e?.id}`)}>{e?.name}</h3>
+                <h3 className="other_details_name" onClick={()=>router.push(`/products/${e?.id}`)}>
+                  {e?.name?.length> 10 ? e?.name?.substring(0,10)+"..." : e?.name}
+                  </h3>
                 <div className="product_info_right_cost">£ {e?.cost} GBP <span className="product_info_right_cost_vat">(VAT included)</span></div>
 
                 </div>

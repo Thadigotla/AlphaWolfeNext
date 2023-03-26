@@ -7,7 +7,9 @@ const CartItemsContext = createContext({
     totalCount: function(){},
     totalPrice: function(){return null},
     showDrawer: function(){},
-    onClose :function(){}
+    onClose :function(){},
+    help:false,
+    setHelp: function(data){}
     
 })
 
@@ -16,6 +18,7 @@ export function CartItemsContextProvider(props){
     const [cartItems, setCartItems] = useState([]);
    
     const [open, setOpen] = useState(false);
+    const [help, setHelp] = useState(false);
 
     function addItemsHandler(item){
 
@@ -57,11 +60,18 @@ export function CartItemsContextProvider(props){
     function onCloseHandler(){
         setOpen(false);
     }
+
+    function setHelpHandler(data){
+        console.log("handasd",data)
+        setHelp(data)
+    }
       
 
     const context = {
         cartItems:cartItems,
         open:open,
+        help:help,
+        setHelp:setHelpHandler,
         setCartItems:setCartItemsHandler,
         totalCount: totalCountHandler,
         totalPrice: totalPriceHandler,

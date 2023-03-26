@@ -1,8 +1,51 @@
 import React from "react";
 import Image from 'next/image'
-
+import { gql, useMutation } from "@apollo/client";
+import toast from "react-hot-toast";
+ 
 
 export const Footer = () => {
+
+  const mutationQuery = gql` mutation InsertCustomeremails($email: String) {
+    insert_customeremails(objects: {email: $email}) {
+      affected_rows
+      returning {
+        uid
+        email
+        created_at
+        updated_at
+        id
+      }
+    }
+  }`
+
+  const [mutationFunction] = useMutation(mutationQuery)
+      
+
+
+  const [email, setEmail] = React.useState(null)
+  const [showEmail, setShowEmail] = React.useState(true)
+
+  
+
+
+  const submitEmail = async (e) =>{
+    e?.preventDefault()
+    console.log("email values",email)
+ 
+   const result = await mutationFunction({variables:{ email:email}})
+
+   if(result?.data?.insert_customeremails?.affected_rows==1){
+    setShowEmail(false)
+    toast.success("You will receive Email from us Shortly!")
+
+   }else{
+    toast.error("Please Try Again after sometime")
+
+   }
+
+   console.log("result is ",result)
+  }
   return (
     <div className="footer wf-section">
       <span style={{position:'relative'}}>
@@ -167,12 +210,13 @@ export const Footer = () => {
             <h3 className="secondary-font">Know more about us</h3>
             <div className="footer-email-wrapper">
               <div className="form-block-2 w-form">
-                <form
+                {showEmail ? <form
                   id="wf-form-Know-more-Form"
                   name="wf-form-Know-more-Form"
                   data-name="Know more Form"
                   method="get"
                   className="form"
+                  onSubmit={submitEmail}
                 >
                   <input
                     type="email"
@@ -182,6 +226,7 @@ export const Footer = () => {
                     data-name="Email 2"
                     placeholder="Enter Email Here"
                     id="email-2"
+                    onChange={(e)=>setEmail(e?.target?.value)}
                     required
                   />
                   <input
@@ -190,7 +235,7 @@ export const Footer = () => {
                     data-wait="Please wait..."
                     className="submit-button w-button"
                   />
-                </form>
+                </form>: <h3 style={{color:"black"}}>Thank you! Your submission has been received!</h3> }
                 <div className="w-form-done">
                   <div>Thank you! Your submission has been received!</div>
                 </div>

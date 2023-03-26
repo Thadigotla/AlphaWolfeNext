@@ -40,7 +40,7 @@
 }
 .product_info_left_images_ot{
  /* margin: 50px; */
- background-color: #2e8332;
+ /* background-color: #2e8332; */
 }
  .product_info_right_cost_vat{
     font-size: .5em;
@@ -159,7 +159,7 @@
 
 .other_details_name{
     width: 100% !important;
-    max-width: 50%;
+    /* max-width: 50%; */
     margin: 0 auto;
     cursor: pointer;
 }
@@ -173,3 +173,32 @@
     border-radius: 5px;
 }
  
+
+@media only screen and (max-width: 767px) {
+.product_info{
+    
+  display: flex;
+  flex-direction: column;
+
+}
+.product_info_left{
+    width: 100%;
+}
+
+.product_info_right{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.otherproducts{
+    display:flex;
+    flex-direction: column;
+}
+.otherproducts_images{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.otherproducts_img_images{
+margin: 10px;
+}
+}
