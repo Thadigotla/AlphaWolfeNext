@@ -24,6 +24,7 @@ const session = async  (req, res) => {
       },
     ],
     mode: "payment",
+    client_reference_id:cartItems.order_id,
     metadata: {
       customer_id: cartItems.user_id,
       payment_id: cartItems.payment_id,

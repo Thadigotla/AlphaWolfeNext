@@ -82,7 +82,12 @@ const webhook = async (req, res)  => {
             query = `UPDATE payments set status = '${paymentStatus}', order_id ='${metaData?.order_id}',   amount_subtotal='${checkoutSession?.amount_subtotal}',amount_discount='${checkoutSession?.total_details?.amount_discount}', customer_details='${JSON.stringify(checkoutSession?.customer_details)}'  ,amount_total='${checkoutSession?.amount_total}', event_object= '${JSON.stringify(checkoutSession)}', event= '${JSON.stringify(Event)}'   where id  = '${metaData.payment_id}'`
 
         }
-        
+        if(EventType === "payment_intent.payment_failed"){
+          
+          query = `UPDATE payments set status = 'failed', order_id ='${metaData?.order_id}',   amount_subtotal='${checkoutSession?.amount_subtotal}',amount_discount='${checkoutSession?.total_details?.amount_discount}', customer_details='${JSON.stringify(checkoutSession?.customer_details)}'  ,amount_total='${checkoutSession?.amount_total}', event_object= '${JSON.stringify(checkoutSession)}', event= '${JSON.stringify(Event)}'   where id  = '${metaData.payment_id}'`
+
+      }
+
         if(EventType === "checkout.session.async_payment_failed"){
           
             query = `UPDATE payments set status'${paymentStatus}', order_id ='${metaData?.order_id}',  amount_subtotal='${checkoutSession?.amount_subtotal}',amount_discount='${checkoutSession?.total_details?.amount_discount}', customer_details='${JSON.stringify(checkoutSession?.customer_details)}'  ,amount_total='${checkoutSession?.amount_total}', event_object= '${JSON.stringify(checkoutSession)}', event= '${JSON.stringify(Event)}'   where id  = '${metaData.payment_id}'`

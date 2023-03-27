@@ -77,7 +77,13 @@ const DrawerComp = ( ) =>{
          console.log("createdOrderDetails", createdOrderDetails)
          
      
-          const createdPayment =await createPayment({variables:{ object:{user_id: user?.id, status: "pending",total_amount: totalPrice}}})
+          const createdPayment =await createPayment({variables:{ object:{
+            user_id: user?.id, 
+            status: "pending",
+            total_amount: totalPrice,
+            order_id: createdOrder?.data?.insert_orders_one?.id,
+          
+          }}})
           console.log("createdPayment", createdPayment)
      
           const stripe = await stripePromise;
@@ -123,8 +129,7 @@ const DrawerComp = ( ) =>{
         setPromo(true);
         const response = await fetch(
           "/api/checkpromo",
-          // "http://localhost:3000/api/checkpromo",
-          // "https://7yq72fujgvbpoc7222wdztdhrq0qgrlz.lambda-url.us-east-1.on.aws/",
+
           {
             method: "POST",
             body: JSON.stringify({

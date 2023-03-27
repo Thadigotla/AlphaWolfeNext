@@ -116,7 +116,7 @@ const SignIn = () => {
   };
 
   return (<>
-     <Navbar/>
+     <Navbar/> 
     <div className='singin_image' style={{display:"flex", justifyContent:"space-around", alignItems:"center",marginTop:"5%", width:"100%"}}>
       <div  className='singin_image_left' style={{position:"relative", height:"100vh", width:"55%", }}>
       <Image
