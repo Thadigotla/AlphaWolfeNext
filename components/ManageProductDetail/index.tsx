@@ -340,8 +340,8 @@ function MyComponent({where}) {
   
 
   const columns = [
-   { title: 'Id', dataIndex: 'uid', key: 'uid'},,
-   { title: 'Order Id', dataIndex: 'order_uid', key: 'order_uid', },
+   { title: 'Id', dataIndex: 'uid', key: 'uid'},
+   { title: 'Order Id', dataIndex: 'order_uid', key: 'order_uid', render:(val,record)=> <span style={{color:"rgb(226 121 17)", cursor:"pointer",textDecoration:"underline"}} onClick={()=>router.push(`/orderItems/${record.order_id}`)}>{record.order_uid}</span>  },
    { title: 'Quantity', dataIndex: 'quantity', key: 'quantity', },
    { title: 'UserName', dataIndex: 'user_name', key: 'user_name', },
    { title: 'Product Id', dataIndex: 'product_uid', key: 'product_uid', },
