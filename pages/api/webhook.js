@@ -69,7 +69,8 @@ const webhook = async (req, res)  => {
         // const webhookData = JSON.parse(req.body);
 
         let EventType = Event.type;
-        console.log("checking data",Data,Data?.['id'],Data?.data?.['id'],checkoutSession?.customer_details)
+        console.log("checking data",Data,Data?.['id'],)
+        console.log("id is ", Data?.["id"])
 
         const datasss = stripe.checkout.Session.retrieve(Data?.['id'])
         
