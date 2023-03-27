@@ -1247,11 +1247,11 @@ th {
     font-size: 1em;
   }
   .navbar {
-    height: 160px;
+    /* height: 160px;
     flex-direction: column;
     align-items: center;
     position: sticky;
-    top: 0px;
+    top: 0px; */
   }
   .navbar .logo {
     margin: auto;
@@ -1352,7 +1352,18 @@ th {
   .login-outerBox {
     margin: 10% 5%;
   }
-
+  .singin_image{
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 5% !important;
+  }
+  .singin_image_left{
+    height: 50vh !important;
+    width: 100% !important;
+  }
+  .SignIn_container__VRVPd{
+    width: 100% !important;
+  }
 }
 
 #components-layout-demo-custom-trigger .trigger {
@@ -1610,3 +1621,25 @@ th {
  .container{
   margin-top: 2%;
  }
+
+
+
+ .imgs{
+   position:"relative" !important;
+   height:"100vh" !important;
+   width:"60%" !important;
+   background:"#f4eae12b !important" 
+ }
+
+ .singin_image{
+  display: flex;
+  justify-content:"space-around",;
+  align-items:"center";
+  margin-top:"15%";
+   /* width:"100vw" !important; */
+   /* background-color: greenyellow; */
+ }
+
+
+ 
+ 

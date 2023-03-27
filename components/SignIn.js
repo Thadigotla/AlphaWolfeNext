@@ -8,6 +8,7 @@ import { useResetPassword, useSendVerificationEmail, useSignInEmailPassword, use
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 import React from "react";
+import { Navbar } from './Navbar';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -114,9 +115,21 @@ const SignIn = () => {
 
   };
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.card}>
+  return (<>
+     <Navbar/>
+    <div className='singin_image' style={{display:"flex", justifyContent:"space-around", alignItems:"center",marginTop:"5%", width:"100%"}}>
+      <div  className='singin_image_left' style={{position:"relative", height:"100vh", width:"55%", }}>
+      <Image
+        src="/images/loginimage.svg"
+        alt="A description of the image"
+        style={{height:"100%", width:"100%"}}
+        layout='fill'
+        objectFit='contain'
+      />
+    
+    </div>
+    <div className={styles.container} style={{  width:"40%", height:"100%",padding:"2%", }}>
+      <div >
         <div className={styles['logo-wrapper']}>
           <Image src={"https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f733050ef63f2e151dc369_AW-logo-p-500.webp"} layout="fill" alt="logo"   objectFit="contain" />
         </div>
@@ -142,7 +155,6 @@ const SignIn = () => {
           {signIn ? "Sign In" : "Sign Up"}
           </button>
         </form> :null}
-
     { forgotPassword ?   
        <form onSubmit={handleOnSubmit} className={styles.form}>
           <Input
@@ -179,6 +191,8 @@ const SignIn = () => {
               </span>
 
     </div>
+    </div>
+    </>
   );
 };
 
