@@ -1,5 +1,5 @@
 import { gql, useMutation, useQuery } from '@apollo/client';
-import { Button, Col, Form, Input, Row, Table, Modal, Select } from 'antd';
+import { Button, Col, Form, Input, Row, Table, Modal, Select, Badge } from 'antd';
 import { useState } from 'react';
 import {useEffect} from 'react';
 import toast from 'react-hot-toast';
@@ -22,8 +22,18 @@ const query = gql` query GetOrders($where: orders_bool_exp,$limit:Int,$offset:In
       id
       displayName
     }
+    order_details_aggregate{
+      aggregate{
+        count
+      }
+    }
+
 		id
 		uid
+    payments{
+      uid
+      status
+    }
     created_at
   }
   orders_aggregate {
@@ -308,7 +318,11 @@ function MyComponent() {
 
     modifiedData= data?.map((e:any,i)=>{
 
-        return {...e,"user_name":user?.displayName}
+        return      {...e,
+                     "user_name":user?.displayName, 
+                      payment_status:e?.payments?.[0]?.status,
+                      order_details_count:e?.order_details_aggregate?.aggregate?.count
+                    }
        })
     // }
 
@@ -351,9 +365,11 @@ function MyComponent() {
  }
 
   const columns = [
-   { title: 'Id', dataIndex: 'uid', key: 'uid',render:(val,record)=> <span onClick={()=>router.push(`/orderItems/${record.id}`)}>{record.uid}</span>  },
+   { title: 'Id', dataIndex: 'uid', key: 'uid',render:(val,record)=> <span style={{color:"rgb(226 121 17)", cursor:"pointer",textDecoration:"underline"}} onClick={()=>router.push(`/orderItems/${record.id}`)}>{record.uid}</span>  },
    { title: 'Status', dataIndex: 'status', key: 'status', },
-   { title: 'Total Amount', dataIndex: 'total_amount', key: 'total_amount', },
+   { title: 'Total Amount', dataIndex: 'total_amount', key: 'total_amount', }, 
+   { title: 'Items', dataIndex: 'order_details_count', key: 'order_details_count', render:(val)=> <Badge  style={{ backgroundColor: '#52c41a' }}  count={val}></Badge>},
+   { title: 'Payment', dataIndex: 'payment_status', key: 'payment', },
    { title: 'UserName', dataIndex: 'user_name', key: 'user_name', },
    { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', render:(val) => moment(val)?.format('MMMM Do YYYY, h:mm:ss a') }, 
    { title: 'Action', dataIndex: 'action', key: 'action', 

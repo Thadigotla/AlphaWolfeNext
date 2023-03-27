@@ -16,7 +16,9 @@ const query = gql`query GetPayments($where: payments_bool_exp,$limit:Int,$offset
 		event
 		id
 		order_id
-    order_uid
+    order{
+      uid
+    }
 		user_id
 		status
 		amount_subtotal
@@ -174,6 +176,8 @@ function MyComponent({where}) {
 
   const [Data, setData] = useState([])
 
+  const router = useRouter()
+
   const [MData, setMData] = useState({})
 
   const [searchText, setSearchText] = useState(null)
@@ -241,7 +245,16 @@ function MyComponent({where}) {
        }
     }
 
-  const formatData = (data:[]) =>{ return [...data] }
+  const formatData = (data:[]) =>{ 
+    
+    
+    return  data?.map((e:any,i)=>{
+
+      return {...e, order_uid:e?.order?.uid}
+    })
+  
+  
+  }
 
   useEffect(()=>{
    if(data?.payments){
@@ -271,7 +284,9 @@ function MyComponent({where}) {
 
   const columns = [
    { title: 'Id', dataIndex: 'uid', key: 'uid', },
-   { title: 'Order Id', dataIndex: 'order_uid', key: 'order_uid', },
+  //  { title: 'Order Id', dataIndex: 'order_uid', key: 'order_uid', },
+   { title: 'Order Id', dataIndex: 'order_uid', key: 'order_uid', render:(val,record)=> <span style={{color:"rgb(226 121 17)", cursor:"pointer",textDecoration:"underline"}} onClick={()=>router.push(`/orderItems/${record.order_id}`)}>{record.order_uid}</span>  },
+
    { title: 'Total Amount', dataIndex: 'total_amount', key: 'total_amount', },
   //  { title: 'Default Role', dataIndex: 'default_role', key: 'default_role', },
    { title: 'Status', dataIndex: 'status', key: 'status', },
