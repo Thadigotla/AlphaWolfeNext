@@ -7,7 +7,7 @@ import CustomLayout from '../../styles/components/produc';
 import { useUserData } from '@nhost/nextjs';
 import { InputPicker } from 'rsuite';
 import moment from 'moment';
-import { EditOutlined, DeleteFilled, CheckOutlined, LoadingOutlined, CloseOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteFilled, CheckOutlined, LoadingOutlined, CloseOutlined, QuestionOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import { loadStripe } from '@stripe/stripe-js';
 
@@ -490,7 +490,7 @@ const handleCancel = () => {
 
       return (  <>
                   <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button>
-                  <Button color='red'  onClick={() => (setRecord(record),setIsModalOpens(true))} type='ghost' icon={<EditOutlined   style={{ color: 'green' }}/>} >  </Button>
+                  <Button type='primary'  onClick={() => (setRecord(record),setIsModalOpens(true))}    > Pay  </Button>
                   {/* <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button> */}
                   </>
 
