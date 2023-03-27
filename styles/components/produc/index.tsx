@@ -15,7 +15,7 @@ interface CustomLayoutProps {
  
 
   const CustomLayout: React.FC<CustomLayoutProps> = ({children}:any) => {
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
     const user = nhost.auth.getUser();
 
     console.log("userasdetails",user)
@@ -95,13 +95,31 @@ interface CustomLayoutProps {
           },)
     }
     
+    const handleMouseEnter = () => {
+      if (collapsed) {
+        setCollapsed(false);
+      }
+    };
+  
+    const handleMouseLeave = () => {
+      if (!collapsed) {
+        setCollapsed(true);
+      }
+    };
+  
+    const toggleCollapsed = () => {
+      setCollapsed(!collapsed);
+    };
+
     return (
 
       <Layout>
         <Sider 
         
-        collapsible collapsed={collapsed}   
-        
+        collapsible 
+        collapsed={collapsed}   
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         style={{
           // overflow: 'auto',
         //   height: '100vh',

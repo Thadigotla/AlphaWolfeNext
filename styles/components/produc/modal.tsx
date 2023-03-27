@@ -63,7 +63,7 @@ const EditModal = ({data}) =>{
                 <Button type="primary" onClick={showModal}>
                    { !data?.id ? "CREATE" :  "Edit"}
                 </Button>
-                <Modal title="Basic Modal" open={isModalOpen} okText="Close" onOk={handleOk} onCancel={handleCancel}>
+                <Modal title="" open={isModalOpen} okText="Close" onOk={handleOk} onCancel={handleCancel}>
                    <Form    onChange={onChange}    onFinish={onFinish}>
                       <Row gutter={15}>
                          <Col  className="gutter-row"  >

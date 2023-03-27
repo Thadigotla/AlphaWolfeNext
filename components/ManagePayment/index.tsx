@@ -135,7 +135,7 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                {/* <Button type="primary" onClick={showModal}>
                   { selectedRecord ? "EDIT" :  "CREATE"}
                </Button> */}
-               <Modal title="Basic Modal" open={isModalOpen} okText="Close" onOk={handleOk} onCancel={handleCancel}>
+               <Modal title=  { selectedRecord ? "EDIT" :  "CREATE"} open={isModalOpen} okText="Close" onOk={handleOk} onCancel={handleCancel}>
                   <Form    onChange={onChange}    onFinish={onFinish}>
                      <Row gutter={15}>
                         <Col  className="gutter-row"  >
@@ -250,7 +250,19 @@ function MyComponent({where}) {
     
     return  data?.map((e:any,i)=>{
 
-      return {...e, order_uid:e?.order?.uid}
+      return {...e, 
+              order_uid:e?.order?.uid,
+              name: e?.customer_details?.address?.name,
+              phone: e?.customer_details?.address?.phone,
+              email: e?.customer_details?.address?.email,
+              city: e?.customer_details?.address?.city,
+              country: e?.customer_details?.address?.country,
+              state: e?.customer_details?.address?.state,
+              line1: e?.customer_details?.address?.line1,
+              line2: e?.customer_details?.address?.line2,
+              postal_code: e?.customer_details?.address?.postal_code,
+              
+            }
     })
   
   
@@ -292,7 +304,15 @@ function MyComponent({where}) {
    { title: 'Status', dataIndex: 'status', key: 'status', },
    { title: 'SubTotal', dataIndex: 'amount_subtotal', key: 'amount_subtotal', },
    { title: 'Total', dataIndex: 'amount_total', key: 'amount_total', },
-   { title: 'Discouunt', dataIndex: 'amount_discount', key: 'amount_discount', },
+   { title: 'Name', dataIndex: 'name', key: 'name', },
+   { title: 'Phone', dataIndex: 'phone', key: 'phone', },
+   { title: 'Email', dataIndex: 'email', key: 'email', },
+   { title: 'City', dataIndex: 'city', key: 'city', },
+   { title: 'State', dataIndex: 'state', key: 'state', },
+   { title: 'Line1', dataIndex: 'line1', key: 'line1', },
+   { title: 'Line2', dataIndex: 'line2', key: 'line2', },
+   { title: 'PostalCode', dataIndex: 'postal_code', key: 'postal_code', },
+   { title: 'Discount', dataIndex: 'amount_discount', key: 'amount_discount', },
    { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', render:(val) => moment(val).format('MMMM Do YYYY, h:mm:ss a') }, 
    { title: 'UpdatedAt', dataIndex: 'updated_at', key: 'updated_at', render:(val) => moment(val).format('MMMM Do YYYY, h:mm:ss a') }, 
   //  { title: 'Action', dataIndex: 'action', key: 'action', 

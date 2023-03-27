@@ -29,11 +29,23 @@ const query = gql` query GetOrders($where: orders_bool_exp,$limit:Int,$offset:In
       }
     }
 
+
+    payments_aggregate {
+      aggregate {
+        count
+        sum {
+          total_amount
+        }
+      }
+    }
+
 		id
 		uid
-    payments{
+    payments(order_by: {created_at: desc}){
       uid
       status
+      customer_details
+
     }
     created_at
   }
@@ -178,7 +190,7 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
 
       return     <div >
  
-               <Modal title="Basic Modal"  open={isModalOpen} okText="Close" onOk={handleOk} onCancel={handleCancel}>
+               <Modal title=  { selectedRecord ? "EDIT" :  "CREATE"}  open={isModalOpen} okText="Close" onOk={handleOk} onCancel={handleCancel}>
                   <Form    onChange={onChange}    onFinish={onFinish} >
                      <Row gutter={[16, 16]}>
                       
@@ -327,7 +339,9 @@ function MyComponent() {
         return      {...e,
                      "user_name":user?.displayName, 
                       payment_status:e?.payments?.[0]?.status,
-                      order_details_count:e?.order_details_aggregate?.aggregate?.count
+                      order_details_count:e?.order_details_aggregate?.aggregate?.count,
+                      payments_count:e?.payments_aggregate?.aggregate?.count,
+                      payed_amount:e?.payments_aggregate?.aggregate?.sum?.total_amount,
                     }
        })
     // }
@@ -478,11 +492,13 @@ const handleCancel = () => {
 
   const columns = [
    { title: 'Id', dataIndex: 'uid', key: 'uid',render:(val,record)=> <span style={{color:"rgb(226 121 17)", cursor:"pointer",textDecoration:"underline"}} onClick={()=>router.push(`/orderItems/${record.id}`)}>{record.uid}</span>  },
+   { title: 'User', dataIndex: 'user_name', key: 'user_name', },
    { title: 'Status', dataIndex: 'status', key: 'status', },
    { title: 'Total Amount', dataIndex: 'total_amount', key: 'total_amount', }, 
    { title: 'Items', dataIndex: 'order_details_count', key: 'order_details_count', render:(val)=> <Badge  style={{ backgroundColor: '#52c41a' }}  count={val}></Badge>},
+   { title: 'Payed', dataIndex: 'payed_amount', key: 'payed_amount',},
    { title: 'Payment', dataIndex: 'payment_status', key: 'payment', },
-   { title: 'UserName', dataIndex: 'user_name', key: 'user_name', },
+   { title: 'No of payments', dataIndex: 'payments_count', key: 'payments_count', render:(val)=> <Badge  style={{ backgroundColor: '#52c41a' }}color='#faad14'   count={val}></Badge>},
    { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', render:(val) => moment(val)?.format('MMMM Do YYYY, h:mm:ss a') }, 
    { title: 'Action', dataIndex: 'action', key: 'action', 
    
@@ -490,7 +506,7 @@ const handleCancel = () => {
 
       return (  <>
                   <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button>
-                  <Button type='primary'  onClick={() => (setRecord(record),setIsModalOpens(true))}    > Pay  </Button>
+                  {record?.payment_status ==  "pending" ? <Button type='primary'  onClick={() => (setRecord(record),setIsModalOpens(true))}    > Pay  </Button> : null}
                   {/* <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button> */}
                   </>
 
@@ -510,7 +526,7 @@ const handleCancel = () => {
   // if(!Data) return <div>Loading...</div>
 
  
-  return (<><Modal title="Basic Modal" open={isModalOpens} onOk={handleOk} onCancel={handleCancel}>
+  return (<><Modal title=  { selectedRecord ? "EDIT" :  "CREATE"} open={isModalOpens} onOk={handleOk} onCancel={handleCancel}>
     <Space>
     <Button type="primary" style={{ background: "rgb(196, 178, 160)" }} onClick={() =>{checkPromo()}} > Apply Promo </Button>
     <Input onChange={(e)=>( setCoupon_Code(''), setPromo(false), setPromoValid(false), setStripePromoValid(false), setCoupon_Code(e?.target?.value))}></Input>

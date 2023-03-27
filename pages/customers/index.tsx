@@ -135,7 +135,7 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
                {/* <Button type="primary" onClick={showModal}>
                   { selectedRecord ? "EDIT" :  "CREATE"}
                </Button> */}
-               <Modal title="Basic Modal" open={isModalOpen} okText="Close" onOk={handleOk} onCancel={handleCancel}>
+               <Modal title=  { selectedRecord ? "EDIT" :  "CREATE"} open={isModalOpen} okText="Close" onOk={handleOk} onCancel={handleCancel}>
                   <Form    onChange={onChange}    onFinish={onFinish}>
                      <Row gutter={15}>
                         <Col  className="gutter-row"  >
