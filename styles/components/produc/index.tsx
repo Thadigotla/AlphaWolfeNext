@@ -3,7 +3,7 @@ import { Layout, Menu, theme } from 'antd';
 import { useRouter } from 'next/router';
 import { nhost } from '../../../pages/_app';
 import Image from 'next/image';
-import { AliwangwangOutlined, HomeOutlined, LeftCircleOutlined, MenuFoldOutlined, MenuUnfoldOutlined, MoneyCollectOutlined, OrderedListOutlined, PoundCircleOutlined, ProfileOutlined, UnorderedListOutlined, UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { AliwangwangOutlined, HomeOutlined, LeftCircleOutlined, MenuFoldOutlined, MenuUnfoldOutlined, MoneyCollectOutlined, OrderedListOutlined, PoundCircleOutlined, ProfileOutlined, UnorderedListOutlined, UploadOutlined, UserOutlined, UserSwitchOutlined, UsergroupAddOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import CartItemsContext from '../../../store/Item';
 
 const { Header, Sider, Content } = Layout;
@@ -86,6 +86,8 @@ interface CustomLayoutProps {
     ]
 
     if(user?.defaultRole=="admin"){
+       sideBarItems.pop()
+       sideBarItems.pop()
         sideBarItems.push(    
           {
             key: '/products',
@@ -93,6 +95,39 @@ interface CustomLayoutProps {
             label: 'Products',
             onClick: () => router.push("/productss")
           },)
+          sideBarItems.push(    
+            {
+              key: '/customer_contacts',
+              icon:<UsergroupAddOutlined />,
+              label: 'Customer Contacts',
+              onClick: () => router.push("/customer_contacts")
+            },)
+          sideBarItems.push(    
+            {
+              key: '/customer_emails',
+              icon:<UserSwitchOutlined />,
+              label: 'Customer Emails',
+              onClick: () => router.push("/customer_emails")
+            },)
+
+            sideBarItems.push(    
+              {
+                key: '/home',
+                icon: <HomeOutlined />,
+                label: 'Home',
+                onClick: () => (setHelp(false), router.push("/"))
+              },)
+  
+
+              sideBarItems.push(    
+            {
+              key: '/logout',
+              icon: <LeftCircleOutlined />,
+              label: 'Logout',
+              onClick: () => (nhost.auth.signOut(), router.push("/"))
+            }
+            ,)
+
     }
     
     const handleMouseEnter = () => {

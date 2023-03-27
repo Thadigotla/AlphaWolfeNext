@@ -495,10 +495,10 @@ const handleCancel = () => {
    { title: 'User', dataIndex: 'user_name', key: 'user_name', },
    { title: 'Status', dataIndex: 'status', key: 'status', },
    { title: 'Total Amount', dataIndex: 'total_amount', key: 'total_amount', }, 
-   { title: 'Items', dataIndex: 'order_details_count', key: 'order_details_count', render:(val)=> <Badge  style={{ backgroundColor: '#52c41a' }}  count={val}></Badge>},
+   { title: 'Items', dataIndex: 'order_details_count', key: 'order_details_count', render:(val)=> <Badge  style={{ backgroundColor: '#52c41a' }}  count={val || 0}></Badge>},
    { title: 'Payed', dataIndex: 'payed_amount', key: 'payed_amount',},
    { title: 'Payment', dataIndex: 'payment_status', key: 'payment', },
-   { title: 'No of payments', dataIndex: 'payments_count', key: 'payments_count', render:(val)=> <Badge  style={{ backgroundColor: '#52c41a' }}color='#faad14'   count={val}></Badge>},
+   { title: 'No of payments', dataIndex: 'payments_count', key: 'payments_count', render:(val)=> <Badge  style={{ backgroundColor: '#52c41a' }}color='#faad14'   count={val || 0}></Badge>},
    { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', render:(val) => moment(val)?.format('MMMM Do YYYY, h:mm:ss a') }, 
    { title: 'Action', dataIndex: 'action', key: 'action', 
    
@@ -526,7 +526,7 @@ const handleCancel = () => {
   // if(!Data) return <div>Loading...</div>
 
  
-  return (<><Modal title=  { selectedRecord ? "EDIT" :  "CREATE"} open={isModalOpens} onOk={handleOk} onCancel={handleCancel}>
+  return (<><Modal title=  {"Pay"} open={isModalOpens} onOk={handleOk} onCancel={handleCancel}>
     <Space>
     <Button type="primary" style={{ background: "rgb(196, 178, 160)" }} onClick={() =>{checkPromo()}} > Apply Promo </Button>
     <Input onChange={(e)=>( setCoupon_Code(''), setPromo(false), setPromoValid(false), setStripePromoValid(false), setCoupon_Code(e?.target?.value))}></Input>
