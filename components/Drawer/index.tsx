@@ -55,6 +55,7 @@ const DrawerComp = ( ) =>{
     );
 
     const onFinish = async () => {
+      
         if (cartItems?.length > 0) {
      
          const createdOrder = await createOrder({variables:{object:{ user_id: user?.id,status: "placed", total_amount: totalPrice()}}})
@@ -194,7 +195,13 @@ const DrawerComp = ( ) =>{
           Apply Promo
         </Button>
         <span>
-          <Input onChange={(e) => setCoupon(e?.target?.value)} />
+          <Input onChange={(e) => {
+            setCoupon_Code({})
+            setCoupon("")
+            setPromo(false)
+            setPromoValid(false)
+            setStripePromoValid(false)
+            setCoupon(e?.target?.value)}} />
         </span>
         <span>
           {promoValid && promo &&!stripePromoValid&& <CheckOutlined />}

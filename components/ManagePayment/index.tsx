@@ -1,12 +1,12 @@
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { Button, Col, Form, Input, Modal, Row, Table } from 'antd';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {useEffect} from 'react';
 import toast from 'react-hot-toast';
 import CustomLayout from '../../styles/components/produc';
 import { useUserData } from '@nhost/nextjs';
-import ManagePayment from "../../components/ManagePayment/index"
 import moment from 'moment';
+import { useRouter } from 'next/router';
  
 const query = gql`query GetPayments($where: payments_bool_exp,$limit:Int,$offset:Int) {
   payments(where: $where, offset:$offset, limit:$limit,order_by:  {uid: desc}) {
@@ -16,6 +16,7 @@ const query = gql`query GetPayments($where: payments_bool_exp,$limit:Int,$offset
 		event
 		id
 		order_id
+    order_uid
 		user_id
 		status
 		amount_subtotal
@@ -167,7 +168,7 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
 
 }
 
-function MyComponent() {
+function MyComponent({where}) {
 
   const user = useUserData()
 
@@ -200,6 +201,11 @@ function MyComponent() {
      limit:limit,
      offset:(pageNo-1)*limit
     } });
+
+    React.useEffect(()=>{
+      setsearchTextCondition(where)
+  
+    },[where])
 
     const count = data?.pets_aggregate?.aggregate?.count
 
@@ -265,6 +271,7 @@ function MyComponent() {
 
   const columns = [
    { title: 'Id', dataIndex: 'uid', key: 'uid', },
+   { title: 'Order Id', dataIndex: 'order_uid', key: 'order_uid', },
    { title: 'Total Amount', dataIndex: 'total_amount', key: 'total_amount', },
   //  { title: 'Default Role', dataIndex: 'default_role', key: 'default_role', },
    { title: 'Status', dataIndex: 'status', key: 'status', },
@@ -322,18 +329,23 @@ function MyComponent() {
         </>  );
 }
 
-function App() {
-  return (
-    <CustomLayout>
-    <div style={{textAlign:"right"}}>
+function App({where}) {
+  // const router = useRouter()
+  // const params = router.query
 
-    <ManagePayment where={null}></ManagePayment>
-    </div>
-    </CustomLayout>
+  // let whereCondition = {...where}
+
+  // if(params?.id){
+  //   whereCondition = {...where, "order_id":{_eq:params?.id}} 
+  // }
+
+  console.log("params",where)
+
+  return (
     // <CustomLayout>
     // <div style={{textAlign:"right"}}>
 
-    //     <MyComponent />
+        <MyComponent where={where}/>
 
     // </div></CustomLayout>
   );

@@ -1,6 +1,6 @@
 import { gql, useMutation, useQuery } from '@apollo/client';
 import {  Col, Form, Input, Modal, Row, Space, Table } from 'antd';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {useEffect} from 'react';
 import toast from 'react-hot-toast';
 import CustomLayout from '../../styles/components/produc';
@@ -8,10 +8,10 @@ import { useUserData } from '@nhost/nextjs';
 import Image from 'next/image'
 import type { UploadProps } from 'antd';
 import { Button, message, Upload } from 'antd';
-import { nhost } from '../_app';
-import ManageProductDetail from "../../components/ManageProductDetail/index";
-import { EyeInvisibleOutlined, EyeOutlined, EditOutlined, DeleteFilled } from '@ant-design/icons';
+ import { EyeInvisibleOutlined, EyeOutlined, EditOutlined, DeleteFilled } from '@ant-design/icons';
 import moment from 'moment';
+import { nhost } from '../../pages/_app';
+import { useRouter } from 'next/router';
 
 
 const query = gql` query GetOrderDetails($where: order_details_bool_exp,$limit:Int,$offset:Int) {
@@ -206,9 +206,11 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
 
 }
 
-function MyComponent() {
+function MyComponent({where}) {
 
   const user = useUserData()
+
+  const router = useRouter()
 
   const [Data, setData] = useState([])
 
@@ -236,8 +238,8 @@ function MyComponent() {
     query,
     { variables:{
      "where":  searchTextCondition,
-     limit:limit,
-     offset:(pageNo-1)*limit
+      limit:limit,
+      offset:(pageNo-1)*limit
     } });
 
     
@@ -261,6 +263,10 @@ function MyComponent() {
 
   }
 
+  React.useEffect(()=>{
+    setsearchTextCondition(where)
+
+  },[where])
   console.log("Page details ",pageNo)
 
   const NextPage = () =>{
@@ -334,7 +340,7 @@ function MyComponent() {
   
 
   const columns = [
-   { title: 'Id', dataIndex: 'uid', key: 'uid', },
+   { title: 'Id', dataIndex: 'uid', key: 'uid'},,
    { title: 'Order Id', dataIndex: 'order_uid', key: 'order_uid', },
    { title: 'Quantity', dataIndex: 'quantity', key: 'quantity', },
    { title: 'UserName', dataIndex: 'user_name', key: 'user_name', },
@@ -403,20 +409,22 @@ function MyComponent() {
         </>  );
 }
 
-function App() {
+function App({where}) {
+  // const router = useRouter()
+  // const params = router.query
+
+  // let whereCondition = {...where}
+
+  // if(params?.id){
+  //   whereCondition = {...where, "order_id":{_eq:params?.id}} 
+  // }
+
+  console.log("params",where)
+
   return (
-    // <CustomLayout>
 
-    //     <div style={{textAlign:"right"}}>
-    //     <MyComponent />
+        <MyComponent where={where} />
 
-    // </div>
-    // </CustomLayout>
-    <CustomLayout>
-      <div style={{textAlign:"right"}}>
-    <ManageProductDetail where={null}></ManageProductDetail>
-    </div>
-    </CustomLayout>
   );
 }
 

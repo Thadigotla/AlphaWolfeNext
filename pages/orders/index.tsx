@@ -8,6 +8,7 @@ import { useUserData } from '@nhost/nextjs';
 import { InputPicker } from 'rsuite';
 import moment from 'moment';
 import { EditOutlined, DeleteFilled } from '@ant-design/icons';
+import { useRouter } from 'next/router';
 
 const query = gql` query GetOrders($where: orders_bool_exp,$limit:Int,$offset:Int) {
   orders (where: $where, offset:$offset, limit:$limit,order_by: {uid: desc}) {
@@ -219,6 +220,8 @@ function MyComponent() {
 
   const [MData, setMData] = useState({})
 
+  const router = useRouter()
+
   const [searchText, setSearchText] = useState(null)
 
   const [searchTextCondition, setsearchTextCondition] = useState(null)
@@ -348,7 +351,7 @@ function MyComponent() {
  }
 
   const columns = [
-   { title: 'Id', dataIndex: 'uid', key: 'uid', },
+   { title: 'Id', dataIndex: 'uid', key: 'uid',render:(val,record)=> <span onClick={()=>router.push(`/orderItems/${record.id}`)}>{record.uid}</span>  },
    { title: 'Status', dataIndex: 'status', key: 'status', },
    { title: 'Total Amount', dataIndex: 'total_amount', key: 'total_amount', },
    { title: 'UserName', dataIndex: 'user_name', key: 'user_name', },
