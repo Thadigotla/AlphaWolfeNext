@@ -23,6 +23,7 @@ import   '../styles/pages/s_DriveTechnology.css'
 import   '../styles/pages/product.styles.css'
 import   '../styles/pages/wolfe.css'
 import   'rsuite/dist/rsuite.min.css';
+import Head from 'next/head';
 
 
 export const nhost = new NhostClient({
@@ -51,6 +52,17 @@ function MyApp({ Component, pageProps }) {
     <CartItemsContextProvider>
     <NhostProvider nhost={nhost} initial={pageProps.nhostSession}>
       <NhostApolloProvider nhost={nhost} client={client}>
+        <Head>
+          <title>ALPHA WOLFE - Nutrition designed by science</title>
+          <meta content="Nutrition design by top scientific brains of dietetics and nutrition to formulate some of the best supplements suitable for animals to preserve and maintain a long and healthy life." name="description"/>
+          <meta content="Alpha Wolfe - Nutrition designed by Science." property="og:title"/>
+          <meta content="Nutrition design by top scientific brains of dietetics and nutrition to formulate some of the best supplements suitable for animals to preserve and maintain a long and healthy life." property="og:description"/>
+          <meta content="Alpha Wolfe - Nutrition designed by Science." property="twitter:title"/>
+          <meta content="Nutrition design by top scientific brains of dietetics and nutrition to formulate some of the best supplements suitable for animals to preserve and maintain a long and healthy life." property="twitter:description"/>
+          <meta property="og:type" content="website" />
+          <meta content="summary_large_image" name="twitter:card"/>
+          <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        </Head>
         <UserProvider>
           <Component {...pageProps} />
           <Toaster />
