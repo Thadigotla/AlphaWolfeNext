@@ -3,6 +3,7 @@ import { Button, Col, Form, Input, Modal, Row, Space, Table } from 'antd';
 import { useState } from 'react';
 import {useEffect} from 'react';
 import toast from 'react-hot-toast';
+import React from "react";
 import CustomLayout from '../../styles/components/produc';
 
 import {
@@ -11,7 +12,7 @@ import {
 } from '@nhost/nextjs'
 import moment from 'moment';
 import { DeleteFilled, DeleteOutlined, EditOutlined, PlusSquareFilled } from '@ant-design/icons';
-import ManagePets from '../../components/ManagePets';
+import { useRouter } from 'next/router';
 
  
 
@@ -183,9 +184,11 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
 
 }
 
-function MyComponent() {
+function MyComponent({where}) {
 
   const user:any = useUserData()
+
+  const router = useRouter()
 
   const [Data, setData] = useState([])
 
@@ -217,7 +220,10 @@ function MyComponent() {
      offset:(pageNo-1)*limit
     } });
 
-
+    React.useEffect(()=>{
+      setsearchTextCondition(where)
+  
+    },[where])
   const count = data?.pets_aggregate?.aggregate?.count
 
   const maxPage = Math.ceil(count/limit)
@@ -292,28 +298,28 @@ function MyComponent() {
 
   let columns = [
    { title: 'Id', dataIndex: 'uid', key: 'uid', },
-   { title: 'Name', dataIndex: 'name', key: 'name', },
+   { title: 'Name', dataIndex: 'name', key: 'name', render:(val,record) =><span style={{color:"rgb(226 121 17)", cursor:"pointer",textDecoration:"underline"}} onClick={()=>router.push(`/pets/${record.id}`)}>{val}</span> },
    { title: 'Type', dataIndex: 'type', key: 'type', },
    { title: 'Gender', dataIndex: 'gender', key: 'gender', },
    { title: 'DOB', dataIndex: 'date_of_birth', key: 'date_of_birth', }, 
    { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', render:(val) => moment(val).format('MMMM Do YYYY, h:mm:ss a') }, 
-   { title: 'Action', dataIndex: 'action', key: 'action', 
+  //  { title: 'Action', dataIndex: 'action', key: 'action', 
    
-   render: (_,record) => {
+  //  render: (_,record) => {
 
-            return user?.role =="user"  ? (  <Space>
-                        <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button>
-                        <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button>
-                        </Space>
+  //           return user?.role =="user"  ? (  <Space>
+  //                       <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button>
+  //                       <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button>
+  //                       </Space>
 
-                    ) : null
+  //                   ) : null
                   
-      }, 
+  //     }, 
    
-   },   
+  //  },   
   ]
 
-  if(user.defaultRole == "user"){
+  if(user?.defaultRole == "user"){
     columns?.push( 
         { title: 'Action', dataIndex: 'action', key: 'action', 
    
@@ -362,17 +368,16 @@ function MyComponent() {
         </>  );
 }
 
-function App() {
+function ManagePets({where}) {
+  console.log("params",where)
+
   return (
-    <CustomLayout>
-    <div style={{textAlign:"right"}}>
-
-        <ManagePets where={null}/>
-
-    </div>
-    </CustomLayout>
+ 
+        <MyComponent where={where} />
+ 
+ 
   );
 }
 
-export default App;
+export default ManagePets;
 

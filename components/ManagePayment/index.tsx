@@ -295,7 +295,7 @@ function MyComponent({where}) {
  }
 
   const columns = [
-   { title: 'Id', dataIndex: 'uid', key: 'uid', },
+   { title: 'Payment Id', dataIndex: 'uid', key: 'uid', },
   //  { title: 'Order Id', dataIndex: 'order_uid', key: 'order_uid', },
    { title: 'Order Id', dataIndex: 'order_uid', key: 'order_uid', render:(val,record)=> <span style={{color:"rgb(226 121 17)", cursor:"pointer",textDecoration:"underline"}} onClick={()=>router.push(`/orderItems/${record.order_id}`)}>{record.order_uid}</span>  },
 
@@ -333,11 +333,11 @@ function MyComponent({where}) {
 
   console.log("new data", Data)
 
-  if (loading) return <div>Loading...</div>;
+  // if (loading) return <div>Loading...</div>;
 
-  if (error) return <div>Error: {error.message}</div>;
+  // if (error) return <div>Error: {error.message}</div>;
 
-  if(!Data) return <div>Loading...</div>
+  // if(!Data) return <div>Loading...</div>
 
  
   return (<>
