@@ -60,8 +60,8 @@ import Image  from 'next/image'
         </p>
       </section>
 
-      <section className="Alpha_details_block_1" >
-        <div className="Alpha_details_block_1_left"> 
+      <section className="Alpha_details_epigenetics_block_1" >
+        <div className="Alpha_details_epigenetics_block_1_left"> 
         <Image
           alt="image"
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef350d228a5d8eda0ce_e1.webp"
@@ -70,29 +70,29 @@ import Image  from 'next/image'
           srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef350d228a5d8eda0ce_e1-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef350d228a5d8eda0ce_e1.webp 741w"
         />
         </div>
-        <div className="Alpha_details_block_1_right">
-          <p className="Alpha_details_block_1_right_para_1">
+        <div className="Alpha_details_epigenetics_block_1_right">
+          <p className="Alpha_details_epigenetics_block_1_right_para_1">
             Epigenetics is the science that shows that we do not need to be
             victims of our genetic inheritance. The Human Genome project was
             expected to confirm the existence of over 100,000 inpidual genes.
           </p>
-          <p className="Alpha_details_block_1_right_para_2">
+          <p className="Alpha_details_epigenetics_block_1_right_para_2">
             However, it was discovered that only 23,000 genes make up the human
             genome, barely more than the common fruit fly and far less than
             those found in a grain of rice.
           </p>
-          <p className="Alpha_details_block_1_right_para_3">
+          <p className="Alpha_details_epigenetics_block_1_right_para_3">
             This raised the question of what else could be controlling gene
             expression?
           </p>
-          <p className="Alpha_details_block_1_right_para_4">
+          <p className="Alpha_details_epigenetics_block_1_right_para_4">
             The answer is Epigenetics, which is the interaction between
             environmental signals and the process of adaptation that living
             systems use to thrive. Back in 1700’s Jean-Baptiste Lamarck proposed
             that life forms could acquire ‘information’ from their environment
             and incorporate it into their epigenome.
           </p>
-          <p className="Alpha_details_block_1_right_para_5">
+          <p className="Alpha_details_epigenetics_block_1_right_para_5">
             Quantum Physics was incorporated into the field of molecular biology
             by Erwin Schrödinger to set the basis for what we now know as
             epigenetics.
@@ -100,8 +100,8 @@ import Image  from 'next/image'
         </div>
       </section>
 
-      <section className="Alpha_details_block_2">
-        <p className="Alpha_details_block_2_para">
+      <section className="Alpha_details_epigenetics_block_2">
+        <p className="Alpha_details_epigenetics_block_2_para">
           The ectoderm is the extreme outer layer of the neural tube, which
           forms at the end of the 4th week of gestation. This develops the hair
           as well as the rest of integumentary system, which comprises the skin,
@@ -116,30 +116,30 @@ import Image  from 'next/image'
         </p>
       </section>
 
-      <section className="Alpha_details_block_3">
-        <div className="Alpha_details_block_3_left">
-          <p className="Alpha_details_block_3_left_para_1">
+      <section className="Alpha_details_epigenetics_block_3">
+        <div className="Alpha_details_epigenetics_block_3_left">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             Today, we know that gene expression that is not mediated by coding
             DNA, representing only 2% of the genomic expression. It is rather
             influenced by informational signals received from the environment by
             non-coding DNA, which represent the remaining 98% of what is
             referred to as junk DNA.
           </p>
-          <p className="Alpha_details_block_3_left_para_2">
+          <p className="Alpha_details_epigenetics_block_3_left_para_2">
             {" "}
             Harmful information emanating from the environment such as Electro
             Magnetic stressors and toxic air pollutants, cause disharmony, so
             the human body responds accordingly changing the phenotype without
             altering the genotype. This change is reflected in our physiology.
           </p>
-          <p className="Alpha_details_block_3_left_para_3">
+          <p className="Alpha_details_epigenetics_block_3_left_para_3">
             These signals include information from the air we breathe, the food
             we eat, the water we drink, the sleep we did not get, the impact of
             the electromagnetic environment and even the arguments we are having
             and the 50,000+ thoughts we have per day.
           </p>
         </div>
-        <div className="Alpha_details_block_3_right" style={{position:"relative",  }}>
+        <div className="Alpha_details_epigenetics_block_3_right" style={{position:"relative",  }}>
           <Image
             alt="image"
             layout="fill"
@@ -150,8 +150,8 @@ import Image  from 'next/image'
         </div>
       </section>
 
-      <section className="Alpha_details_block_4">
-        <p className="Alpha_details_block_4_para_1">
+      <section className="Alpha_details_epigenetics_block_4">
+        <p className="Alpha_details_epigenetics_block_4_para_1">
           {" "}
           Alpha Wolfe’s partnership with Cell Wellbeing’s intelligent epigenetic
           mapping system consists of two parts: the biological information
@@ -163,7 +163,7 @@ import Image  from 'next/image'
           data, they then decrypt and decode this data before using its content
           to map the complicated biological information.{" "}
         </p>
-        <p className="Alpha_details_block_4_para_2">
+        <p className="Alpha_details_epigenetics_block_4_para_2">
           {" "}
           The German algorithm calculates the relevancy of each specific data
           item to determine the weighting of each individual category. The
@@ -172,8 +172,8 @@ import Image  from 'next/image'
         </p>
       </section>
 
-      <section className="Alpha_details_block_1" style={{position:"relative"}}>
-        <div className="Alpha_details_block_1_left" >
+      <section className="Alpha_details_epigenetics_block_1" style={{position:"relative"}}>
+        <div className="Alpha_details_epigenetics_block_1_left" >
         <Image
           alt="image"
           layout="fill"
@@ -183,22 +183,22 @@ import Image  from 'next/image'
           loading="lazy"
         />
         </div>
-        <div className="Alpha_details_block_1_right">
+        <div className="Alpha_details_epigenetics_block_1_right">
           <h3>WHY THE HAIR BULB IS AN Epigenetic Marker</h3>
-          <p className="Alpha_details_block_1_right_para_1">
+          <p className="Alpha_details_epigenetics_block_1_right_para_1">
             Hair belongs to the integumentary system that develops from the
             ectoderm and thus it has the same embryological origin as the
             nervous system. Therefore, it shares the same characteristics as the
             neurons when it comes to sensation.
           </p>
-          <p className="Alpha_details_block_1_right_para_2">
+          <p className="Alpha_details_epigenetics_block_1_right_para_2">
             The root/bulb of the hair is the only part of the hair that is
             alive. Meaning it is able to self-regulate and self-replicate. It
             feeds from the blood vessels that bring information and nutrients
             from the systemic microcirculation which is subcutaneous through the
             papilla.
           </p>
-          <p className="Alpha_details_block_1_right_para_3">
+          <p className="Alpha_details_epigenetics_block_1_right_para_3">
             The hair and its bulb are in fact an antenna that is constantly
             sensing and thus detecting environmental signals emanating from the
             micro and macro environment. So much so, that within the
@@ -206,7 +206,7 @@ import Image  from 'next/image'
             muscle, which are small muscles attached to hair follicles and are
             the smallest muscles in the body.
           </p>
-          <p className="Alpha_details_block_1_right_para_3">
+          <p className="Alpha_details_epigenetics_block_1_right_para_3">
             This is the muscle that works as much as the cardiac muscle, since
             it is constantly sensing not just changes in temperature and
             atmospheric pressure, but vibration through resonance, and
@@ -215,7 +215,7 @@ import Image  from 'next/image'
             over-looked until recently as important environmental sensors - even
             though the hair has been accepted as an excellent bio marker.
           </p>
-          <p className="Alpha_details_block_1_right_para_3">
+          <p className="Alpha_details_epigenetics_block_1_right_para_3">
             The arrector pili muscle reacts instantly to a systems shock and
             fear, causing the hair to ‘stand on end’. The arrector pili muscle
             also relaxes when the system is calm. In addition, its ‘sensing’
@@ -228,8 +228,8 @@ import Image  from 'next/image'
         </div>
       </section>
 
-      <section className="Alpha_details_block_2">
-        <p className="Alpha_details_block_2_para">
+      <section className="Alpha_details_epigenetics_block_2">
+        <p className="Alpha_details_epigenetics_block_2_para">
           The S-Drive has an intended use that relates to supporting,
           maintaining or encouraging a general state of health. The S-Drive
           detects epigenetic signals that influence gene expression, so that
@@ -245,9 +245,9 @@ import Image  from 'next/image'
         </p>
       </section>
 
-      <section className="Alpha_details_block_3">
-        <div className="Alpha_details_block_3_left">
-          <p className="Alpha_details_block_3_left_para_1">
+      <section className="Alpha_details_epigenetics_block_3">
+        <div className="Alpha_details_epigenetics_block_3_left">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             Environmental and nutritional impact on a system is reflected in
             this cascade of information. A useful analogy of this effect could
             be viewed as a pebble thrown into a pond and causing ripples which
@@ -257,7 +257,7 @@ import Image  from 'next/image'
             adapting to all of the other environmental waves in the pond, before
             they fade away.
           </p>
-          <p className="Alpha_details_block_3_left_para_2">
+          <p className="Alpha_details_epigenetics_block_3_left_para_2">
             Alpha Wolfe has partnered with Cell Wellbeings Epigenetic
             technology to allows us to understand the interactions of impacts
             from the whole environmental picture and not just see each impacting
@@ -265,7 +265,7 @@ import Image  from 'next/image'
             provides users with new and completely different views of their
             living environment.
           </p>
-          <p className="Alpha_details_block_3_left_para_3">
+          <p className="Alpha_details_epigenetics_block_3_left_para_3">
             Fresh hair bulb and shaft information must be digitized within the
             first 3 minutes of plucking, for those who are keen on a
             preventative, ongoing, anti-aging nutritional strategy. This type of
@@ -275,7 +275,7 @@ import Image  from 'next/image'
             physically. The hair and their roots should be plucked from the
             occipital bone above the nape of the neck.
           </p>
-          <p className="Alpha_details_block_3_left_para_3">
+          <p className="Alpha_details_epigenetics_block_3_left_para_3">
             Indications of a wide range of nutritional issues are highlighted in
             this type of epigenetic information before they appear as physical
             needs or actual deficiencies. The returned Environmental Statement
@@ -289,8 +289,8 @@ import Image  from 'next/image'
             associated with a poor nutritional diet or a toxic environment.
           </p>
         </div>
-        <div className="Alpha_details_block_3_right" >
-         <div className="Alpha_details_block_3_right_img">
+        <div className="Alpha_details_epigenetics_block_3_right Alpha_details_epigenetics_block_3_right_override" >
+         <div className="Alpha_details_epigenetics_block_3_right_img ">
           <Image
             alt="image"
             layout="fill"
@@ -304,8 +304,8 @@ import Image  from 'next/image'
         </div>
       </section>
 
-      <section className="Alpha_details_block_1"  >
-        <p className="Alpha_details_block_1_left">
+      <section className="Alpha_details_epigenetics_block_1"  >
+        <p className="Alpha_details_epigenetics_block_1_left ">
 
         <Image
           alt="image"
@@ -318,8 +318,8 @@ import Image  from 'next/image'
         />
         </p>
 
-        <div className="Alpha_details_block_1_right">
-          <p className="Alpha_details_block_1_right_para_1">
+        <div className="Alpha_details_epigenetics_block_1_right">
+          <p className="Alpha_details_epigenetics_block_1_right_para_1">
             The Epigenetic Indicators highlight accumulated information, which
             may assist in alerting us to environmental impacts such as Electro
             Smog or chemical irritants as well as nutritional imbalances and
@@ -330,15 +330,15 @@ import Image  from 'next/image'
         </div>
       </section>
 
-      <section className="Alpha_details_block_2">
-        <p className="Alpha_details_block_2_para">
+      <section className="Alpha_details_epigenetics_block_2">
+        <p className="Alpha_details_epigenetics_block_2_para">
           Our German Epigenetic mapping and indexing program ranks the
           intensities, before using the data to generate the charts contained in
           the Epigenetic Environmental Statements and nutritional optimization
           maps.
         </p>
 
-        <p className="Alpha_details_block_2_para">
+        <p className="Alpha_details_epigenetics_block_2_para">
           Each 34-page map reflects the personal environmental influences which
           could be impacting your animal as seen through the information
           gathered by the S-Drive. The mapping covers the following categories
@@ -346,49 +346,49 @@ import Image  from 'next/image'
         </p>
       </section>
 
-      <section className="Alpha_details_block_3">
-        <div className="Alpha_details_block_3_left">
-          <p className="Alpha_details_block_3_left_para_1">
+      <section className="Alpha_details_epigenetics_block_3">
+        <div className="Alpha_details_epigenetics_block_3_left">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             • Vitamins x 16 most common
           </p>
-          <p className="Alpha_details_block_3_left_para_1">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             • Minerals x 16 most common
           </p>
-          <p className="Alpha_details_block_3_left_para_1">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             • Essential Fatty Acids x 6
           </p>
-          <p className="Alpha_details_block_3_left_para_1">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             • Antioxidant x 13 groups
           </p>
-          <p className="Alpha_details_block_3_left_para_1">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             • Amino Acids x 23
           </p>
-          <p className="Alpha_details_block_3_left_para_1">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             • Toxins – Chemicals, Radiation, Toxic Metals
           </p>
-          <p className="Alpha_details_block_3_left_para_1">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             • Microbiology – Bacteria, Fungus
           </p>
-          <p className="Alpha_details_block_3_left_para_1">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             • Moulds/Spores, Parasites, Virus
           </p>
-          <p className="Alpha_details_block_3_left_para_1">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             • Electro Smog EMF & ELF x 14 major categories
           </p>
-          <p className="Alpha_details_block_3_left_para_1">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             • Gut and Intestinal Stressors
           </p>
-          <p className="Alpha_details_block_3_left_para_1">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             • Circulatory Stressors
           </p>
-          <p className="Alpha_details_block_3_left_para_1">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             • Muscle recovery Stressors
           </p>
-          <p className="Alpha_details_block_3_left_para_1">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             • Food intolerances and food additives to avoid
           </p>
         </div>
-        <div className="Alpha_details_block_3_right" style={{position:"relative"}}>
+        <div className="Alpha_details_epigenetics_block_3_right " style={{position:"relative"}}>
           <Image
             alt="image"
             layout="fill"
@@ -401,9 +401,9 @@ import Image  from 'next/image'
         </div>
       </section>
 
-      <section className="Alpha_details_block_3">
-        <div className="Alpha_details_block_3_left">
-          <p className="Alpha_details_block_3_left_para_1">
+      <section className="Alpha_details_epigenetics_block_3">
+        <div className="Alpha_details_epigenetics_block_3_left">
+          <p className="Alpha_details_epigenetics_block_3_left_para_1">
             The nine assessed categories are ranked according to their overall
             status within the group. The aggregated scores present a picture of
             which categories are possibly having the highest impact and these
@@ -412,7 +412,7 @@ import Image  from 'next/image'
             information which helps users to focus on supporting the cells in
             the most productive way.
           </p>
-          <p className="Alpha_details_block_3_left_para_2">
+          <p className="Alpha_details_epigenetics_block_3_left_para_2">
             {" "}
             Within each category highlighted, we number the items according to
             their priority ranking, again making it easier to see where to start
@@ -420,7 +420,7 @@ import Image  from 'next/image'
             information in one easy-to-read table, listed in priority order with
             suggested actions.
           </p>
-          <p className="Alpha_details_block_3_left_para_3">
+          <p className="Alpha_details_epigenetics_block_3_left_para_3">
             Included in the reports Information is a suggested 60-day Protocol
             which highlights specific foods to obtain optimal nutritional value
             and foods to avoid. The metabolic system requires time to adjust
@@ -428,7 +428,7 @@ import Image  from 'next/image'
             epigenetic assessment is conducted.
           </p>
         </div>
-        <div className="Alpha_details_block_3_right" style={{position:"relative"}}>
+        <div className="Alpha_details_epigenetics_block_3_right " style={{position:"relative"}}>
           <Image
             layout="fill"
             alt="image"

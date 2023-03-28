@@ -193,8 +193,8 @@ import Image from "next/image"
         </p>
       </section>
 
-      <section className="Alpha_details_block_5">
-        <p className="Alpha_details_block_5_left">
+      <section className="Alpha_details_s_drive_block_5">
+        <p className="Alpha_details_s_drive_block_5_left">
         <Image
           src="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/64070ef3154efbc25cae5e07_e6.webp"
           loading="lazy"
@@ -204,18 +204,18 @@ import Image from "next/image"
          
         />
         </p>
-        <p className="Alpha_details_block_5_right">
-          <p className="Alpha_details_block_5_right_para_1">
+        <p className="Alpha_details_s_drive_block_5_right">
+          <p className="Alpha_details_s_drive_block_5_right_para_1">
             When the mapping process is completed, the specific epigenetic data
             is then returned as an encrypted data file to the geo located
             S-Drive using the same unique encrypted sending codes.
           </p>
-          <p className="Alpha_details_block_5_right_para_2">
+          <p className="Alpha_details_s_drive_block_5_right_para_2">
             Upon receipt by the S-Drive, its automated software decrypts the
             data file, generates a readable file and then adds the client’s full
             name and details to the epigenetic report.
           </p>
-          <p className="Alpha_details_block_5_right_para_3">
+          <p className="Alpha_details_s_drive_block_5_right_para_3">
             *Note: At all times the clients’ personal data remains on the local
             S-Drive licensed computer and is not stored on the Cell Wellbeing
             German facility’s database
@@ -248,6 +248,7 @@ import Image from "next/image"
           layout="fill"
           objectFit="cover"
           sizes="(max-width: 991px) 90vw, 95vw"
+          className="footer_image_Image_overridss"
           // width="50%"
           // height="100%"
           // srcSet="https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-500.webp 500w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-800.webp 800w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-1080.webp 1080w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4-p-1600.webp 1600w, https://uploads-ssl.webflow.com/63f7267539759cafd312faae/640716ac1a142c0133776918_s4.webp 1920w"

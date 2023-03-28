@@ -10916,7 +10916,7 @@ li {
     display: -ms-flexbox;
     display: flex;
     width: 100%;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
@@ -10935,7 +10935,8 @@ li {
 
   .hero-image-wrapper {
     width: 100%;
-    height: auto;
+    /* height: auto; */
+    margin: 0 auto;
     max-width: 820px;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
@@ -12383,7 +12384,8 @@ li {
   }
 
   .about-image {
-    width: 320px;
+    width: 100%;
+    margin: 0 auto;
     max-width: 70vw;
     -webkit-transform: rotate(5deg);
     -ms-transform: rotate(5deg);
