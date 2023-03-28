@@ -18,7 +18,7 @@ const session = async  (req, res) => {
           product_data: {
             name: "Amount",
           },
-          unit_amount: cartItems.totalPrice * 100,
+          unit_amount: cartItems.totalPrice  ,
         },
         quantity: 1,
       },
@@ -31,7 +31,7 @@ const session = async  (req, res) => {
       order_id: cartItems.order_id,
     },
     success_url: "https://alpha-wolfe-next-git-master-thadigotla.vercel.app/orders",
-    cancel_url: "https://alpha-wolfe-next-git-master-thadigotla.vercel.app/products",
+    cancel_url: "https://alpha-wolfe-next-git-master-thadigotla.vercel.app/orders",
     shipping_address_collection: {
       allowed_countries: ["US", "CA", "IN", "GB"], // List of countries where shipping addresses can be collected
     },
