@@ -1191,6 +1191,7 @@ th {
   border-radius: 1em;
 }
 
+ 
 @media only screen and (max-width: 767px) {
   .collection-list-3 {
     -ms-grid-columns: 1fr 1fr;
@@ -1219,6 +1220,7 @@ th {
   .mission_right {
     width: 100%;
   }
+  
   .facilities_grid,
   .dog_quotation {
     flex-wrap: wrap;
@@ -1243,6 +1245,8 @@ th {
   .image-86-wrapper {
     display:none;
   }
+
+   
 
   .nutritional_banner_heading,
   .dog_quotation_heading,
