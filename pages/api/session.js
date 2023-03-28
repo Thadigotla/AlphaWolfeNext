@@ -30,8 +30,8 @@ const session = async  (req, res) => {
       payment_id: cartItems.payment_id,
       order_id: cartItems.order_id,
     },
-    success_url: "https://alpha-wolfe-next-ovcdatqcz-thadigotla.vercel.app/payments",
-    cancel_url: "https://alpha-wolfe-next-ovcdatqcz-thadigotla.vercel.app/products",
+    success_url: "https://alpha-wolfe-next-git-master-thadigotla.vercel.app/orders",
+    cancel_url: "https://alpha-wolfe-next-git-master-thadigotla.vercel.app/products",
     shipping_address_collection: {
       allowed_countries: ["US", "CA", "IN", "GB"], // List of countries where shipping addresses can be collected
     },
