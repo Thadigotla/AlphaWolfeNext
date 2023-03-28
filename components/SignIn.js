@@ -131,9 +131,9 @@ const SignIn = () => {
     </div>
     <div className={styles.container} style={{  width:"40%", height:"100%",padding:"2%", }}>
       <div >
-        <div className={styles['logo-wrapper']}>
+        {/* <div className={styles['logo-wrapper']}>
           <Image src={"https://uploads-ssl.webflow.com/63f7267539759cafd312faae/63f733050ef63f2e151dc369_AW-logo-p-500.webp"} layout="fill" alt="logo"   objectFit="contain" />
-        </div>
+        </div> */}
 
      { !forgotPassword ?   
        <form onSubmit={handleOnSubmit} className={styles.form}>
@@ -184,12 +184,12 @@ const SignIn = () => {
               <br/>
               <br/>
 
-              <span
+              {/* <span
                 style={{ cursor: "pointer", marginTop: "20px" }}
                 onClick={() => setForgotPassword(!forgotPassword)}
               >
                 Forgot Password ?
-              </span>
+              </span> */}
 
     </div>
     </div>
