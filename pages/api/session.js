@@ -18,7 +18,7 @@ const session = async  (req, res) => {
           product_data: {
             name: "Amount",
           },
-          unit_amount: cartItems.totalPrice  ,
+          unit_amount: cartItems.totalPrice *   100 ,
         },
         quantity: 1,
       },

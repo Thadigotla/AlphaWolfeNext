@@ -1,7 +1,7 @@
-import { Button, Col, Drawer, Image, Input, Row, Space } from "antd"
+import { Button, Col, Drawer, Image, Input, Row, Select, Space } from "antd"
 import React, { useContext, useState } from "react"
 import CartItemsContext from "../../store/Item"
-import { gql, useMutation } from "@apollo/client"
+import { gql, useMutation, useQuery } from "@apollo/client"
 import { useRouter } from 'next/router'
 import { nhost } from "../../pages/_app"
 import { loadStripe } from "@stripe/stripe-js";
@@ -10,8 +10,28 @@ import { CheckOutlined, CloseOutlined, LoadingOutlined } from "@ant-design/icons
 
 const DrawerComp = ( ) =>{
 
+  
+
     const {cartItems,setCartItems,open,totalCount,totalPrice ,showDrawer,onClose:onclose} = useContext(CartItemsContext)
   
+ 
+   const query =gql `query GetPets {
+    pets {
+      date_of_birth
+      uid
+      description
+      gender
+      name
+      type
+      created_at
+      updated_at
+      id
+      user_id
+      uuid
+    }
+  }
+     `
+ 
     const insert_mutation_order_details = gql `mutation MyMutation1($object: [order_details_insert_input!]!) {
         insert_order_details(  objects: $object) {
            affected_rows
@@ -37,6 +57,31 @@ const DrawerComp = ( ) =>{
     const  [createOrder]  = useMutation(insert_mutation_order);
     const [createPayment]  = useMutation(insert_mutation);
 
+    const [petsText, setpetsText] = useState(null)
+
+    const [pet, setPet] = useState(null)
+
+
+
+
+    const {data:pets} = useQuery(query,
+          { variables:{
+            "where":  petsText,
+            limit:5
+            } 
+          })
+
+    console.log("pes are",pets?.pets)
+    const onSelects = (field,e) =>{
+
+      console.log("Details ",field, e)
+
+      setPet({[field]:e}) 
+
+      }
+
+
+     
     const [Coupon, setCoupon] = useState("");
     const [Coupon_Code, setCoupon_Code] = useState({});
     const [promo, setPromo] = useState<boolean>(false);
@@ -56,9 +101,12 @@ const DrawerComp = ( ) =>{
 
     const onFinish = async () => {
       
-        if (cartItems?.length > 0) {
+        if (cartItems?.length > 0&&pet?.pet_id) {
      
-         const createdOrder = await createOrder({variables:{object:{ user_id: user?.id,status: "placed", total_amount: totalPrice()}}})
+           
+         const createdOrder = await createOrder({variables:{object:{ user_id: user?.id,
+           pet_id:pet?.pet_id,
+           status: "placed", total_amount: totalPrice()}}})
            
     
          const formattedCartItems = await cartItems.map((item) => {
@@ -82,7 +130,6 @@ const DrawerComp = ( ) =>{
             status: "pending",
             total_amount: totalPrice,
             order_id: createdOrder?.data?.insert_orders_one?.id,
-          
           }}})
           console.log("createdPayment", createdPayment)
      
@@ -155,6 +202,15 @@ const DrawerComp = ( ) =>{
 
     return       <Drawer title="Cart" placement="right" onClose={onclose} open={open}>
     <Space direction="vertical">
+    <Select
+      showSearch
+      placeholder="Pet"
+      optionFilterProp="children"
+      value={pet?.pet_id}
+      style={{width:"100%"}}
+      onChange={(e)=>onSelects("pet_id",e)}
+      options={pets?.pets?.map((e,i)=>({label:e?.name,value:e?.id}))}
+      /> 
       {cartItems.length === 0 && <p>Your cart is empty.</p>}
       {cartItems.map((item) => (
         <div key={item.id}>

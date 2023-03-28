@@ -11,25 +11,34 @@ import { EditOutlined, DeleteFilled, CheckOutlined, LoadingOutlined, CloseOutlin
 import { useRouter } from 'next/router';
 import { loadStripe } from '@stripe/stripe-js';
 
-const query = gql` query GetOrders($where: orders_bool_exp,$limit:Int,$offset:Int) {
-  orders (where: $where, offset:$offset, limit:$limit,order_by: {uid: desc}) {
+const query = gql`query GetOrders($where: orders_bool_exp, $limit: Int, $offset: Int) {
+  orders(
+    where: $where
+    offset: $offset
+    limit: $limit
+    order_by: { uid: desc }
+  ) {
+    id
+    uid
+    status
+    created_at
+    updated_at
+    total_amount
     user_id
-		status
-		created_at
-		updated_at
-		total_amount
-    user_id 
-    user{
+    user {
       id
       displayName
     }
-    order_details_aggregate{
-      aggregate{
+    pet_id
+    pet {
+      id
+      name
+    }
+    order_details_aggregate {
+      aggregate {
         count
       }
     }
-
-
     payments_aggregate {
       aggregate {
         count
@@ -38,24 +47,19 @@ const query = gql` query GetOrders($where: orders_bool_exp,$limit:Int,$offset:In
         }
       }
     }
-
-		id
-		uid
-    payments(order_by: {created_at: desc}){
+    payments(order_by: { created_at: desc }) {
       uid
       status
       customer_details
-
     }
-    created_at
   }
   orders_aggregate {
-    aggregate{
+    aggregate {
       count
     }
   }
 }
-     `;
+  `;
 
 const update_mutation = gql`mutation update_by_pk($id: uuid!, $set: orders_set_input!)   {
                         update_orders_by_pk(pk_columns: {id: $id}, _set: $set) {
@@ -337,7 +341,8 @@ function MyComponent() {
     modifiedData= data?.map((e:any,i)=>{
 
         return      {...e,
-                     "user_name":user?.displayName, 
+                     "user_name":e?.user?.displayName, 
+                      pet:e?.pet?.name, 
                       payment_status:e?.payments?.[0]?.status,
                       order_details_count:e?.order_details_aggregate?.aggregate?.count,
                       payments_count:e?.payments_aggregate?.aggregate?.count,
@@ -493,6 +498,7 @@ const handleCancel = () => {
   let columns = [
    { title: 'Id', dataIndex: 'uid', key: 'uid',render:(val,record)=> <span style={{color:"rgb(226 121 17)", cursor:"pointer",textDecoration:"underline"}} onClick={()=>router.push(`/orderItems/${record.id}`)}>{record.uid}</span>  },
    { title: 'User', dataIndex: 'user_name', key: 'user_name', },
+   { title: 'Pet', dataIndex: 'pet', key: 'pet', },
    { title: 'Status', dataIndex: 'status', key: 'status', },
    { title: 'Total Amount', dataIndex: 'total_amount', key: 'total_amount', }, 
    { title: 'Items', dataIndex: 'order_details_count', key: 'order_details_count', render:(val)=> <Badge  style={{ backgroundColor: '#52c41a' }}  count={val || 0}></Badge>},
