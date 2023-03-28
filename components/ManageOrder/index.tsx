@@ -503,7 +503,7 @@ const handleCancel = () => {
 
   let columns = [
    { title: 'Order Id', dataIndex: 'uid', key: 'uid',render:(val,record)=> <span style={{color:"rgb(226 121 17)", cursor:"pointer",textDecoration:"underline"}} onClick={()=>router.push(`/orderItems/${record.id}`)}>{record.uid}</span>  },
-   { title: 'User', dataIndex: 'user_name', key: 'user_name', },
+   { title: 'User', dataIndex: 'user_name', key: 'user_name',render:(val,record) =><span style={{color:"rgb(226 121 17)", cursor:"pointer",textDecoration:"underline"}} onClick={()=>router.push(`/customers/${record.user_id}`)}>{val}</span> },
    { title: 'Pet', dataIndex: 'pet', key: 'pet',render:(val,record) =><span style={{color:"rgb(226 121 17)", cursor:"pointer",textDecoration:"underline"}} onClick={()=>router.push(`/pets/${record.pet_id}`)}>{val}</span> },
    { title: 'Status', dataIndex: 'status', key: 'status', },
    { title: 'Total Amount', dataIndex: 'total_amount', key: 'total_amount', }, 

@@ -18,6 +18,13 @@ const query = gql` query ($where: products_bool_exp,$limit:Int,$offset:Int) {
         count
       }
     }
+    orders_aggregate {
+      aggregate {
+        count
+      }
+    }
+    
+    
    } `;
 
 const update_mutation = gql`mutation update_by_pk($id: uuid!, $set: products_set_input!)   {

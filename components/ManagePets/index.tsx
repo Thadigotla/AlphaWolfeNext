@@ -297,7 +297,7 @@ function MyComponent({where}) {
  }
 
   let columns = [
-   { title: 'Id', dataIndex: 'uid', key: 'uid', },
+   { title: 'Pet Id', dataIndex: 'uid', key: 'uid', },
    { title: 'Name', dataIndex: 'name', key: 'name', render:(val,record) =><span style={{color:"rgb(226 121 17)", cursor:"pointer",textDecoration:"underline"}} onClick={()=>router.push(`/pets/${record.id}`)}>{val}</span> },
    { title: 'Type', dataIndex: 'type', key: 'type', },
    { title: 'Gender', dataIndex: 'gender', key: 'gender', },

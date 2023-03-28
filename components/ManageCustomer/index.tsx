@@ -5,7 +5,8 @@ import {useEffect} from 'react';
 import toast from 'react-hot-toast';
 import CustomLayout from '../../styles/components/produc';
 import moment from 'moment';
-import ManageCustomer from '../../components/ManageCustomer';
+import React from  "react";
+import { useRouter } from 'next/router';
  
 const query = gql`query GetUsersView {
   users_view {
@@ -34,6 +35,11 @@ const query = gql`query GetUsersView {
 		email
 		new_email
 		id
+  }
+    users_view_aggregate {
+    aggregate {
+      count
+    }
   }
 }
     
@@ -166,11 +172,21 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
 
 }
 
-function MyComponent() {
+function MyComponent({where}) {
 
   const [Data, setData] = useState([])
 
   const [MData, setMData] = useState({})
+
+  const router = useRouter()
+
+  const [searchText, setSearchText] = useState(null)
+
+  const [searchTextCondition, setsearchTextCondition] = useState(null)
+  
+  const [limit, setLimit] = useState(10)
+
+  const [pageNo, setPageNo] = useState(1)
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -182,16 +198,64 @@ function MyComponent() {
   
   const [deleteFunction, { data:dData, loading:dLoading, error:dError}] = useMutation(delete_mutation);
 
-  const { data, loading, error } = useQuery(query);
+  // const { data, loading, error } = useQuery(query);
+
+    const { data, loading, error, refetch } = useQuery(
+    query,
+    { variables:{
+     "where":  searchTextCondition,
+     limit:limit,
+     offset:(pageNo-1)*limit
+    } });
+
+   React.useEffect(()=>{
+      setsearchTextCondition(where)
+  
+    },[where])
+
+   const count = data?.users_view_aggregate?.aggregate?.count
+
+    const maxPage = Math.ceil(count/limit)
 
   const formatData = (data:[]) =>{ return [...data] }
 
+    const NextPage = () =>{
+  
+        setPageNo((page) =>page+1)
+    }
+  
+    const PreviousPage = () => {
+  
+      if(pageNo>0){
+        setPageNo((page) =>page-1)
+       }
+    }
+  
   useEffect(()=>{
    if(data?.users_view){
       setData(formatData(data?.users_view))
    }
   },[data?.users_view])
   
+    const onChangeText = (e) =>{
+
+      let where = {}
+      if (e){
+           where= {
+          "_or":  [
+            {"user": {"displayName":  {"_ilike": "%"+e+"%"}}
+            },
+            // {"enum_order_status": {"value": {"_ilike":"%"+e+"%"} }}
+
+          ]
+          // {"type": {"_ilike":"%"+e+"%" }}
+          // ]
+        }
+      }
+      setSearchText(e)
+      setsearchTextCondition(where)
+  
+    }
 
   const handleEdit = (record) => {
    setSelectedRecord(record);
@@ -214,7 +278,7 @@ function MyComponent() {
 
   const columns = [
    { title: 'Id', dataIndex: 'id', key: 'id', },
-   { title: 'Name', dataIndex: 'display_name', key: 'name', },
+   { title: 'Name', dataIndex: 'display_name', key: 'name',render:(val,record) =><span style={{color:"rgb(226 121 17)", cursor:"pointer",textDecoration:"underline"}} onClick={()=>router.push(`/customers/${record.id}`)}>{val}</span> },
    { title: 'Default Role', dataIndex: 'default_role', key: 'default_role', },
    { title: 'Disabled', dataIndex: 'disabled', key: 'disabled', },
    { title: 'Email Verified', dataIndex: 'email_verified', key: 'email_verified', },
@@ -248,8 +312,14 @@ function MyComponent() {
  
   return (<>
  
-            {/* <Button type="primary" onClick={handleCreate}>CREATE</Button> */}
+           <Input type='text' style={{minWidth:"50px", width:"200px", margin:"10px"}} placeholder='Search By Name' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
             <Table dataSource={Data} columns={columns} />
+                       <Button onClick={PreviousPage}
+             disabled={pageNo<=1} 
+            >Previous</Button>
+            <Button onClick={NextPage} 
+             disabled={pageNo >= maxPage}
+             >Next</Button>
             <EditModal 
                selectedRecord={selectedRecord}
                Mdata={MData} 
@@ -262,17 +332,13 @@ function MyComponent() {
         </>  );
 }
 
-function App() {
+function ManageCustomer({where}) {
   return (
-    <CustomLayout>
-    <div style={{textAlign:"right"}}>
-        {/* <MyComponent /> */}
-        <ManageCustomer where={null}/>
+  
+        <MyComponent where={where} />
 
-    </div>
-    </CustomLayout>
   );
 }
 
-export default App;
+export default ManageCustomer;
 
