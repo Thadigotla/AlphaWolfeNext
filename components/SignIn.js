@@ -95,7 +95,7 @@ const SignIn = () => {
 
       if(forgotPassword){
       const result =  await resetPassword(email, {
-          redirectTo: '/forgot'
+          redirectTo: "/forgot"
           // redirectTo: 'https://alpha-wolfe-next-git-master-thadigotla.vercel.app/forgot'
           // redirectTo: 'https://alpha-wolfe-next-git-master-thadigotla.vercel.app/forgot'
           // redirectTo: 'http:localhost:3000/forgot'Sreekanthsreekanth970@gmail.com
