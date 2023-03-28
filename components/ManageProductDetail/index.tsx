@@ -339,7 +339,7 @@ function MyComponent({where}) {
     }
   
 
-  const columns = [
+  let columns = [
    { title: 'Id', dataIndex: 'uid', key: 'uid'},
    { title: 'Order Id', dataIndex: 'order_uid', key: 'order_uid', render:(val,record)=> <span style={{color:"rgb(226 121 17)", cursor:"pointer",textDecoration:"underline"}} onClick={()=>router.push(`/orderItems/${record.order_id}`)}>{record.order_uid}</span>  },
    { title: 'Quantity', dataIndex: 'quantity', key: 'quantity', },
@@ -357,21 +357,38 @@ function MyComponent({where}) {
    { title: 'Status', dataIndex: 'status', key: 'status', },
    { title: 'Test Type', dataIndex: 'test_type', key: 'test_type', },
    { title: 'CreatedAt', dataIndex: 'created_at', key: 'created_at', render:(val) => moment(val).format('MMMM Do YYYY, h:mm:ss a') }, 
-   { title: 'Action', dataIndex: 'action', key: 'action', 
+  //  { title: 'Action', dataIndex: 'action', key: 'action', 
    
-   render: (_,record) => {
+  //  render: (_,record) => {
 
-      return (  <Space>
-                  <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button>
-                  {/* <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button> */}
-                  </Space>
+  //     return (  <Space>
+  //                {user?.defaultRole == "admin" ? <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button> : null}
+  //                 {/* <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button> */}
+  //                 </Space>
 
-              )
+  //             )
                   
-                  }, 
+  //                 }, 
    
-   },   
+  //  },   
   ]
+
+  if(user?.defaultRole=="admin"){
+    columns.push(   { title: 'Action', dataIndex: 'action', key: 'action', 
+   
+    render: (_,record) => {
+ 
+       return (  <Space>
+                  {user?.defaultRole == "admin" ? <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button> : null}
+                   {/* <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button> */}
+                   </Space>
+ 
+               )
+                   
+                   }, 
+    
+    }, )
+  }
 
   console.log("new data", Data)
 
@@ -384,8 +401,8 @@ function MyComponent({where}) {
  
   return (<>
  
- <div style={{display:'flex', justifyContent:"flex-end"}}>
-           <Input type='text' style={{minWidth:"50px", width:"150px"}} placeholder='Search By Status' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
+ <div style={{display:'flex', justifyContent:"flex-end", alignItems:"center"}}>
+           <Input type='text' style={{minWidth:"50px", width:"150px", margin:"10px"}} placeholder='Search By Status' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
            {/* <Button type="primary" onClick={handleCreate}>CREATE</Button> */}
   </div>
             <Table dataSource={Data} columns={columns} />

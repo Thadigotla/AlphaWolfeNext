@@ -490,7 +490,7 @@ const handleCancel = () => {
  
 
 
-  const columns = [
+  let columns = [
    { title: 'Id', dataIndex: 'uid', key: 'uid',render:(val,record)=> <span style={{color:"rgb(226 121 17)", cursor:"pointer",textDecoration:"underline"}} onClick={()=>router.push(`/orderItems/${record.id}`)}>{record.uid}</span>  },
    { title: 'User', dataIndex: 'user_name', key: 'user_name', },
    { title: 'Status', dataIndex: 'status', key: 'status', },
@@ -505,15 +505,15 @@ const handleCancel = () => {
    render: (_,record) => {
 
       return (  <>
-                  <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button>
-                  {record?.payment_status ==  "pending" ? <Button type='primary'  onClick={() => (setRecord(record),setIsModalOpens(true))}    > Pay  </Button> : null}
+                 {user?.defaultRole == "admin" ? <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button> : null}
+                 {user?.defaultRole == "user"&&record?.payment_status ==  "pending" ? <Button type='primary'  onClick={() => (setRecord(record),setIsModalOpens(true))}    > Pay  </Button> : null}
                   {/* <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button> */}
                   </>
 
               )
                   
                   }, 
-   
+                  
    },   
   ]
 
@@ -546,8 +546,8 @@ const handleCancel = () => {
               {/* <Button type="default" onClick={handlePayment}>Pay</Button> */}
             </Modal>
  
-                        <div style={{display:'flex', justifyContent:"flex-end"}}>
-           <Input type='text' style={{minWidth:"50px", width:"200px"}} placeholder='Search By Name, Status' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
+                        <div style={{display:'flex', justifyContent:"flex-end", alignItems:"center"}}>
+           <Input type='text' style={{minWidth:"50px", width:"200px", margin:"10px"}} placeholder='Search By Name, Status' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
            {/* <Button type="primary" onClick={handleCreate}>CREATE</Button> */}
   </div>            <Table dataSource={Data} columns={columns} />
             <Button onClick={PreviousPage}

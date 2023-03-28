@@ -341,8 +341,8 @@ function MyComponent({where}) {
 
  
   return (<>
-  <div style={{display:'flex', justifyContent:"flex-end"}}>
-           <Input type='text' style={{minWidth:"50px", width:"150px"}} placeholder='Search By Status' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
+  <div style={{display:'flex', justifyContent:"flex-end", alignItems:"center"}}>
+           <Input type='text' style={{minWidth:"50px", width:"150px", margin:"10px"}} placeholder='Search By Status' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
            {/* <Button type="primary" onClick={handleCreate}>CREATE</Button> */}
   </div>
             <Table dataSource={Data} columns={columns} />

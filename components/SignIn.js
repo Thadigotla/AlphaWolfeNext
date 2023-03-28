@@ -152,7 +152,7 @@ const SignIn = () => {
             required
           />
 
-          <button type="submit" className={styles.button}>
+          <button type="submit" style={{background:"rgb(158,103,62)"}} className={styles.button}>
           {signIn ? "Sign In" : "Sign Up"}
           </button>
         </form> :null}

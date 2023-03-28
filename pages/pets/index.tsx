@@ -184,7 +184,7 @@ const EditModal = ({selectedRecord,Mdata, setMData,setIsModalOpen,isModalOpen,in
 
 function MyComponent() {
 
-  const user = useUserData()
+  const user:any = useUserData()
 
   const [Data, setData] = useState([])
 
@@ -289,7 +289,7 @@ function MyComponent() {
 
  }
 
-  const columns = [
+  let columns = [
    { title: 'Id', dataIndex: 'uid', key: 'uid', },
    { title: 'Name', dataIndex: 'name', key: 'name', },
    { title: 'Type', dataIndex: 'type', key: 'type', },
@@ -300,26 +300,44 @@ function MyComponent() {
    
    render: (_,record) => {
 
-      return (  <Space>
-                  <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button>
-                  <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button>
-                  </Space>
+            return user?.role =="user"  ? (  <Space>
+                        <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button>
+                        <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button>
+                        </Space>
 
-              )
+                    ) : null
                   
-                  }, 
+      }, 
    
    },   
   ]
+
+  if(user.defaultRole == "user"){
+    columns?.push( 
+        { title: 'Action', dataIndex: 'action', key: 'action', 
+   
+    render: (_,record) => {
+ 
+       return (  <Space>
+                   <Button color='red'  onClick={() => handleEdit(record)} type='ghost' icon={<EditOutlined   style={{ color: 'red' }}/>} >  </Button>
+                   <Button  onClick={() => handleDelete(record)} type="ghost" icon={<DeleteFilled  style={{color: 'red'}} />}>  </Button>
+                   </Space>
+ 
+               )
+                   
+                   }, 
+    
+    }, )
+  }
 
   console.log("new data", Data)
  
 
  
   return (<>
-  <div style={{display:'flex', justifyContent:"flex-end"}}>
-           <Input type='text' style={{minWidth:"50px", width:"150px"}} placeholder='Search By Name' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
-           <Button type="primary" onClick={handleCreate} icon={<PlusSquareFilled />} ghost>CREATE</Button>
+  <div style={{display:'flex', justifyContent:"flex-end", alignItems:"center"}}>
+           <Input type='text' style={{minWidth:"50px", width:"150px", margin:"10px"}} placeholder='Search By Name' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
+           {user?.defaultRole == "user" ? <Button type="primary" onClick={handleCreate} icon={<PlusSquareFilled />}  >CREATE</Button> : null}
   </div>
          
             <Table dataSource={Data} columns={columns} />

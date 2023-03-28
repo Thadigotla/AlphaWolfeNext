@@ -304,9 +304,9 @@ function MyComponent() {
 
  
   return (<>
-  <div style={{display:'flex', justifyContent:"flex-end"}}>
-           <Input type='text' style={{minWidth:"50px", width:"150px"}} placeholder='Search By Name' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
-           <Button type="primary" onClick={handleCreate} icon={<PlusSquareFilled />} ghost>CREATE</Button>
+  <div style={{display:'flex', justifyContent:"flex-end", alignItems:"center"}}>
+           <Input type='text' style={{minWidth:"50px", width:"150px", margin:"10px"}} placeholder='Search By Name' onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
+           {/* <Button type="primary" onClick={handleCreate} icon={<PlusSquareFilled />}>CREATE</Button> */}
   </div>
          
             <Table dataSource={Data} columns={columns} />

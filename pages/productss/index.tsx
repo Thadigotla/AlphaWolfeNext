@@ -455,9 +455,9 @@ function MyComponent() {
 
  
   return (<>
-    <div style={{display:'flex', justifyContent:"flex-end", margin:"5px"}}>
-           <Input type='text' style={{minWidth:"50px", width:"150px"}} onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
-           <Button type="primary" onClick={handleCreate} icon={<PlusOutlined />} ghost>CREATE</Button>
+    <div style={{display:'flex', justifyContent:"flex-end", margin:"5px", alignItems:"center"}}>
+           <Input type='text' style={{minWidth:"50px", width:"150px", margin:"10px"}} onChange={e=>onChangeText(e?.target?.value)} value={searchText}/>
+           <Button type="primary" onClick={handleCreate} icon={<PlusOutlined />} >CREATE</Button>
   </div>
  
             {/* <Button type="primary" onClick={handleCreate}>CREATE</Button> */}
