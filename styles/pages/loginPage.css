@@ -1228,7 +1228,18 @@ th {
     display:none;
   }
   
-  
+  .form_{
+    flex-direction: column;
+  }
+  .form_left{
+    width: 80%;
+    margin:0 auto;
+  }
+  .form_right{
+    width: 80%;
+    margin:0 auto;
+    margin-bottom: 10px;
+  }
   .image-86-wrapper {
     display:none;
   }
